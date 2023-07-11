@@ -1,0 +1,59 @@
+﻿<section id="about-us" class="about-us py-3">
+    <div class="container-fluid" data-aos="fade-up">
+        <div class="section-title pb-1">
+            @*<h2>公司簡介</h2>*@
+            @* Jacky 1120528 *@
+            <h2>品牌核心</h2>
+        </div>
+
+        @{
+            string GoogleMapKey = "";
+            using (z_repoCompanys comp = new z_repoCompanys())
+            {
+                using (GoogleMapService gmap = new GoogleMapService())
+                {
+                    GoogleMapKey = gmap.GoogleMapKey;
+                    var compData = comp.GetDefaultCompany();
+
+                    <!--<div class="row content">
+                    <div class="col-lg-4" data-aos="fade-right">
+                        <h3>@compData.CompName</h3>
+                        <h4>@compData.EngName</h4>-->
+                    @*<p><span class="fw-bold">公司地址：</span>@compData.CompAddress</p>*@
+                    @* Jacky 1120528 *@
+                    <!--<p><span class="fw-bold">連絡地址：</span>@compData.CompAddress</p>
+                    <p><span class="fw-bold">連絡電話：</span>@compData.CompTel</p>-->
+                        @*<iframe src="https://www.google.com/maps/embed/v1/place?key=@GoogleMapKey&q=@compData.CompAddress" height="450" style="border:0;width:100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>*@
+                        @* Jacky 1120527 *@
+                        <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.96920066429!2d121.25184209999999!3d24.967162500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34682203506837d9%3A0xab956e8f20c24297!2zMzIw5qGD5ZyS5biC5Lit5aOi5Y2A6Ieq56uL5LqU6KGXMTDomZ8!5e0!3m2!1szh-TW!2stw!4v1685158258378!5m2!1szh-TW!2stw" width="400" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="col-lg-8 pt-4 pt-lg-0" data-aos="fade-left">
+                            <p class="text-center">
+                                @Html.Raw(compData.AboutusText)
+                            </p>
+                        </div>
+                    </div>-->
+
+            <div class="row content">
+                <div class="" data-aos="fade-up">
+                    <div class="col">
+                        <p>
+                            <h3 class="text-center">@Html.Raw(compData.AboutusText)</h3>
+                        </p>
+                    </div>
+                    <div class="col d-flex justify-content-center">
+                        <img src="@Url.Content("~/Images/About/About002.jpg")" class="img-fluid img-thumbnail rounded" alt="" />
+                    </div>
+                    <div class="col d-flex justify-content-center">
+                        <img src="@Url.Content("~/Images/About/About001.jpg")" class="img-fluid img-thumbnail rounded" alt="" />
+                    </div>
+                    <div class="col d-flex justify-content-center">
+                        <img src="@Url.Content("~/Images/About/About003.jpg")" class="img-fluid img-thumbnail rounded" alt="" />
+                    </div>
+                </div>
+            </div>
+        }
+    }
+        }
+        </div>
+</section>

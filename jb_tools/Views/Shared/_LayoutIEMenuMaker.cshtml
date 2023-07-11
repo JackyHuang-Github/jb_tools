@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - IEMenuMaker</title>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" ) />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+
+    <style>
+        body {
+            background-color: darkgray
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <a class="d-inline-block float-start" href="@Url.Action("Index" , "Home" , new { area = ""})">
+                @Html.Partial("~/Views/PartialViews/_PartialLogo.cshtml")
+            </a>
+            <div class="col d-flex justify-content-center align-items-center m-auto">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

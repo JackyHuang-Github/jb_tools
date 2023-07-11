@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutIEMenuMaker.cshtml";
+}
+
+<style>
+    .rowSetting {
+        height: 90%;
+    }
+
+    .btnSetting {
+        font-size: 26px;
+    }
+</style>
+
+<div class="container-fluid vh-100 bg-black text-white">
+    <h2 class="d-flex justify-content-center align-items-center bg-dark">IEMenuMaker</h2>
+    <div class="row d-flex justify-content-center align-items-center rowSetting">
+        <div class="col-md-10">
+            <div class="m-5">
+                @Html.ActionLink("編輯", "IemuMainMenus", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-primary d-block py-4 border-danger btnSetting" })
+            </div>
+            <div class="m-5">
+                @Html.ActionLink("基本資料-主分類", "IemuMainMenus", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-info d-block py-4 border-danger btnSetting" })
+            </div>
+            <div class="m-5">
+                @Html.ActionLink("基本資料-中分類", "IemuDetailMenus", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-success d-block py-4 border-danger btnSetting" })
+            </div>
+            <div class="m-5">
+                @Html.ActionLink("基本資料-細分類", "IemuDetailMenus", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-warning d-block py-4 border-danger btnSetting" })
+            </div>
+        </div>
+    </div>
+</div>
