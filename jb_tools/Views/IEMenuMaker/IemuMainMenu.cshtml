@@ -1,0 +1,63 @@
+﻿@model IEnumerable<jb_tools.Models.IemuMainMenus>
+
+@{
+    ViewBag.Title = "IEMenu 大分類";
+    Layout = "~/Views/Shared/_LayoutIEMenuMaker.cshtml";
+}
+
+<h2>IEMenu 大分類</h2>
+
+<p>
+    @Html.ActionLink("新增", "")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SortNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MainCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.McId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remark)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SortNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MainCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.McId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ename)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remark)
+        </td>
+        <td>
+            @*@Html.ActionLink("修改", "Edit", new { id = item.Id }) |*@
+            @Html.ActionLink("明細", "Details", new { id = item.Id }) |
+            @*@Html.ActionLink("刪除", "Delete", new { id = item.Id })*@
+        </td>
+    </tr>
+}
+
+</table>
