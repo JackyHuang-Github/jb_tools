@@ -10,7 +10,7 @@
 
 using System;
 
-namespace shoppingmall.Resources
+namespace jb_tools.Resources
 {
     /// <summary>
     ///   用於查詢當地語系化字串等的強類型資源類別。
@@ -44,7 +44,7 @@ namespace shoppingmall.Resources
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("shoppingmall.Resources.resCustom", typeof(resCustom).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("jb_tools.Resources.resCustom", typeof(resCustom).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

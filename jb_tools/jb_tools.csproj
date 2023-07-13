@@ -70,6 +70,15 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Slapper, Version=2.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Slapper.AutoMapper.2.0.5\lib\net47\Slapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -138,6 +147,15 @@
   <ItemGroup>
     <Compile Include="App_Class\BaseClasses\BaseClass.cs" />
     <Compile Include="App_Class\BaseClasses\BaseController.cs" />
+    <Compile Include="App_Class\CodeGenerator\Common\CodeBase.cs" />
+    <Compile Include="App_Class\CodeGenerator\Controller\CodeController.cs" />
+    <Compile Include="App_Class\CodeGenerator\Model\CodeMetadata.cs" />
+    <Compile Include="App_Class\CodeGenerator\Model\CodeRepository.cs" />
+    <Compile Include="App_Class\CodeGenerator\Model\CodeService.cs" />
+    <Compile Include="App_Class\CodeGenerator\Report\CodeReport.cs" />
+    <Compile Include="App_Class\CodeGenerator\View\CodeViewCreateEdit1.cs" />
+    <Compile Include="App_Class\CodeGenerator\View\CodeViewCreateEditN.cs" />
+    <Compile Include="App_Class\CodeGenerator\View\CodeViewIndex.cs" />
     <Compile Include="App_Class\CustomAttribute\CloseDateAttribute.cs" />
     <Compile Include="App_Class\CustomAttribute\ColumnAttribute.cs" />
     <Compile Include="App_Class\CustomAttribute\DateRangeAttribute.cs" />
@@ -153,6 +171,11 @@
     <Compile Include="App_Class\Enums\enPriorParmIdType.cs" />
     <Compile Include="App_Class\Enums\enSecurtyMode.cs" />
     <Compile Include="App_Class\Enums\enSortDirection.cs" />
+    <Compile Include="App_Class\Extensions\DataTableExtension.cs" />
+    <Compile Include="App_Class\Extensions\DateTimeExtension.cs" />
+    <Compile Include="App_Class\Extensions\IntegerExtension.cs" />
+    <Compile Include="App_Class\Extensions\NameValueCollection.cs" />
+    <Compile Include="App_Class\Extensions\StringExtension.cs" />
     <Compile Include="App_Class\Interfaces\IDapperRepository.cs" />
     <Compile Include="App_Class\Interfaces\IEFGenericRepository.cs" />
     <Compile Include="App_Class\Repository\AdoNetSqlClient.cs" />
@@ -381,7 +404,62 @@
     <Compile Include="Models\Propertys.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RepositoryModel\repoAboutUs.cs" />
+    <Compile Include="Models\RepositoryModel\repoAboutUsDetails.cs" />
+    <Compile Include="Models\RepositoryModel\repoAddressBooks.cs" />
+    <Compile Include="Models\RepositoryModel\repoApplications.cs" />
+    <Compile Include="Models\RepositoryModel\repoCalendars.cs" />
+    <Compile Include="Models\RepositoryModel\repoCarousels.cs" />
+    <Compile Include="Models\RepositoryModel\repoCarts.cs" />
+    <Compile Include="Models\RepositoryModel\repoCategorys.cs" />
+    <Compile Include="Models\RepositoryModel\repoCityAreas.cs" />
+    <Compile Include="Models\RepositoryModel\repoCitys.cs" />
+    <Compile Include="Models\RepositoryModel\repoClients.cs" />
+    <Compile Include="Models\RepositoryModel\repoCloseDates.cs" />
+    <Compile Include="Models\RepositoryModel\repoCodeBases.cs" />
+    <Compile Include="Models\RepositoryModel\repoCodeDatas.cs" />
+    <Compile Include="Models\RepositoryModel\repoCompanys.cs" />
+    <Compile Include="Models\RepositoryModel\repoDepartments.cs" />
+    <Compile Include="Models\RepositoryModel\repoEmployees.cs" />
+    <Compile Include="Models\RepositoryModel\repoExtensionTables.cs" />
+    <Compile Include="Models\RepositoryModel\repoFeatureds.cs" />
+    <Compile Include="Models\RepositoryModel\repoForumBoards.cs" />
+    <Compile Include="Models\RepositoryModel\repoForums.cs" />
+    <Compile Include="Models\RepositoryModel\repoHtmlEditor.cs" />
     <Compile Include="Models\RepositoryModel\repoIemuMainMenus.cs" />
+    <Compile Include="Models\RepositoryModel\repoLanguages.cs" />
+    <Compile Include="Models\RepositoryModel\repoLogs.cs" />
+    <Compile Include="Models\RepositoryModel\repoMapPositions.cs" />
+    <Compile Include="Models\RepositoryModel\repoMessages.cs" />
+    <Compile Include="Models\RepositoryModel\repoModules.cs" />
+    <Compile Include="Models\RepositoryModel\repoNews.cs" />
+    <Compile Include="Models\RepositoryModel\repoNewsLetter.cs" />
+    <Compile Include="Models\RepositoryModel\repoNotifications.cs" />
+    <Compile Include="Models\RepositoryModel\repoOrderDetails.cs" />
+    <Compile Include="Models\RepositoryModel\repoOrders.cs" />
+    <Compile Include="Models\RepositoryModel\repoOrdersStatus.cs" />
+    <Compile Include="Models\RepositoryModel\repoPayments.cs" />
+    <Compile Include="Models\RepositoryModel\repoPhotos.cs" />
+    <Compile Include="Models\RepositoryModel\repoPricingDetails.cs" />
+    <Compile Include="Models\RepositoryModel\repoPricings.cs" />
+    <Compile Include="Models\RepositoryModel\repoProducts.cs" />
+    <Compile Include="Models\RepositoryModel\repoPrograms.cs" />
+    <Compile Include="Models\RepositoryModel\repoPromotions.cs" />
+    <Compile Include="Models\RepositoryModel\repoPropertyNames.cs" />
+    <Compile Include="Models\RepositoryModel\repoRoles.cs" />
+    <Compile Include="Models\RepositoryModel\repoSecuritys.cs" />
+    <Compile Include="Models\RepositoryModel\repoServices.cs" />
+    <Compile Include="Models\RepositoryModel\repoShippings.cs" />
+    <Compile Include="Models\RepositoryModel\repoTeams.cs" />
+    <Compile Include="Models\RepositoryModel\repoTitles.cs" />
+    <Compile Include="Models\RepositoryModel\repoTodoLists.cs" />
+    <Compile Include="Models\RepositoryModel\repoUsers.cs" />
+    <Compile Include="Models\RepositoryModel\repoVacations.cs" />
+    <Compile Include="Models\RepositoryModel\repoWorkflowDetails.cs" />
+    <Compile Include="Models\RepositoryModel\repoWorkflowMasters.cs" />
+    <Compile Include="Models\RepositoryModel\repoWorkflowRoles.cs" />
+    <Compile Include="Models\RepositoryModel\repoWorkflowRoleUsers.cs" />
+    <Compile Include="Models\RepositoryModel\repoWorkflowRoutes.cs" />
     <Compile Include="Models\Roles.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -409,7 +487,21 @@
     <Compile Include="Models\Vacations.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel\vmChangePassword.cs" />
+    <Compile Include="Models\ViewModel\vmCodeModel.cs" />
     <Compile Include="Models\ViewModel\vmContact.cs" />
+    <Compile Include="Models\ViewModel\vmControllerModel.cs" />
+    <Compile Include="Models\ViewModel\vmFileManager.cs" />
+    <Compile Include="Models\ViewModel\vmGeneratorModel.cs" />
+    <Compile Include="Models\ViewModel\vmHtmlEditor.cs" />
+    <Compile Include="Models\ViewModel\vmLogin.cs" />
+    <Compile Include="Models\ViewModel\vmMetadataModel.cs" />
+    <Compile Include="Models\ViewModel\vmOrderModel.cs" />
+    <Compile Include="Models\ViewModel\vmPhoto.cs" />
+    <Compile Include="Models\ViewModel\vmRegister.cs" />
+    <Compile Include="Models\ViewModel\vmRepositoryModel.cs" />
+    <Compile Include="Models\ViewModel\vmSelectListItem.cs" />
+    <Compile Include="Models\ViewModel\vmViewModel.cs" />
     <Compile Include="Models\WorkflowDetails.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -460,6 +552,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -541,6 +634,7 @@
     <Content Include="Views\Shared\_LayoutIEMenuMaker.cshtml" />
     <Content Include="Views\PartialViews\_PartialLogo.cshtml" />
     <Content Include="Views\IEMenuMaker\IemuMainMenu.cshtml" />
+    <Content Include="Views\Shared\_LayoutIemuBasic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\resColumn.en-US.resx" />

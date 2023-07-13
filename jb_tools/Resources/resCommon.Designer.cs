@@ -10,7 +10,7 @@
 
 using System;
 
-namespace shoppingmall.Resources
+namespace jb_tools.Resources
 {
     /// <summary>
     ///   用於查詢當地語系化字串等的強類型資源類別。
@@ -44,7 +44,7 @@ namespace shoppingmall.Resources
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("shoppingmall.Resources.resCommon", typeof(resCommon).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("jb_tools.Resources.resCommon", typeof(resCommon).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -1072,11 +1072,11 @@ namespace shoppingmall.Resources
         /// <summary>
         ///   查詢類似 購物商城 的當地語系化字串。
         /// </summary>
-        public static string ShoppingMall
+        public static string jb_tools
         {
             get
             {
-                return ResourceManager.GetString("ShoppingMall", resourceCulture);
+                return ResourceManager.GetString("jb_tools", resourceCulture);
             }
         }
 
