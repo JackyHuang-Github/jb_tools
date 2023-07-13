@@ -10,30 +10,29 @@
     }
 </style>
 
-<div class="container-fluid vh-100 bg-black text-white">
-    <h2 class="d-flex justify-content-center align-items-center bg-dark">IEMenuMaker</h2>
-    <div class="row h-75">
+<div class="container vh-100 bg-black text-white">
+    <div class="row h-100">
         <div class="col">
-            <div class="row d-flex justify-content-center align-items-sm-center align-items-md-end pb-md-4 h-50">
-                <div class="col-md-3 col-lg-2">
-                    <div class=" ">
+            <div class="row d-flex justify-content-center align-items-sm-end pt-5 pb-sm-4 mt-4 h-50">
+                <div class="col-sm-4 col-xxl-3">
+                    <div>
                         @Html.ActionLink("編輯", "EditIemu", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-black d-block py-4 border-danger btnSetting" })
                     </div>
                 </div>
-                <div class="col-md-3 col-lg-2">
-                    <div class=" ">
+                <div class="col-sm-4 col-xxl-3">
+                    <div>
                         @Html.ActionLink("基本資料-主分類", "IemuMainMenu", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-black d-block py-4 border-danger btnSetting" })
                     </div>
                 </div>
             </div>
-            <div class="row d-flex justify-content-center align-items-sm-center align-items-md-start pb-md-4 h-50">
-                <div class="col-md-3 col-lg-2">
-                    <div class=" ">
+            <div class="row d-flex justify-content-center align-items-sm-start h-50">
+                <div class="col-sm-4 col-xxl-3">
+                    <div>
                         @Html.ActionLink("基本資料-中分類", "IemuSubMenu", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-black d-block py-4 border-danger btnSetting" })
                     </div>
                 </div>
-                <div class="col-md-3 col-lg-2">
-                    <div class=" ">
+                <div class="col-sm-4 col-xxl-3">
+                    <div>
                         @Html.ActionLink("基本資料-細分類", "IemuDetailMenus", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-black d-block py-4 border-danger btnSetting" })
                     </div>
                 </div>
