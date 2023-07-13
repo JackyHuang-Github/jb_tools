@@ -1138,7 +1138,7 @@ window.Modernizr = (function( window, document, undefined ) {
           // * Link elements with `src` attributes that are inaccessible, as with
           //   a 403 response, will cause the tab/window to crash
           // * Script elements appended to fragments will execute when their `src`
-          //   or `text` property is set
+          //  OR `text` property is set
           return node.canHaveChildren && !reSkip.test(nodeName) && !node.tagUrn ? data.frag.appendChild(node) : node;
         }
 
@@ -1348,7 +1348,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     /*>>testallprops*/
     // Modernizr.testAllProps() investigates whether a given style property,
-    //   or any of its vendor-prefixed variants, is recognized
+    //  OR any of its vendor-prefixed variants, is recognized
     // Note that the property names must be provided in the camelCase variant.
     // Modernizr.testAllProps('boxSizing')
     Modernizr.testAllProps  = testPropsAll;

@@ -45,14 +45,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.96.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.96.0\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.143\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.18.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.18.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -124,11 +133,48 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Codes\BaseClass.cs" />
-    <Compile Include="App_Codes\DapperRepository.cs" />
-    <Compile Include="App_Codes\IDapperRepository.cs" />
+    <Compile Include="App_Class\BaseClasses\BaseClass.cs" />
+    <Compile Include="App_Class\BaseClasses\BaseController.cs" />
+    <Compile Include="App_Class\CustomAttribute\CloseDateAttribute.cs" />
+    <Compile Include="App_Class\CustomAttribute\ColumnAttribute.cs" />
+    <Compile Include="App_Class\CustomAttribute\DateRangeAttribute.cs" />
+    <Compile Include="App_Class\CustomAttribute\DefaultAttribute.cs" />
+    <Compile Include="App_Class\CustomAttribute\LoginAuthorizeAttribute.cs" />
+    <Compile Include="App_Class\CustomAttribute\UniqueAttribute.cs" />
+    <Compile Include="App_Class\Enums\enAction.cs" />
+    <Compile Include="App_Class\Enums\enCardSize.cs" />
+    <Compile Include="App_Class\Enums\enDateCycle.cs" />
+    <Compile Include="App_Class\Enums\enDefaultValueType.cs" />
+    <Compile Include="App_Class\Enums\enLogType.cs" />
+    <Compile Include="App_Class\Enums\enPrgType.cs" />
+    <Compile Include="App_Class\Enums\enPriorParmIdType.cs" />
+    <Compile Include="App_Class\Enums\enSecurtyMode.cs" />
+    <Compile Include="App_Class\Enums\enSortDirection.cs" />
+    <Compile Include="App_Class\Interfaces\IDapperRepository.cs" />
+    <Compile Include="App_Class\Interfaces\IEFGenericRepository.cs" />
+    <Compile Include="App_Class\Repository\AdoNetSqlClient.cs" />
+    <Compile Include="App_Class\Repository\DapperRepository.cs" />
+    <Compile Include="App_Class\Repository\EFGenericRepository.cs" />
+    <Compile Include="App_Class\Services\ActionService.cs" />
+    <Compile Include="App_Class\Services\AdoNetService.cs" />
+    <Compile Include="App_Class\Services\AppService.cs" />
+    <Compile Include="App_Class\Services\AppSettingsService.cs" />
+    <Compile Include="App_Class\Services\AttributeService.cs" />
+    <Compile Include="App_Class\Services\ClassService.cs" />
+    <Compile Include="App_Class\Services\ClosedxmlService.cs" />
+    <Compile Include="App_Class\Services\CryptographyService.cs" />
+    <Compile Include="App_Class\Services\FileService.cs" />
+    <Compile Include="App_Class\Services\GmailService.cs" />
+    <Compile Include="App_Class\Services\GoogleMapService.cs" />
+    <Compile Include="App_Class\Services\ImageService.cs" />
+    <Compile Include="App_Class\Services\PrgService.cs" />
+    <Compile Include="App_Class\Services\ResourceService.cs" />
+    <Compile Include="App_Class\Services\SendMailService.cs" />
+    <Compile Include="App_Class\Services\SessionService.cs" />
+    <Compile Include="App_Class\Services\UserService.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -182,6 +228,20 @@
     <Compile Include="Models\Companys.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataModel\dmAllCategory.cs" />
+    <Compile Include="Models\DataModel\dmBaseData.cs" />
+    <Compile Include="Models\DataModel\dmCalendarEvent.cs" />
+    <Compile Include="Models\DataModel\dmColumnProperty.cs" />
+    <Compile Include="Models\DataModel\dmExcelColumn.cs" />
+    <Compile Include="Models\DataModel\dmExcelHeader.cs" />
+    <Compile Include="Models\DataModel\dmFileUpload.cs" />
+    <Compile Include="Models\DataModel\dmJsonMessage.cs" />
+    <Compile Include="Models\DataModel\dmKeyBoard.cs" />
+    <Compile Include="Models\DataModel\dmPrgList.cs" />
+    <Compile Include="Models\DataModel\dmPrgSort.cs" />
+    <Compile Include="Models\DataModel\dmReturnToAction.cs" />
+    <Compile Include="Models\DataModel\dmSubCategory.cs" />
+    <Compile Include="Models\DataModel\dmUserList.cs" />
     <Compile Include="Models\dbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -260,6 +320,7 @@
     <Compile Include="Models\Messages.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MetadataModel\metaIemuMainMenus.cs" />
     <Compile Include="Models\Modules.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -320,6 +381,7 @@
     <Compile Include="Models\Propertys.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RepositoryModel\repoIemuMainMenus.cs" />
     <Compile Include="Models\Roles.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -347,6 +409,7 @@
     <Compile Include="Models\Vacations.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel\vmContact.cs" />
     <Compile Include="Models\WorkflowDetails.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -363,6 +426,21 @@
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\resColumn.Designer.cs" />
+    <Compile Include="Resources\resColumn.en-US.Designer.cs" />
+    <Compile Include="Resources\resColumn.zh-TW.Designer.cs" />
+    <Compile Include="Resources\resCommon.Designer.cs" />
+    <Compile Include="Resources\resCommon.en-US.Designer.cs" />
+    <Compile Include="Resources\resCommon.zh-TW.Designer.cs" />
+    <Compile Include="Resources\resCustom.Designer.cs" />
+    <Compile Include="Resources\resCustom.en-US.Designer.cs" />
+    <Compile Include="Resources\resCustom.zh-TW.Designer.cs" />
+    <Compile Include="Resources\resMessage.Designer.cs" />
+    <Compile Include="Resources\resMessage.en-US.Designer.cs" />
+    <Compile Include="Resources\resMessage.zh-TW.Designer.cs" />
+    <Compile Include="Resources\resProgram.Designer.cs" />
+    <Compile Include="Resources\resProgram.en-US.Designer.cs" />
+    <Compile Include="Resources\resProgram.zh-TW.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\WebConfig\connectionStrings.txt" />
@@ -464,7 +542,23 @@
     <Content Include="Views\PartialViews\_PartialLogo.cshtml" />
     <Content Include="Views\IEMenuMaker\IemuMainMenu.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\resColumn.en-US.resx" />
+    <EmbeddedResource Include="Resources\resColumn.resx" />
+    <EmbeddedResource Include="Resources\resColumn.zh-TW.resx" />
+    <EmbeddedResource Include="Resources\resCommon.en-US.resx" />
+    <EmbeddedResource Include="Resources\resCommon.resx" />
+    <EmbeddedResource Include="Resources\resCommon.zh-TW.resx" />
+    <EmbeddedResource Include="Resources\resCustom.en-US.resx" />
+    <EmbeddedResource Include="Resources\resCustom.resx" />
+    <EmbeddedResource Include="Resources\resCustom.zh-TW.resx" />
+    <EmbeddedResource Include="Resources\resMessage.en-US.resx" />
+    <EmbeddedResource Include="Resources\resMessage.resx" />
+    <EmbeddedResource Include="Resources\resMessage.zh-TW.resx" />
+    <EmbeddedResource Include="Resources\resProgram.en-US.resx" />
+    <EmbeddedResource Include="Resources\resProgram.resx" />
+    <EmbeddedResource Include="Resources\resProgram.zh-TW.resx" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
