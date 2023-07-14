@@ -5,55 +5,91 @@
     Layout = "~/Views/Shared/_LayoutIEMenuMaker.cshtml";
 }
 
+@* Jacky 1120714 固定 table header 方式 *@
+<style>
+    .tableFixHead {
+        overflow: auto;
+        height: 90vh;           /* 限制最大高度至可視高度的 90% 才不會出現捲軸捲動 */
+        border: 1px solid red;  /* 紅色外框 */
+    }
 
-<table class="table table-dark table-striped">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SortNum)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MainCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.McId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ename)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Remark)
-        </th>
-    </tr>
+    .tableFixHead thead th {
+        position: sticky;       /* 固定 header */
+        top: 0;
+        z-index: 1;
+        color: blue;
+    }
+</style>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SortNum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MainCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.McId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ename)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Remark)
-        </td>
-        @*<td>
-            @Html.ActionLink("修改", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("明細", "Details", new { id = item.Id }) |
-            @Html.ActionLink("刪除", "Delete", new { id = item.Id })
-        </td>*@
-    </tr>
-}
+<!--
+    Jacky 1120714 必須加這段 BS5 的標準格式，不然寬度無法放寬到最大，還必須加上 p-0 去除內距，讓寬度高度放到最大
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+-->
+<div class="container-fluid p-0">
+    <div class="row">
+        <div class="col">
+            <div class="tableFixHead">
+                <table class="table table-dark table-striped table-hover table-bordered h-100">
+                    <thead class="table-info">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SortNum)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MainCode)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.McId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Ename)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Remark)
+                            </th>
+                        </tr>
+                    </thead>
 
-</table>
+                    <tbody class="table-group-divider">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SortNum)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MainCode)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.McId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ename)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Remark)
+                                </td>
+                                @*<td>
+                                    @Html.ActionLink("修改", "Edit", new { id = item.Id }) |
+                                    @Html.ActionLink("明細", "Details", new { id = item.Id }) |
+                                    @Html.ActionLink("刪除", "Delete", new { id = item.Id })
+                                </td>*@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

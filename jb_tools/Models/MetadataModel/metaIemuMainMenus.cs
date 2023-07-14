@@ -18,7 +18,7 @@ public abstract class z_metaIemuMainMenus
 {
     [Key]
     public int Id { get; set; }
-    [Display(Name = "排序號碼")]
+    [Display(Name = "排序")]
     [Column(CheckBox = false, Hidden = true, DropdownClass = "")]
     [Default(DefaultValueType = enDefaultValueType.Int_0, DefaultValue = "")]
     public int SortNum { get; set; }

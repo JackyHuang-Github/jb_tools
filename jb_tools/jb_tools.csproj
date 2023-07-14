@@ -558,6 +558,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\App\BgImgMain_1280x768.jpg" />
     <Content Include="Images\App\jbi_logo_64x35.jpg" />
+    <Content Include="Images\App\ToBeContinued.jpg" />
     <Content Include="Models\dbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>dbModel.Context.cs</LastGenOutput>
@@ -635,6 +636,7 @@
     <Content Include="Views\PartialViews\_PartialLogo.cshtml" />
     <Content Include="Views\IEMenuMaker\IemuMainMenu.cshtml" />
     <Content Include="Views\Shared\_LayoutIemuBasic.cshtml" />
+    <Content Include="Views\PartialViews\_PartialToBeContinued.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\resColumn.en-US.resx" />
