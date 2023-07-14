@@ -99,7 +99,7 @@ FROM IemuMainMenus
     /// <returns></returns>
     private string GetSQLOrderBy()
     {
-        return " ORDER BY MainCode";
+        return " ORDER BY SortNum";
     }
 
     /// <summary>

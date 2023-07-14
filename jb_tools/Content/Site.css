@@ -19,6 +19,7 @@ textarea {
     max-width: 280px;
 }
 
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* Jacky 1120703 */
 /* navbar 背景滑鼠移入呈現效果 */
 .navBg {
@@ -27,3 +28,58 @@ textarea {
 .navBg:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* Jacky 1120714 固定 table header 方式 */
+.tableFixHead {
+    overflow: auto;
+    height: 90vh;           /* 限制最大高度至可視高度的 90% 才不會出現捲軸捲動 */
+    border: 1px solid red;  /* 紅色外框 */
+}
+
+.tableFixHead thead th {
+    position: sticky;       /* 固定 header */
+    top: 0;
+    z-index: 1;
+    color: blue;            /* 標題藍色字 */
+}
+
+.tableFixHead tbody th {
+    position: sticky;
+    left: 0;
+}
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* Jacky 1120714 修正 border shadow 問題 */
+.tableFixHeadBorderShadow {
+    overflow: auto;
+    height: 90vh;           /* 限制最大高度至可視高度的 90% 才不會出現捲軸捲動 */
+    border: 1px solid red;  /* 紅色外框 */
+}
+
+.tableFixHeadBorderShadow thead th {
+    position: sticky;       /* 固定 header */
+    top: 0;
+    z-index: 1;
+    color: blue;            /* 標題藍色字 */
+}
+
+.tableFixHeadBorderShadow tbody th {
+    position: sticky;
+    left: 0;
+}
+
+.tableFixHeadBorderShadow, .tableFixHeadBorderShadow td {
+    box-shadow: inset 1px -1px #000;
+}
+
+.tableFixHeadBorderShadow th {
+    box-shadow: inset 1px 1px #000, 0 1px #000;
+}
+
+.tableFixHeadBorderShadow tbody th {
+    box-shadow: inset 1px 1px #000, 0 1px #000;
+}
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
