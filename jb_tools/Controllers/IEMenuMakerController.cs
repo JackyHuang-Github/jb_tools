@@ -15,7 +15,67 @@ namespace jb_tools.Controllers
             return View();
         }
 
-        public ActionResult TableShowStyle_TableHover() 
+        public ActionResult IemuMainMenu()
+        {
+            using (z_repoIemuMainMenus mainMenus = new z_repoIemuMainMenus())
+            {
+                PrgService.SearchText = "";
+                PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
+                
+                Session["CurrentAction"] = "IemuMainMenu";
+                if (Session["tableShowStyle"] == null)
+                    Session["tableShowStyle"] = "tableFixHead";
+                var tableShowStyle = Session["tableShowStyle"].ToString();
+
+                ViewBag.tableShowStyle = tableShowStyle;
+                ViewBag.SearchText = "";
+                ViewBag.PageInfo = "第 1 頁,共 1 頁";
+                var model = mainMenus.GetDapperDataList("");
+                return View(model);
+            }
+        }
+
+        public ActionResult IemuSubMenu()
+        {
+            using (z_repoIemuSubMenus subMenus = new z_repoIemuSubMenus())
+            {
+                PrgService.SearchText = "";
+                PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
+
+                Session["CurrentAction"] = "IemuSubMenu";
+                if (Session["tableShowStyle"] == null)
+                    Session["tableShowStyle"] = "tableFixHead";
+                var tableShowStyle = Session["tableShowStyle"].ToString();
+
+                ViewBag.tableShowStyle = tableShowStyle;
+                ViewBag.SearchText = "";
+                ViewBag.PageInfo = "第 1 頁,共 1 頁";
+                var model = subMenus.GetDapperDataList("");
+                return View(model);
+            }
+        }
+
+        public ActionResult IemuDetailMenu()
+        {
+            using (z_repoIemuDetailMenus detailMenus = new z_repoIemuDetailMenus())
+            {
+                PrgService.SearchText = "";
+                PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
+
+                Session["CurrentAction"] = "IemuDetailMenu";
+                if (Session["tableShowStyle"] == null)
+                    Session["tableShowStyle"] = "tableFixHead";
+                var tableShowStyle = Session["tableShowStyle"].ToString();
+
+                ViewBag.tableShowStyle = tableShowStyle;
+                ViewBag.SearchText = "";
+                ViewBag.PageInfo = "第 1 頁,共 1 頁";
+                var model = detailMenus.GetDapperDataList("");
+                return View(model);
+            }
+        }
+
+        public ActionResult TableShowStyle_TableHover()
         {
             return ChoiceActionResult("tableFixHead");
         }
@@ -27,6 +87,9 @@ namespace jb_tools.Controllers
 
         private ActionResult ChoiceActionResult(string tableShowStyle)
         {
+            if (Session["CurrentAction"] == null)
+                Session["CurrentAction"] = "IemuMainMenu";
+
             //取得 ActionName 即可得知對應的 ViewName
             var viewName = Session["CurrentAction"].ToString();
             if (viewName == "")
@@ -51,29 +114,29 @@ namespace jb_tools.Controllers
                         return View(viewName, model);
                     }
 
-                //case "IemuSubMenus":
-                //    using (z_repoIemuSubMenus subMenus = new z_repoIemuSubMenus())
-                //    {
-                //        PrgService.SearchText = "";
-                //        PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
-                //        ViewBag.SearchText = "";
-                //        ViewBag.PageInfo = "第 1 頁,共 1 頁";
-                //        ViewBag.tableShowStyle = tableShowStyle;
-                //        var model = subMenus.GetDapperDataList("");
-                //        return View(viewName, model);
-                //    }
+                case "IemuSubMenu":
+                    using (z_repoIemuSubMenus subMenus = new z_repoIemuSubMenus())
+                    {
+                        PrgService.SearchText = "";
+                        PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
+                        ViewBag.SearchText = "";
+                        ViewBag.PageInfo = "第 1 頁,共 1 頁";
+                        ViewBag.tableShowStyle = tableShowStyle;
+                        var model = subMenus.GetDapperDataList("");
+                        return View(viewName, model);
+                    }
 
-                //case "IemuDetailMenus":
-                //    using (z_repoIemuDetailMenus detailMenus = new z_repoIemuDetailMenus())
-                //    {
-                //        PrgService.SearchText = "";
-                //        PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
-                //        ViewBag.SearchText = "";
-                //        ViewBag.PageInfo = "第 1 頁,共 1 頁";
-                //        ViewBag.tableShowStyle = tableShowStyle;
-                //        var model = detailMenus.GetDapperDataList("");
-                //        return View(viewName, model);
-                //    }
+                case "IemuDetailMenu":
+                    using (z_repoIemuDetailMenus detailMenus = new z_repoIemuDetailMenus())
+                    {
+                        PrgService.SearchText = "";
+                        PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
+                        ViewBag.SearchText = "";
+                        ViewBag.PageInfo = "第 1 頁,共 1 頁";
+                        ViewBag.tableShowStyle = tableShowStyle;
+                        var model = detailMenus.GetDapperDataList("");
+                        return View(viewName, model);
+                    }
 
                 default:
                     using (z_repoIemuMainMenus mainMenus = new z_repoIemuMainMenus())
@@ -87,57 +150,6 @@ namespace jb_tools.Controllers
                         return View(viewName, model);
                     }
             }
-        }
-
-        public ActionResult IemuMainMenu()
-        {
-            using (z_repoIemuMainMenus mainMenus = new z_repoIemuMainMenus())
-            {
-                PrgService.SearchText = "";
-                PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
-                
-                Session["CurrentAction"] = "IemuMainMenu";
-                if (Session["tableShowStyle"] == null)
-                    Session["tableShowStyle"] = "tableFixHead";
-                var tableShowStyle = Session["tableShowStyle"].ToString();
-
-                ViewBag.tableShowStyle = tableShowStyle;
-                ViewBag.SearchText = "";
-                ViewBag.PageInfo = "第 1 頁,共 1 頁";
-                var model = mainMenus.GetDapperDataList("");
-                return View(model);
-            }
-        }
-
-        public ActionResult IemuSubMenu()
-        {
-            //using (z_repoIemuSubMenus subMenus = new z_repoIemuSubMenus())
-            //{
-            //    PrgService.SearchText = "";
-            //    PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
-            //    Session["CurrentAction"] = "IemuSubMenu";
-            //    ViewBag.SearchText = "";
-            //    ViewBag.PageInfo = "第 1 頁,共 1 頁";
-            //    var model = subMenus.GetDapperDataList("");
-            //    return View(model);
-            //}
-
-            dbEntities db = new dbEntities();
-            var model = db.IemuSubMenus;
-            return View(model);
-        }
-
-        public ActionResult IemuDetailMenu()
-        {
-            //using (dbEntities db = new dbEntities())
-            //{
-            //    var model = db.IemuDetailMenus;
-            //    return View(model);
-            //}
-
-            dbEntities db = new dbEntities();
-            var model = db.IemuDetailMenus;
-            return View(model);
         }
 
         public ActionResult EditIemu()

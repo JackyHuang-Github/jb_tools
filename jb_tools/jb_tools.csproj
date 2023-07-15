@@ -343,6 +343,8 @@
     <Compile Include="Models\Messages.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MetadataModel\metaIemuDetailMenus.cs" />
+    <Compile Include="Models\MetadataModel\metaIemuSubMenus.cs" />
     <Compile Include="Models\MetadataModel\metaIemuMainMenus.cs" />
     <Compile Include="Models\Modules.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
@@ -426,6 +428,8 @@
     <Compile Include="Models\RepositoryModel\repoForumBoards.cs" />
     <Compile Include="Models\RepositoryModel\repoForums.cs" />
     <Compile Include="Models\RepositoryModel\repoHtmlEditor.cs" />
+    <Compile Include="Models\RepositoryModel\repoIemuDetailMenus.cs" />
+    <Compile Include="Models\RepositoryModel\repoIemuSubMenus.cs" />
     <Compile Include="Models\RepositoryModel\repoIemuMainMenus.cs" />
     <Compile Include="Models\RepositoryModel\repoLanguages.cs" />
     <Compile Include="Models\RepositoryModel\repoLogs.cs" />
@@ -637,6 +641,8 @@
     <Content Include="Views\IEMenuMaker\IemuMainMenu.cshtml" />
     <Content Include="Views\Shared\_LayoutIemuBasic.cshtml" />
     <Content Include="Views\PartialViews\_PartialToBeContinued.cshtml" />
+    <Content Include="Views\IEMenuMaker\IemuSubMenu.cshtml" />
+    <Content Include="Views\IEMenuMaker\IemuDetailMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\resColumn.en-US.resx" />

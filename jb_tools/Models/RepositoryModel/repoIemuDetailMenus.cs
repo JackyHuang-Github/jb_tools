@@ -5,35 +5,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-public class z_repoIemuMainMenus : BaseClass
+public class z_repoIemuDetailMenus : BaseClass
 {
     #region 建構子及 CRUD
     /// <summary>
     /// Repository 變數
     /// <summary>
-    public IEFGenericRepository<IemuMainMenus> repo;
+    public IEFGenericRepository<IemuDetailMenus> repo;
     /// <summary>
     /// 建構子
     /// <summary>
-    public z_repoIemuMainMenus()
+    public z_repoIemuDetailMenus()
     {
-        repo = new EFGenericRepository<IemuMainMenus>(new dbEntities());
+        repo = new EFGenericRepository<IemuDetailMenus>(new dbEntities());
     }
 
     /// <summary>
-    /// 以 Dapper 來讀取單筆 IEMenu 大分類 資料
+    /// 以 Dapper 來讀取單筆 IEMenu 細分類 資料
     /// </summary>
-    /// <param name="id">IEMenu 大分類 Id</param>
+    /// <param name="id">IEMenu 細分類 Id</param>
     /// <returns></returns>
-    public IemuMainMenus GetDapperData(int id)
+    public IemuDetailMenus GetDapperData(int id)
     {
         using (DapperRepository dp = new DapperRepository())
         {
             string str_query = GetSQLSelect();
-            str_query += " WHERE IemuMainMenus.Id = @id";
+            str_query += " WHERE IemuDetailMenus.Id = @id";
             DynamicParameters parm = new DynamicParameters();
             parm.Add("id", id);
-            var model = dp.ReadSingle<IemuMainMenus>(str_query, parm);
+            var model = dp.ReadSingle<IemuDetailMenus>(str_query, parm);
             return model;
         }
     }
@@ -43,7 +43,7 @@ public class z_repoIemuMainMenus : BaseClass
     /// <summary>
     /// <param name="searchText">查詢條件</param>
     /// <returns></returns>
-    public List<IemuMainMenus> GetDapperDataList(string searchText)
+    public List<IemuDetailMenus> GetDapperDataList(string searchText)
     {
         using (DapperRepository dp = new DapperRepository())
         {
@@ -52,7 +52,7 @@ public class z_repoIemuMainMenus : BaseClass
             str_query += GetSQLOrderBy();
             //DynamicParameters parm = new DynamicParameters();
             //parm.Add("parmName", "parmValue");
-            var model = dp.ReadAll<IemuMainMenus>(str_query);
+            var model = dp.ReadAll<IemuDetailMenus>(str_query);
             return model;
         }
     }
@@ -65,9 +65,9 @@ public class z_repoIemuMainMenus : BaseClass
     {
         string str_query = @"
 SELECT 
-	IemuMainMenus.Id, IemuMainMenus.SortNum, IemuMainMenus.MainCode, IemuMainMenus.McId, IemuMainMenus.Name, 
-    IemuMainMenus.Ename, IemuMainMenus.Remark
-FROM IemuMainMenus
+	IemuDetailMenus.Id, IemuDetailMenus.SortNum, IemuDetailMenus.MainCode, IemuDetailMenus.ScId, IemuDetailMenus.DetailOrder, IemuDetailMenus.Program, 
+    IemuDetailMenus.Name, IemuDetailMenus.Ename, IemuDetailMenus.ProgramPath, IemuDetailMenus.PosOrPath2, IemuDetailMenus.Remark
+FROM IemuDetailMenus
 ";
         return str_query;
     }
@@ -83,12 +83,16 @@ FROM IemuMainMenus
         if (!string.IsNullOrEmpty(searchText))
         {
             str_query += " WHERE ( ";
-            str_query += $"IemuMainMenus.SortNum LIKE '%{searchText}%' OR ";
-            str_query += $"IemuMainMenusStatus.MainCode LIKE '%{searchText}%' OR ";
-            str_query += $"IemuMainMenus.McId LIKE '%{searchText}%' OR ";
-            str_query += $"IemuMainMenus.Name LIKE '%{searchText}%' OR ";
-            str_query += $"IemuMainMenus.Ename LIKE '%{searchText}%' OR ";
-            str_query += $"IemuMainMenus.Remark LIKE '%{searchText}%' ";
+            str_query += $"IemuDetailMenus.SortNum LIKE '%{searchText}%' OR ";
+            str_query += $"IemuDetailMenusStatus.MainCode LIKE '%{searchText}%' OR ";
+            str_query += $"IemuDetailMenus.ScId LIKE '%{searchText}%' OR ";
+            str_query += $"IemuDetailMenusStatus.DetailOrder LIKE '%{searchText}%' OR ";
+            str_query += $"IemuDetailMenusStatus.Program LIKE '%{searchText}%' OR ";
+            str_query += $"IemuDetailMenus.Name LIKE '%{searchText}%' OR ";
+            str_query += $"IemuDetailMenus.Ename LIKE '%{searchText}%' OR ";
+            str_query += $"IemuDetailMenusStatus.ProgramPath LIKE '%{searchText}%' OR ";
+            str_query += $"IemuDetailMenusStatus.PosOrPath2 LIKE '%{searchText}%' OR ";
+            str_query += $"IemuDetailMenus.Remark LIKE '%{searchText}%' ";
             str_query += ") ";
         }
         return str_query;
@@ -107,7 +111,7 @@ FROM IemuMainMenus
     /// 新增或修改
     /// <summary>
     /// <param name="model"></param>
-    public void CreateEdit(IemuMainMenus model)
+    public void CreateEdit(IemuDetailMenus model)
     {
         repo.CreateEdit(model, model.Id);
     }
