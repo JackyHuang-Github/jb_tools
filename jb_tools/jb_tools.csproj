@@ -636,13 +636,13 @@
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\PartialViews\_PartialHomeAbout.cshtml" />
     <Content Include="Views\IEMenuMaker\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutIEMenuMaker.cshtml" />
+    <Content Include="Views\Shared\_LayoutIEMenuMaker1.cshtml" />
     <Content Include="Views\PartialViews\_PartialLogo.cshtml" />
     <Content Include="Views\IEMenuMaker\IemuMainMenu.cshtml" />
-    <Content Include="Views\Shared\_LayoutIemuBasic.cshtml" />
     <Content Include="Views\PartialViews\_PartialToBeContinued.cshtml" />
     <Content Include="Views\IEMenuMaker\IemuSubMenu.cshtml" />
     <Content Include="Views\IEMenuMaker\IemuDetailMenu.cshtml" />
+    <Content Include="Views\Shared\_LayoutIEMenuMaker2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\resColumn.en-US.resx" />
