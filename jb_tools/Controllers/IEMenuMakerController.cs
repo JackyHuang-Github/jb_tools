@@ -15,102 +15,102 @@ namespace jb_tools.Controllers
             return View();
         }
 
-        public ActionResult IemuMainMenu()
-        {
-            using (z_repoIemuMainMenus mainMenus = new z_repoIemuMainMenus())
-            {
-                PrgService.SearchText = "";
-                PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
+        //public ActionResult IemuMainMenu()
+        //{
+        //    using (z_repoIemuMainMenus mainMenus = new z_repoIemuMainMenus())
+        //    {
+        //        PrgService.SearchText = "";
+        //        PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
                 
-                Session["CurrentAction"] = "IemuMainMenu";
-                if (Session["TableShowStyle"] == null)
-                    Session["TableShowStyle"] = "tableFixHead";
-                var tableShowStyle = Session["tableShowStyle"].ToString();
+        //        Session["CurrentAction"] = "IemuMainMenu";
+        //        if (Session["TableShowStyle"] == null)
+        //            Session["TableShowStyle"] = "tableFixHead";
+        //        var tableShowStyle = Session["tableShowStyle"].ToString();
 
-                ViewBag.tableShowStyle = tableShowStyle;
-                ViewBag.SearchText = "";
-                ViewBag.PageInfo = "第 1 頁,共 1 頁";
-                var model = mainMenus.GetDapperDataList("");
-                return View(model);
-            }
+        //        ViewBag.tableShowStyle = tableShowStyle;
+        //        ViewBag.SearchText = "";
+        //        ViewBag.PageInfo = "第 1 頁,共 1 頁";
+        //        var model = mainMenus.GetDapperDataList("");
+        //        return View(model);
+        //    }
+        //}
+
+        public ActionResult IemuMainMenu_Create()
+        {
+            return RedirectToAction("IemuMainMenu");
         }
 
-        public ActionResult IemuMainMenu_Insert()
+        //public ActionResult IemuSubMenu()
+        //{
+        //    using (z_repoIemuSubMenus subMenus = new z_repoIemuSubMenus())
+        //    {
+        //        PrgService.SearchText = "";
+        //        PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
+
+        //        Session["CurrentAction"] = "IemuSubMenu";
+        //        if (Session["TableShowStyle"] == null)
+        //            Session["TableShowStyle"] = "tableFixHead";
+        //        var tableShowStyle = Session["TableShowStyle"].ToString();
+
+        //        ViewBag.tableShowStyle = tableShowStyle;
+        //        ViewBag.SearchText = "";
+        //        ViewBag.PageInfo = "第 1 頁,共 1 頁";
+        //        var model = subMenus.GetDapperDataList("");
+        //        return View(model);
+        //    }
+        //}
+
+        public ActionResult IemuSubMenu_Create()
         {
             return PartialView("~/Views/PartialViews/_PartialToBeContinued.cshtml");
         }
 
-        public ActionResult IemuSubMenu()
-        {
-            using (z_repoIemuSubMenus subMenus = new z_repoIemuSubMenus())
-            {
-                PrgService.SearchText = "";
-                PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
+        //public ActionResult IemuDetailMenu()
+        //{
+        //    using (z_repoIemuDetailMenus detailMenus = new z_repoIemuDetailMenus())
+        //    {
+        //        PrgService.SearchText = "";
+        //        PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
 
-                Session["CurrentAction"] = "IemuSubMenu";
-                if (Session["TableShowStyle"] == null)
-                    Session["TableShowStyle"] = "tableFixHead";
-                var tableShowStyle = Session["TableShowStyle"].ToString();
+        //        Session["CurrentAction"] = "IemuDetailMenu";
+        //        if (Session["TableShowStyle"] == null)
+        //            Session["TableShowStyle"] = "tableFixHead";
+        //        var tableShowStyle = Session["TableShowStyle"].ToString();
 
-                ViewBag.tableShowStyle = tableShowStyle;
-                ViewBag.SearchText = "";
-                ViewBag.PageInfo = "第 1 頁,共 1 頁";
-                var model = subMenus.GetDapperDataList("");
-                return View(model);
-            }
-        }
+        //        ViewBag.tableShowStyle = tableShowStyle;
+        //        ViewBag.SearchText = "";
+        //        ViewBag.PageInfo = "第 1 頁,共 1 頁";
+        //        var model = detailMenus.GetDapperDataList("");
+        //        return View(model);
+        //    }
+        //}
 
-        public ActionResult IemuSubMenu_Insert()
-        {
-            return PartialView("~/Views/PartialViews/_PartialToBeContinued.cshtml");
-        }
-
-        public ActionResult IemuDetailMenu()
-        {
-            using (z_repoIemuDetailMenus detailMenus = new z_repoIemuDetailMenus())
-            {
-                PrgService.SearchText = "";
-                PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
-
-                Session["CurrentAction"] = "IemuDetailMenu";
-                if (Session["TableShowStyle"] == null)
-                    Session["TableShowStyle"] = "tableFixHead";
-                var tableShowStyle = Session["TableShowStyle"].ToString();
-
-                ViewBag.tableShowStyle = tableShowStyle;
-                ViewBag.SearchText = "";
-                ViewBag.PageInfo = "第 1 頁,共 1 頁";
-                var model = detailMenus.GetDapperDataList("");
-                return View(model);
-            }
-        }
-
-        public ActionResult IemuDetailMenu_Insert()
+        public ActionResult IemuDetailMenu_Create()
         {
             return PartialView("~/Views/PartialViews/_PartialToBeContinued.cshtml");
         }
 
-        public ActionResult IemuTran()
-        {
-            using (z_repoIemuTrans iemuTrans = new z_repoIemuTrans())
-            {
-                PrgService.SearchText = "";
-                PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
+        //public ActionResult IemuTran()
+        //{
+        //    using (z_repoIemuTrans iemuTrans = new z_repoIemuTrans())
+        //    {
+        //        PrgService.SearchText = "";
+        //        PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
 
-                Session["CurrentAction"] = "IemuTran";
-                if (Session["TableShowStyle"] == null)
-                    Session["TableShowStyle"] = "tableFixHead";
-                var tableShowStyle = Session["TableShowStyle"].ToString();
+        //        Session["CurrentAction"] = "IemuTran";
+        //        if (Session["TableShowStyle"] == null)
+        //            Session["TableShowStyle"] = "tableFixHead";
+        //        var tableShowStyle = Session["TableShowStyle"].ToString();
 
-                ViewBag.tableShowStyle = tableShowStyle;
-                ViewBag.SearchText = "";
-                ViewBag.PageInfo = "第 1 頁,共 1 頁";
-                var model = iemuTrans.GetDapperDataList("");
-                return View(model);
-            }
-        }
+        //        ViewBag.tableShowStyle = tableShowStyle;
+        //        ViewBag.SearchText = "";
+        //        ViewBag.PageInfo = "第 1 頁,共 1 頁";
+        //        var model = iemuTrans.GetDapperDataList("");
+        //        return View(model);
+        //    }
+        //}
 
-        public ActionResult IemuTran_Insert()
+        public ActionResult IemuTran_Create()
         {
             return PartialView("~/Views/PartialViews/_PartialToBeContinued.cshtml");
         }

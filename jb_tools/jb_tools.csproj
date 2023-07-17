@@ -204,6 +204,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IEMenuMakerController.cs" />
+    <Compile Include="Controllers\IemuDetailMenuController.cs" />
+    <Compile Include="Controllers\IemuMainMenuController.cs" />
+    <Compile Include="Controllers\IemuSubMenuController.cs" />
+    <Compile Include="Controllers\IemuTranController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -678,6 +682,12 @@
     <Content Include="Views\PartialViews\_PartialHomeUserContent.cshtml" />
     <Content Include="Views\PartialViews\_PartialLogoShort.cshtml" />
     <Content Include="Views\PartialViews\_PartialShopPage.cshtml" />
+    <Content Include="Views\IEMenuMaker\IemuMainMenu_Create.cshtml" />
+    <Content Include="Views\IemuMainMenu\Index.cshtml" />
+    <Content Include="Views\IemuSubMenu\Index.cshtml" />
+    <Content Include="Views\IemuDetailMenu\Index.cshtml" />
+    <Content Include="Views\IemuTran\Index.cshtml" />
+    <Content Include="Views\IemuMainMenu\CreateEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\resColumn.en-US.resx" />
@@ -704,6 +714,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

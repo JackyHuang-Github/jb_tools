@@ -16,24 +16,28 @@
             <div class="row d-flex justify-content-center align-items-sm-end pt-5 pb-sm-4 mt-4 h-50">
                 <div class="col-sm-4 col-xxl-3">
                     <div>
-                        @Html.ActionLink("編輯 IEMenu", "IemuTran", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-black d-block py-4 btn-outline-warning btnSetting" })
+                        @*@Html.ActionLink("編輯 IEMenu", "IemuTran", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-black d-block py-4 btn-outline-warning btnSetting" })*@
+                        @Html.ActionLink("編輯 IEMenu", "Index", "IemuTran", new { area = "" }, new { @class = "btn btn-black d-block py-4 btn-outline-warning btnSetting" })
                     </div>
                 </div>
                 <div class="col-sm-4 col-xxl-3">
                     <div>
-                        @Html.ActionLink("基本資料-大分類", "IemuMainMenu", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-black d-block py-4 btn-outline-primary btnSetting" })
+                        @*@Html.ActionLink("基本資料-大分類", "IemuMainMenu", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-black d-block py-4 btn-outline-primary btnSetting" })*@
+                        @Html.ActionLink("基本資料-大分類", "Index", "IemuMainMenu", new { area = "" }, new { @class = "btn btn-black d-block py-4 btn-outline-primary btnSetting" })
                     </div>
                 </div>
             </div>
             <div class="row d-flex justify-content-center align-items-sm-start pb-5 h-50">
                 <div class="col-sm-4 col-xxl-3">
                     <div>
-                        @Html.ActionLink("基本資料-中分類", "IemuSubMenu", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-black d-block py-4 btn-outline-success btnSetting" })
+                        @*@Html.ActionLink("基本資料-中分類", "IemuSubMenu", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-black d-block py-4 btn-outline-success btnSetting" })*@
+                        @Html.ActionLink("基本資料-中分類", "Index", "IemuSubMenu", new { area = "" }, new { @class = "btn btn-black d-block py-4 btn-outline-success btnSetting" })
                     </div>
                 </div>
                 <div class="col-sm-4 col-xxl-3">
                     <div>
-                        @Html.ActionLink("基本資料-細分類", "IemuDetailMenu", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-black d-block py-4 border-danger btnSetting" })
+                        @*@Html.ActionLink("基本資料-細分類", "IemuDetailMenu", "IEMenuMaker", new { area = "" }, new { @class = "btn btn-black d-block py-4 border-danger btnSetting" })*@
+                        @Html.ActionLink("基本資料-細分類", "Index", "IemuDetailMenu", new { area = "" }, new { @class = "btn btn-black d-block py-4 border-danger btnSetting" })
                     </div>
                 </div>
             </div>

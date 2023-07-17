@@ -1,0 +1,99 @@
+﻿@model IEnumerable<jb_tools.Models.IemuSubMenus>
+
+@{
+    ViewBag.Title = "IEMenu 中分類";
+    Layout = "~/Views/Shared/_LayoutIEMenuMaker2.cshtml";
+    ViewBag.FunctionAreaTitle = ViewBag.Title;
+}
+
+<div class="container-fluid p-1 contentArea">
+    <div class="row">
+        <div class="col">
+            <div class="@ViewBag.tableShowStyle">
+                <table class="table table-dark table-striped table-hover table-bordered">
+                    <thead class="table-info align-middle">
+                        <tr>
+                            <th>
+                                <div class="mx-1">
+                                    @Html.Partial("~/Views/PartialViews/_PartialFormCreate.cshtml")
+                                </div>
+                            </th>
+                            <th class="tableTitle text-center">
+                                @Html.DisplayNameFor(model => model.SortNum)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.MainCode)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.SubCode)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.ScId)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.Ename)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.PosOrPath)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.PosOrPath2)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.Remark)
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="table-group-divider">
+                        @foreach (var item in Model)
+                        {
+                            ActionService.RowId = item.Id;
+                            ActionService.RowData = $"{item.MainCode} {item.ScId}";
+                            <tr>
+                                <td>
+                                    <div class="m-1 float-start">
+                                        @Html.Partial("~/Views/PartialViews/_PartialFormEdit.cshtml")
+                                    </div>
+                                    <div class="m-1 float-start">
+                                        @Html.Partial("~/Views/PartialViews/_PartialFormDelete.cshtml")
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    @Html.DisplayFor(modelItem => item.SortNum)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MainCode)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SubCode)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ScId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ename)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PosOrPath)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PosOrPath2)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Remark)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,18 +1,61 @@
-﻿<div class="modal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">未完待續</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Modal body text goes here.</p>
-                <img src="@Url.Content("~/images/App/ToBeContinued.jpg")" alt="未完待續" width="64" height="35" class="d-inline-block align-text-top" />
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
+﻿@* Jacky 1120625 表單特效功能 *@
+@* Jacky 1120625 淡入顯示背景與訊息對話框 *@
+<div id="bg">
+    <div id="alertBox">
+        <h3 class="h5 text-center">未完待續.....</h3>
+        <hr />
+        <button class="btn btn-success mt-2" id="ok">確定</button>
     </div>
 </div>
+
+<style>
+    @* Jacky 1120624 欄位標題功能 *@
+    .datatitle:hover {
+        cursor: pointer;
+        color: red;
+    }
+
+    #bg {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, .5);
+    }
+
+    #alertBox {
+        margin: 15% auto 0;
+        text-align: center;
+        padding-top: 25px;
+        width: 300px;
+        height: 150px;
+        background: #FFF;
+        border-radius: 3px;
+        box-shadow: 2px 2px rgba(0, 0, 0, .3);
+    }
+
+    #alertBox p {
+        font-size: 1.4em;
+        margin-bottom: 20px;
+    }
+
+    #alertBox #ok {
+        padding: 5px 20px;
+        font-size: 1em;
+    }
+</style>
+
+<script>
+    $(function () {
+        @* Jacky 1120625 淡入顯示背景與訊息對話框 *@
+        $("#bg").fadeIn(1000);
+
+        // 點按「確定」按鈕
+        $("#ok").click(function () {
+            // 淡出隱藏背景與訊息對話框
+            $("#bg").fadeOut(1000);
+        });
+    });
+</script>
+
