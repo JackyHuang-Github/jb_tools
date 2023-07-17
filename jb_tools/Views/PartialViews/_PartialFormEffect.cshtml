@@ -1,0 +1,80 @@
+﻿@* Jacky 1120625 表單特效功能 *@
+@* Jacky 1120625 淡入顯示背景與訊息對話框 *@
+<div id="bg">
+    <div id="alertBox">
+        <h3 class="h5 text-center"></h3>
+        <hr />
+        <button class="btn btn-success mt-2" id="ok">確定</button>
+    </div>
+</div>
+
+<style>
+    @* Jacky 1120624 欄位標題功能 *@
+    .datatitle:hover {
+        cursor: pointer;
+        color: red;
+    }
+
+    #bg {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, .7);
+    }
+
+    #alertBox {
+        margin: 15% auto 0;
+        text-align: center;
+        padding-top: 25px;
+        width: 300px;
+        height: 150px;
+        background: #FFF;
+        border-radius: 3px;
+        box-shadow: 2px 2px rgba(0, 0, 0, .3);
+    }
+
+    #alertBox p {
+        font-size: 1.4em;
+        margin-bottom: 20px;
+    }
+
+    #alertBox #ok {
+        padding: 5px 20px;
+        font-size: 1em;
+    }
+</style>
+
+<script>
+    $(function () {
+        // 隱藏背景與訊息對話框
+        $("#bg").hide();
+
+        // 點按「確定」按鈕
+        $("#ok").click(function () {
+            // 淡出隱藏背景與訊息對話框
+            $("#bg").fadeOut(1000);
+        });
+
+        @* Jacky 1120624 欄位標題功能 *@
+        $("th").click(function () {
+            // 顯示索引值
+            // alert($(this).index());
+
+            // 判斷 index() > 0 是為了要避開最前面的按鈕 [新增]
+            if ($(this).index() > 0) {
+                @* Jacky 1120625 淡入顯示背景與訊息對話框 *@
+                $("#bg").fadeIn(1000);
+                // 顯示內容
+                $("#alertBox h3").text($(this).text());
+            }
+            else {
+                // 淡入/淡出效果
+                $(".datacontent").fadeToggle(1000, "swing");    // Default Value
+                // $(".datacontent").fadeToggle(1000, "linear");
+            }
+        });
+    });
+</script>
+

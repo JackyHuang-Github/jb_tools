@@ -23,8 +23,8 @@ namespace jb_tools.Controllers
                 PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
                 
                 Session["CurrentAction"] = "IemuMainMenu";
-                if (Session["tableShowStyle"] == null)
-                    Session["tableShowStyle"] = "tableFixHead";
+                if (Session["TableShowStyle"] == null)
+                    Session["TableShowStyle"] = "tableFixHead";
                 var tableShowStyle = Session["tableShowStyle"].ToString();
 
                 ViewBag.tableShowStyle = tableShowStyle;
@@ -35,6 +35,11 @@ namespace jb_tools.Controllers
             }
         }
 
+        public ActionResult IemuMainMenu_Insert()
+        {
+            return PartialView("~/Views/PartialViews/_PartialToBeContinued.cshtml");
+        }
+
         public ActionResult IemuSubMenu()
         {
             using (z_repoIemuSubMenus subMenus = new z_repoIemuSubMenus())
@@ -43,9 +48,9 @@ namespace jb_tools.Controllers
                 PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
 
                 Session["CurrentAction"] = "IemuSubMenu";
-                if (Session["tableShowStyle"] == null)
-                    Session["tableShowStyle"] = "tableFixHead";
-                var tableShowStyle = Session["tableShowStyle"].ToString();
+                if (Session["TableShowStyle"] == null)
+                    Session["TableShowStyle"] = "tableFixHead";
+                var tableShowStyle = Session["TableShowStyle"].ToString();
 
                 ViewBag.tableShowStyle = tableShowStyle;
                 ViewBag.SearchText = "";
@@ -53,6 +58,11 @@ namespace jb_tools.Controllers
                 var model = subMenus.GetDapperDataList("");
                 return View(model);
             }
+        }
+
+        public ActionResult IemuSubMenu_Insert()
+        {
+            return PartialView("~/Views/PartialViews/_PartialToBeContinued.cshtml");
         }
 
         public ActionResult IemuDetailMenu()
@@ -63,9 +73,9 @@ namespace jb_tools.Controllers
                 PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
 
                 Session["CurrentAction"] = "IemuDetailMenu";
-                if (Session["tableShowStyle"] == null)
-                    Session["tableShowStyle"] = "tableFixHead";
-                var tableShowStyle = Session["tableShowStyle"].ToString();
+                if (Session["TableShowStyle"] == null)
+                    Session["TableShowStyle"] = "tableFixHead";
+                var tableShowStyle = Session["TableShowStyle"].ToString();
 
                 ViewBag.tableShowStyle = tableShowStyle;
                 ViewBag.SearchText = "";
@@ -73,6 +83,36 @@ namespace jb_tools.Controllers
                 var model = detailMenus.GetDapperDataList("");
                 return View(model);
             }
+        }
+
+        public ActionResult IemuDetailMenu_Insert()
+        {
+            return PartialView("~/Views/PartialViews/_PartialToBeContinued.cshtml");
+        }
+
+        public ActionResult IemuTran()
+        {
+            using (z_repoIemuTrans iemuTrans = new z_repoIemuTrans())
+            {
+                PrgService.SearchText = "";
+                PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
+
+                Session["CurrentAction"] = "IemuTran";
+                if (Session["TableShowStyle"] == null)
+                    Session["TableShowStyle"] = "tableFixHead";
+                var tableShowStyle = Session["TableShowStyle"].ToString();
+
+                ViewBag.tableShowStyle = tableShowStyle;
+                ViewBag.SearchText = "";
+                ViewBag.PageInfo = "第 1 頁,共 1 頁";
+                var model = iemuTrans.GetDapperDataList("");
+                return View(model);
+            }
+        }
+
+        public ActionResult IemuTran_Insert()
+        {
+            return PartialView("~/Views/PartialViews/_PartialToBeContinued.cshtml");
         }
 
         public ActionResult TableShowStyle_TableHover()
@@ -98,7 +138,7 @@ namespace jb_tools.Controllers
                 Session["CurrentAction"] = "IemuMainMenu";
             }
 
-            Session["tableShowStyle"] = tableShowStyle;
+            Session["TableShowStyle"] = tableShowStyle;
 
             switch (viewName)
             {
@@ -135,6 +175,18 @@ namespace jb_tools.Controllers
                         ViewBag.PageInfo = "第 1 頁,共 1 頁";
                         ViewBag.tableShowStyle = tableShowStyle;
                         var model = detailMenus.GetDapperDataList("");
+                        return View(viewName, model);
+                    }
+
+                case "IemuTran":
+                    using (z_repoIemuTrans iemuTrans = new z_repoIemuTrans())
+                    {
+                        PrgService.SearchText = "";
+                        PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
+                        ViewBag.SearchText = "";
+                        ViewBag.PageInfo = "第 1 頁,共 1 頁";
+                        ViewBag.tableShowStyle = tableShowStyle;
+                        var model = iemuTrans.GetDapperDataList("");
                         return View(viewName, model);
                     }
 

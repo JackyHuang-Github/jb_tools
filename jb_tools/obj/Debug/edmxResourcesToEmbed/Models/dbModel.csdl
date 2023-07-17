@@ -1263,14 +1263,14 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="No" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
     <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
-    <Property Name="TypeNo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
-    <Property Name="TypeName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="CuNo" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
     <Property Name="CuNa" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
     <Property Name="CuName" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
     <Property Name="CuEname" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
     <Property Name="CuSale" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
     <Property Name="CusaleName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="IndustryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IndustryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

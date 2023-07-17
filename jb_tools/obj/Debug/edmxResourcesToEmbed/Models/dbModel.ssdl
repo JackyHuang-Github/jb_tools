@@ -634,14 +634,14 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="No" Type="char" MaxLength="11" Nullable="false" />
     <Property Name="Status" Type="char" MaxLength="1" Nullable="false" />
-    <Property Name="TypeNo" Type="char" MaxLength="1" Nullable="false" />
-    <Property Name="TypeName" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="CuNo" Type="varchar" MaxLength="8" Nullable="false" />
     <Property Name="CuNa" Type="nvarchar" MaxLength="40" Nullable="false" />
     <Property Name="CuName" Type="nvarchar" MaxLength="120" />
     <Property Name="CuEname" Type="nvarchar" MaxLength="120" />
     <Property Name="CuSale" Type="varchar" MaxLength="8" />
     <Property Name="CusaleName" Type="nvarchar" MaxLength="60" />
+    <Property Name="IndustryNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="IndustryName" Type="nvarchar" MaxLength="250" />
     <Property Name="Remark" Type="nvarchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="iepb03h">

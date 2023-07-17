@@ -639,14 +639,14 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="No" Type="char" MaxLength="11" Nullable="false" />
           <Property Name="Status" Type="char" MaxLength="1" Nullable="false" />
-          <Property Name="TypeNo" Type="char" MaxLength="1" Nullable="false" />
-          <Property Name="TypeName" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="CuNo" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="CuNa" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="CuName" Type="nvarchar" MaxLength="120" />
           <Property Name="CuEname" Type="nvarchar" MaxLength="120" />
           <Property Name="CuSale" Type="varchar" MaxLength="8" />
           <Property Name="CusaleName" Type="nvarchar" MaxLength="60" />
+          <Property Name="IndustryNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="IndustryName" Type="nvarchar" MaxLength="250" />
           <Property Name="Remark" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="iepb03h">
@@ -2545,14 +2545,14 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="No" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
           <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="TypeNo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="CuNo" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="CuNa" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="CuName" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
           <Property Name="CuEname" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
           <Property Name="CuSale" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="CusaleName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="IndustryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IndustryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
@@ -3818,14 +3818,14 @@
             <EntityTypeMapping TypeName="jb_toolsModel.IemuTrans">
               <MappingFragment StoreEntitySet="IemuTrans">
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IndustryName" ColumnName="IndustryName" />
+                <ScalarProperty Name="IndustryNo" ColumnName="IndustryNo" />
                 <ScalarProperty Name="CusaleName" ColumnName="CusaleName" />
                 <ScalarProperty Name="CuSale" ColumnName="CuSale" />
                 <ScalarProperty Name="CuEname" ColumnName="CuEname" />
                 <ScalarProperty Name="CuName" ColumnName="CuName" />
                 <ScalarProperty Name="CuNa" ColumnName="CuNa" />
                 <ScalarProperty Name="CuNo" ColumnName="CuNo" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="TypeNo" ColumnName="TypeNo" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="No" ColumnName="No" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

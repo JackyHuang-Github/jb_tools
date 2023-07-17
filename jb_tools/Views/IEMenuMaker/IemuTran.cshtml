@@ -1,0 +1,112 @@
+﻿@model IEnumerable<jb_tools.Models.IemuTrans>
+
+@{
+    ViewBag.Title = "編輯 IEMenu";
+    Layout = "~/Views/Shared/_LayoutIEMenuMaker2.cshtml";
+    ViewBag.FunctionAreaTitle = ViewBag.Title;
+}
+
+<div class="container-fluid p-1 contentArea">
+    <div class="row">
+        <div class="col">
+            <div class="@ViewBag.tableShowStyle">
+                <table class="table table-dark table-striped table-hover table-bordered">
+                    <thead class="table-info align-middle">
+                        <tr>
+                            <th>
+                                <div class="m-1">
+                                    @Html.Partial("~/Views/PartialViews/_PartialFormCreate.cshtml")
+                                </div>
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.No)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.Status)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.CuNo)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.CuNa)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.CuName)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.CuEname)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.CuSale)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.CusaleName)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.IndustryNo)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.IndustryName)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.Remark)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="table-group-divider">
+                        @foreach (var item in Model)
+                        {
+                            ActionService.RowId = item.Id;
+                            ActionService.RowData = item.CuNo;
+                            <tr>
+                                <td>
+                                    <div class="m-1 float-start">
+                                        @Html.Partial("~/Views/PartialViews/_PartialFormEdit.cshtml")
+                                    </div>
+                                    <div class="m-1 float-start">
+                                        @Html.Partial("~/Views/PartialViews/_PartialFormDelete.cshtml")
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.No)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CuNo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CuNa)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CuName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CuEname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CuSale)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CusaleName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IndustryNo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IndustryName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Remark)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

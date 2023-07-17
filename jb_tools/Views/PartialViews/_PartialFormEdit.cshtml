@@ -1,0 +1,6 @@
+﻿@*
+    @if (SecurityService.IsEdit)
+    {@Html.ActionLink(ActionService.EditName, ActionService.CreateEdit, ActionService.Controller, new { area = ActionService.Area, id = ActionService.RowId }, new { @class = "btn btn-sm btn-success" })}
+*@
+
+@Html.ActionLink(ActionService.EditName, ActionService.CreateEdit, ActionService.Controller, new { area = ActionService.Area, id = ActionService.RowId }, new { @class = "btn btn-sm btn-success" })

@@ -195,6 +195,7 @@
     <Compile Include="App_Class\Services\ImageService.cs" />
     <Compile Include="App_Class\Services\PrgService.cs" />
     <Compile Include="App_Class\Services\ResourceService.cs" />
+    <Compile Include="App_Class\Services\SecurityService.cs" />
     <Compile Include="App_Class\Services\SendMailService.cs" />
     <Compile Include="App_Class\Services\SessionService.cs" />
     <Compile Include="App_Class\Services\UserService.cs" />
@@ -344,6 +345,7 @@
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MetadataModel\metaIemuDetailMenus.cs" />
+    <Compile Include="Models\MetadataModel\metaIemuTrans.cs" />
     <Compile Include="Models\MetadataModel\metaIemuSubMenus.cs" />
     <Compile Include="Models\MetadataModel\metaIemuMainMenus.cs" />
     <Compile Include="Models\Modules.cs">
@@ -429,6 +431,7 @@
     <Compile Include="Models\RepositoryModel\repoForums.cs" />
     <Compile Include="Models\RepositoryModel\repoHtmlEditor.cs" />
     <Compile Include="Models\RepositoryModel\repoIemuDetailMenus.cs" />
+    <Compile Include="Models\RepositoryModel\repoIemuTrans.cs" />
     <Compile Include="Models\RepositoryModel\repoIemuSubMenus.cs" />
     <Compile Include="Models\RepositoryModel\repoIemuMainMenus.cs" />
     <Compile Include="Models\RepositoryModel\repoLanguages.cs" />
@@ -643,6 +646,38 @@
     <Content Include="Views\IEMenuMaker\IemuSubMenu.cshtml" />
     <Content Include="Views\IEMenuMaker\IemuDetailMenu.cshtml" />
     <Content Include="Views\Shared\_LayoutIEMenuMaker2.cshtml" />
+    <Content Include="Views\IEMenuMaker\IemuTran.cshtml" />
+    <Content Include="Views\PartialViews\_PartialAdminSideMenu.cshtml" />
+    <Content Include="Views\PartialViews\_PartialCalendar.cshtml" />
+    <Content Include="Views\PartialViews\_PartialCodePropertyList.cshtml" />
+    <Content Include="Views\PartialViews\_PartialErrorMessage.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormCancel.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormCreate.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormDelete.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormDetail.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormDownload.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormEdit.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormEffect.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormHeader.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormHeaderDetail.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormImport.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormRequired.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormReturnDetail.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormReturnIndex.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormSelect.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormSumit.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormSumitCancel.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormUpload.cshtml" />
+    <Content Include="Views\PartialViews\_PartialHomeClient.cshtml" />
+    <Content Include="Views\PartialViews\_PartialHomeContent.cshtml" />
+    <Content Include="Views\PartialViews\_PartialHomeFooter.cshtml" />
+    <Content Include="Views\PartialViews\_PartialHomeHeader.cshtml" />
+    <Content Include="Views\PartialViews\_PartialHomeMisContent.cshtml" />
+    <Content Include="Views\PartialViews\_PartialHomePhoto.cshtml" />
+    <Content Include="Views\PartialViews\_PartialHomeService.cshtml" />
+    <Content Include="Views\PartialViews\_PartialHomeUserContent.cshtml" />
+    <Content Include="Views\PartialViews\_PartialLogoShort.cshtml" />
+    <Content Include="Views\PartialViews\_PartialShopPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\resColumn.en-US.resx" />
