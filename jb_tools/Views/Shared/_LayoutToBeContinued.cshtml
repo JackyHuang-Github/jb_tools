@@ -1,12 +1,14 @@
+﻿@* Jacky 1120718 *@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>未完待續</title>
+    <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" ) />
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+    @RenderSection("styles", false)
+    <title>未完待續</title>
 </head>
 <body>
     <div class="container-fluid bg-black">

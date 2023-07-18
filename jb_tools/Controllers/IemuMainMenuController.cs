@@ -16,14 +16,14 @@ namespace jb_tools.Controllers
                 PrgService.SearchText = "";
                 PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
 
-                Session["CurrentAction"] = "IemuMainMenu";
+                Session["CurrentController"] = "IemuMainMenu";
                 if (Session["TableShowStyle"] == null)
                     Session["TableShowStyle"] = "tableFixHead";
                 var tableShowStyle = Session["tableShowStyle"].ToString();
 
                 ViewBag.tableShowStyle = tableShowStyle;
                 ViewBag.SearchText = "";
-                ViewBag.PageInfo = "第 1 頁,共 1 頁";
+                ViewBag.PageInfo = "第 1 頁，共 1 頁";
                 var model = mainMenus.GetDapperDataList("");
                 return View(model);
             }

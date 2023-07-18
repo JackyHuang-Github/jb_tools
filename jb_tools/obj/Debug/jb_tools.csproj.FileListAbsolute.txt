@@ -104,3 +104,5 @@ D:\vs2022\jb_tools\jb_tools\bin\PagedList.xml
 D:\vs2022\jb_tools\jb_tools\bin\PagedList.Mvc.xml
 D:\vs2022\jb_tools\jb_tools\obj\Debug\en-US\jb_tools.resources.dll
 D:\vs2022\jb_tools\jb_tools\obj\Debug\zh-TW\jb_tools.resources.dll
+D:\vs2022\jb_tools\jb_tools\bin\AutoMapper.dll
+D:\vs2022\jb_tools\jb_tools\bin\AutoMapper.xml

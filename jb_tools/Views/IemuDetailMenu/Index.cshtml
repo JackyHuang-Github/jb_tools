@@ -55,7 +55,7 @@
                         @foreach (var item in Model)
                         {
                             ActionService.RowId = item.Id;
-                            ActionService.RowData = $"{item.MainCode} {item.ScId} {item.DetailOrder}";
+                            ActionService.RowData = $"大分類代號 {item.MainCode} > 中分類識別 {item.ScId} > 細分類序號 {item.DetailOrder}";
                             <tr>
                                 <td>
                                     <div class="m-1 float-start">

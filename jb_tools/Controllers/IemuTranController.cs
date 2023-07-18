@@ -16,17 +16,27 @@ namespace jb_tools.Controllers
                 PrgService.SearchText = "";
                 PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
 
-                Session["CurrentAction"] = "IemuTran";
+                Session["CurrentController"] = "IemuTran";
                 if (Session["TableShowStyle"] == null)
                     Session["TableShowStyle"] = "tableFixHead";
                 var tableShowStyle = Session["TableShowStyle"].ToString();
 
                 ViewBag.tableShowStyle = tableShowStyle;
                 ViewBag.SearchText = "";
-                ViewBag.PageInfo = "第 1 頁,共 1 頁";
+                ViewBag.PageInfo = "第 1 頁，共 1 頁";
                 var model = iemuTrans.GetDapperDataList("");
                 return View(model);
             }
+        }
+
+        public ActionResult CreateEdit()
+        {
+            return View();
+        }
+
+        public ActionResult Delete()
+        {
+            return View();
         }
     }
 }

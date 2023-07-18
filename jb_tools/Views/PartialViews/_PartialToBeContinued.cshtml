@@ -1,5 +1,32 @@
-﻿<div class="">
-    @Html.ActionLink("確定", ActionService.Index, ActionService.Controller, new { area = "" }, 
-        new { @class = "btn btn-black d-block py-3 px-5 btn-outline-danger" , 
-            style = "font-size: 30px; font-weight: 600;" })
+﻿@* Jacky 1120718 *@
+<style>
+    .okay {
+        font-size: 30px;
+        font-weight: 600;
+        padding: 18px 50px;
+        color: red;
+        background-color: black;
+        border: 2px solid red;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .okay:hover {
+        color: white;
+        background-color: red;
+        border: 2px solid yellow;
+    }
+</style>
+<div class="">
+    @*@Html.ActionLink("確定", ActionService.Index, ActionService.Controller, new { area = "" },
+        new { @class = "btn btn-black d-block py-3 px-5 btn-outline-danger" ,
+            style = "font-size: 30px; font-weight: 600;" })*@
+
+    @* 改用 JavaScrip 回上一頁 功能，可大幅降低 ActionLink 要重新讀取資料所花費的時間 *@
+    <input type="button" class="okay" name="okay" id="okay" value="確定" onclick="goback();" />
 </div>
+<script>
+    function goback() {
+        history.back();
+    }
+</script>

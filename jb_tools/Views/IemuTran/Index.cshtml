@@ -59,7 +59,7 @@
                         @foreach (var item in Model)
                         {
                             ActionService.RowId = item.Id;
-                            ActionService.RowData = item.CuNo;
+                            ActionService.RowData = $"單號 {item.No}";
                             <tr>
                                 <td>
                                     <div class="m-1 float-start">
