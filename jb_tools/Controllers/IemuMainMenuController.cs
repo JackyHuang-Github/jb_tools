@@ -33,5 +33,10 @@ namespace jb_tools.Controllers
         {
             return View();
         }
+
+        public ActionResult Delete()
+        {
+            return View();
+        }
     }
 }
