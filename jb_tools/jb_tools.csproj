@@ -1413,6 +1413,7 @@
     <Content Include="Views\IemuDetailMenu\Delete.cshtml" />
     <Content Include="Views\IemuTran\CreateEdit.cshtml" />
     <Content Include="Views\IemuTran\Delete.cshtml" />
+    <Content Include="Views\Shared\_LayoutCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\resColumn.en-US.resx" />

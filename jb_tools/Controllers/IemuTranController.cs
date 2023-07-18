@@ -29,9 +29,17 @@ namespace jb_tools.Controllers
             }
         }
 
-        public ActionResult CreateEdit()
+        public ActionResult CreateEdit(int id = 0)
         {
-            return View();
+            using (z_repoIemuTrans iemuTrans = new z_repoIemuTrans())
+            {
+                SessionService.KeyValue = id;
+                enAction action = (id == 0) ? enAction.Create : enAction.Edit;
+                PrgService.SetAction(action, enCardSize.Small);
+                ViewBag.CardSize = PrgService.CardSize;
+                var model = iemuTrans.repo.ReadSingle(m => m.Id == id);
+                return View(model);
+            }
         }
 
         public ActionResult Delete()
