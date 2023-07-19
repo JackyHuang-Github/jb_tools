@@ -415,7 +415,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="numeric" Precision="28" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cu_no" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="cu_sale" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="cu_na" Type="varchar" MaxLength="20" Nullable="false" />
@@ -639,21 +639,16 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="No" Type="char" MaxLength="11" Nullable="false" />
           <Property Name="Status" Type="char" MaxLength="1" Nullable="false" />
-          <Property Name="CuNo" Type="varchar" MaxLength="8" Nullable="false" />
-          <Property Name="CuNa" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="CuName" Type="nvarchar" MaxLength="120" />
-          <Property Name="CuEname" Type="nvarchar" MaxLength="120" />
-          <Property Name="CuSale" Type="varchar" MaxLength="8" />
-          <Property Name="CusaleName" Type="nvarchar" MaxLength="60" />
-          <Property Name="IndustryNo" Type="nvarchar" MaxLength="50" />
-          <Property Name="IndustryName" Type="nvarchar" MaxLength="250" />
+          <Property Name="CuNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CuSale" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IndustryNo" Type="varchar" MaxLength="50" />
           <Property Name="Remark" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="iepb03h">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="numeric" Precision="28" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cu_sale" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="cu_snam" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="cu_snam1" Type="varchar" MaxLength="20" Nullable="false" />
@@ -678,6 +673,15 @@
           <Property Name="pa_cost" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="pa_ssno" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="pa_id2" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Industries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IndustryNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IndustryName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Languages">
           <Key>
@@ -1239,6 +1243,7 @@
           <EntitySet Name="IemuTranDetails" EntityType="Self.IemuTranDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IemuTrans" EntityType="Self.IemuTrans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="iepb03h" EntityType="Self.iepb03h" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Industries" EntityType="Self.Industries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MapPositions" EntityType="Self.MapPositions" Schema="dbo" store:Type="Tables" />
@@ -1671,193 +1676,6 @@
           <Property Name="SubjectContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="GuidNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="iecusuh">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Decimal" Precision="28" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cu_no" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_sale" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_na" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_unit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_type" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_taxno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_boss" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_touch" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_disc" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_tax" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_check" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_date" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_crdt" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_sdat" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_ck" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_ar" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_area" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_chdat" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_bdat" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_invst" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_poar" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_ivar" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_charg" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_taxid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_rela" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_crbi" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_pre" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_pr_lc" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_odamt" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_saamt" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="bk_no" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ck_acno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_zip" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_condi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_ymd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="od_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_odid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="edi_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="sa_route" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="dps_co" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ck_acna" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_poar1" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_ivar1" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_ctid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_stid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_bkid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_shid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_cpid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_paid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_waid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_otid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_sid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_pay" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_incmel" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="lo_lim" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="lo_amt" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="bk_swift" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="lo_ramt" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="lo_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="lo_lim1" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="bk_access" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="wa_apli" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="wa_tunit" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="wa_tunit1" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="wa_febu" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="wa_comtax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tr_no" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_time" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_user" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_lymd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_ltime" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_luser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_cymd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_ctime" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_cuser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="iv_page" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_cr" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_iv" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_ipd" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_gId" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="wa_gui" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_lamtnol" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_lamtnoh" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_kamtno" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_kamtlno" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_kamtboss" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_cancel" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_ename" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_bil" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_de_check" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_ch" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_workhur" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="ie_doc" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_odid" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_billar" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_headquar" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_billowner" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_ldat" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_addr" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_cser" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_taxyn" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_incono" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_noti" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_charg1" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_agent" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_cashrt" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_cashyn" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_checkyn" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_discrt" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_discyn" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_pass" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ip_position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="sa_pryn" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_ctrsort" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_cuno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_lead" Type="Decimal" Precision="28" Scale="4" Nullable="false" />
-          <Property Name="cu_no1" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_rtax" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_send" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_stodid" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="el_give" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="el_mass" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="cu_code" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_rtax" Type="Decimal" Precision="24" Scale="4" Nullable="false" />
-          <Property Name="ie_pass" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_past" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_nati" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_acname" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_scode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_tm" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="su_iv" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_ftype" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_barea" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_utype" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_source" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_stock" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_sale1" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="id_no" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tel_e" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tel_n" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tel_z" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_agid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_brok" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_chno" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_property" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_hqid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_stack" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="iepb03h">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Decimal" Precision="28" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cu_sale" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_snam" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_snam1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_handtel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="dp_no" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_pass" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cu_pass" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_ymd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_time" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_user" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_lymd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_ltime" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_luser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_cymd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_ctime" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_cuser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_past" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ie_cancel" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="pb_id2" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="pa_cost" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="pa_ssno" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="pa_id2" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Languages">
           <Key>
@@ -2410,8 +2228,6 @@
           <EntitySet Name="FormMaster" EntityType="Self.FormMaster" />
           <EntitySet Name="ForumBoards" EntityType="Self.ForumBoards" />
           <EntitySet Name="Forums" EntityType="Self.Forums" />
-          <EntitySet Name="iecusuh" EntityType="Self.iecusuh" />
-          <EntitySet Name="iepb03h" EntityType="Self.iepb03h" />
           <EntitySet Name="Languages" EntityType="Self.Languages" />
           <EntitySet Name="Logs" EntityType="Self.Logs" />
           <EntitySet Name="MapPositions" EntityType="Self.MapPositions" />
@@ -2457,6 +2273,9 @@
           <EntitySet Name="IemuSubMenus" EntityType="jb_toolsModel.IemuSubMenus" />
           <EntitySet Name="IemuTranDetails" EntityType="jb_toolsModel.IemuTranDetails" />
           <EntitySet Name="IemuTrans" EntityType="jb_toolsModel.IemuTrans" />
+          <EntitySet Name="iecusuh" EntityType="jb_toolsModel.iecusuh" />
+          <EntitySet Name="iepb03h" EntityType="jb_toolsModel.iepb03h" />
+          <EntitySet Name="Industries" EntityType="jb_toolsModel.Industries" />
         </EntityContainer>
         <EntityType Name="DetailMenus">
           <Key>
@@ -2545,14 +2364,205 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="No" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
           <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="CuNo" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="CuNa" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="CuName" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
-          <Property Name="CuEname" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
-          <Property Name="CuSale" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="CusaleName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
-          <Property Name="IndustryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IndustryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CuNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CuSale" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IndustryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="iecusuh">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cu_no" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cu_sale" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cu_na" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cu_unit" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cu_type" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_taxno" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cu_boss" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cu_touch" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cu_disc" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_tax" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_check" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_date" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="cu_crdt" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_sdat" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cu_ck" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_ar" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_area" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cu_chdat" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="cu_bdat" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cu_invst" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_poar" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="cu_ivar" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="cu_charg" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_taxid" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_rela" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_crbi" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cu_pre" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_pr_lc" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_odamt" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_saamt" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="bk_no" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ck_acno" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cu_id" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="cu_zip" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="cu_condi" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ie_ymd" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="od_id" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="cu_odid" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="edi_code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="sa_route" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="dps_co" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="ck_acna" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="cu_poar1" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="cu_ivar1" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="cu_email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cu_ctid" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_stid" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_bkid" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_shid" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_cpid" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_paid" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_waid" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_otid" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_sid" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_pay" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_incmel" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="lo_lim" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="lo_amt" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="bk_swift" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="lo_ramt" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="lo_id" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="lo_lim1" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="bk_access" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="wa_apli" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="wa_tunit" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="wa_tunit1" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="wa_febu" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="wa_comtax" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tr_no" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ie_time" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="ie_user" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ie_lymd" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ie_ltime" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="ie_luser" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ie_cymd" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ie_ctime" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="ie_cuser" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="iv_page" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_cr" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_iv" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_ipd" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="cu_gId" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="wa_gui" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cu_lamtnol" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cu_lamtnoh" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cu_kamtno" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cu_kamtlno" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cu_kamtboss" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ie_cancel" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_name" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="cu_ename" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="cu_bil" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cu_de_check" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_ch" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_workhur" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="ie_doc" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ie_odid" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="cu_billar" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="cu_headquar" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cu_billowner" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cu_ldat" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="cu_addr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ie_cser" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cu_taxyn" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_incono" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cu_noti" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_charg1" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_agent" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cu_cashrt" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_cashyn" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_checkyn" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_discrt" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_discyn" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_pass" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ip_position" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sa_pryn" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_ctrsort" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_cuno" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cu_lead" Type="Decimal" Nullable="false" Precision="28" Scale="4" />
+          <Property Name="cu_no1" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cu_rtax" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_send" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="cu_stodid" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="el_give" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="el_mass" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="cu_code" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="ie_rtax" Type="Decimal" Nullable="false" Precision="24" Scale="4" />
+          <Property Name="ie_pass" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ie_past" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cu_nati" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="cu_acname" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="cu_scode" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cu_tm" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cu_city" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="su_iv" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_ftype" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_barea" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="cu_utype" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_source" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="cu_stock" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_sale1" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="id_no" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="tel_e" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="tel_n" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="tel_z" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="cu_agid" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_brok" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cu_chno" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="cu_property" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cu_hqid" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cu_stack" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="iepb03h">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cu_sale" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cu_snam" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cu_snam1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cu_tel" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cu_handtel" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cu_email" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="dp_no" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ie_pass" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cu_pass" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ie_ymd" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ie_time" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="ie_user" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ie_lymd" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ie_ltime" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="ie_luser" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ie_cymd" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ie_ctime" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="ie_cuser" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ie_past" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ie_cancel" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="pb_id2" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="pa_cost" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="pa_ssno" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="pa_id2" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Industries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IndustryNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IndustryName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
@@ -2971,195 +2981,6 @@
                 <ScalarProperty Name="SubjectContent" ColumnName="SubjectContent" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="GuidNo" ColumnName="GuidNo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="iecusuh">
-            <EntityTypeMapping TypeName="jb_toolsModel.iecusuh">
-              <MappingFragment StoreEntitySet="iecusuh">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="cu_no" ColumnName="cu_no" />
-                <ScalarProperty Name="cu_sale" ColumnName="cu_sale" />
-                <ScalarProperty Name="cu_na" ColumnName="cu_na" />
-                <ScalarProperty Name="cu_unit" ColumnName="cu_unit" />
-                <ScalarProperty Name="cu_type" ColumnName="cu_type" />
-                <ScalarProperty Name="cu_taxno" ColumnName="cu_taxno" />
-                <ScalarProperty Name="cu_boss" ColumnName="cu_boss" />
-                <ScalarProperty Name="cu_touch" ColumnName="cu_touch" />
-                <ScalarProperty Name="cu_disc" ColumnName="cu_disc" />
-                <ScalarProperty Name="cu_tax" ColumnName="cu_tax" />
-                <ScalarProperty Name="cu_check" ColumnName="cu_check" />
-                <ScalarProperty Name="cu_date" ColumnName="cu_date" />
-                <ScalarProperty Name="cu_crdt" ColumnName="cu_crdt" />
-                <ScalarProperty Name="cu_sdat" ColumnName="cu_sdat" />
-                <ScalarProperty Name="cu_ck" ColumnName="cu_ck" />
-                <ScalarProperty Name="cu_ar" ColumnName="cu_ar" />
-                <ScalarProperty Name="cu_area" ColumnName="cu_area" />
-                <ScalarProperty Name="cu_chdat" ColumnName="cu_chdat" />
-                <ScalarProperty Name="cu_bdat" ColumnName="cu_bdat" />
-                <ScalarProperty Name="cu_invst" ColumnName="cu_invst" />
-                <ScalarProperty Name="cu_poar" ColumnName="cu_poar" />
-                <ScalarProperty Name="cu_ivar" ColumnName="cu_ivar" />
-                <ScalarProperty Name="cu_charg" ColumnName="cu_charg" />
-                <ScalarProperty Name="cu_taxid" ColumnName="cu_taxid" />
-                <ScalarProperty Name="cu_rela" ColumnName="cu_rela" />
-                <ScalarProperty Name="cu_crbi" ColumnName="cu_crbi" />
-                <ScalarProperty Name="cu_pre" ColumnName="cu_pre" />
-                <ScalarProperty Name="cu_pr_lc" ColumnName="cu_pr_lc" />
-                <ScalarProperty Name="cu_odamt" ColumnName="cu_odamt" />
-                <ScalarProperty Name="cu_saamt" ColumnName="cu_saamt" />
-                <ScalarProperty Name="bk_no" ColumnName="bk_no" />
-                <ScalarProperty Name="ck_acno" ColumnName="ck_acno" />
-                <ScalarProperty Name="cu_id" ColumnName="cu_id" />
-                <ScalarProperty Name="cu_zip" ColumnName="cu_zip" />
-                <ScalarProperty Name="cu_condi" ColumnName="cu_condi" />
-                <ScalarProperty Name="ie_ymd" ColumnName="ie_ymd" />
-                <ScalarProperty Name="od_id" ColumnName="od_id" />
-                <ScalarProperty Name="cu_odid" ColumnName="cu_odid" />
-                <ScalarProperty Name="edi_code" ColumnName="edi_code" />
-                <ScalarProperty Name="sa_route" ColumnName="sa_route" />
-                <ScalarProperty Name="dps_co" ColumnName="dps_co" />
-                <ScalarProperty Name="ck_acna" ColumnName="ck_acna" />
-                <ScalarProperty Name="cu_poar1" ColumnName="cu_poar1" />
-                <ScalarProperty Name="cu_ivar1" ColumnName="cu_ivar1" />
-                <ScalarProperty Name="cu_email" ColumnName="cu_email" />
-                <ScalarProperty Name="cu_ctid" ColumnName="cu_ctid" />
-                <ScalarProperty Name="cu_stid" ColumnName="cu_stid" />
-                <ScalarProperty Name="cu_bkid" ColumnName="cu_bkid" />
-                <ScalarProperty Name="cu_shid" ColumnName="cu_shid" />
-                <ScalarProperty Name="cu_cpid" ColumnName="cu_cpid" />
-                <ScalarProperty Name="cu_paid" ColumnName="cu_paid" />
-                <ScalarProperty Name="cu_waid" ColumnName="cu_waid" />
-                <ScalarProperty Name="cu_otid" ColumnName="cu_otid" />
-                <ScalarProperty Name="cu_sid" ColumnName="cu_sid" />
-                <ScalarProperty Name="cu_pay" ColumnName="cu_pay" />
-                <ScalarProperty Name="cu_incmel" ColumnName="cu_incmel" />
-                <ScalarProperty Name="lo_lim" ColumnName="lo_lim" />
-                <ScalarProperty Name="lo_amt" ColumnName="lo_amt" />
-                <ScalarProperty Name="bk_swift" ColumnName="bk_swift" />
-                <ScalarProperty Name="lo_ramt" ColumnName="lo_ramt" />
-                <ScalarProperty Name="lo_id" ColumnName="lo_id" />
-                <ScalarProperty Name="lo_lim1" ColumnName="lo_lim1" />
-                <ScalarProperty Name="bk_access" ColumnName="bk_access" />
-                <ScalarProperty Name="wa_apli" ColumnName="wa_apli" />
-                <ScalarProperty Name="wa_tunit" ColumnName="wa_tunit" />
-                <ScalarProperty Name="wa_tunit1" ColumnName="wa_tunit1" />
-                <ScalarProperty Name="wa_febu" ColumnName="wa_febu" />
-                <ScalarProperty Name="wa_comtax" ColumnName="wa_comtax" />
-                <ScalarProperty Name="tr_no" ColumnName="tr_no" />
-                <ScalarProperty Name="ie_time" ColumnName="ie_time" />
-                <ScalarProperty Name="ie_user" ColumnName="ie_user" />
-                <ScalarProperty Name="ie_lymd" ColumnName="ie_lymd" />
-                <ScalarProperty Name="ie_ltime" ColumnName="ie_ltime" />
-                <ScalarProperty Name="ie_luser" ColumnName="ie_luser" />
-                <ScalarProperty Name="ie_cymd" ColumnName="ie_cymd" />
-                <ScalarProperty Name="ie_ctime" ColumnName="ie_ctime" />
-                <ScalarProperty Name="ie_cuser" ColumnName="ie_cuser" />
-                <ScalarProperty Name="iv_page" ColumnName="iv_page" />
-                <ScalarProperty Name="cu_cr" ColumnName="cu_cr" />
-                <ScalarProperty Name="cu_iv" ColumnName="cu_iv" />
-                <ScalarProperty Name="cu_ipd" ColumnName="cu_ipd" />
-                <ScalarProperty Name="cu_gId" ColumnName="cu_gId" />
-                <ScalarProperty Name="wa_gui" ColumnName="wa_gui" />
-                <ScalarProperty Name="cu_lamtnol" ColumnName="cu_lamtnol" />
-                <ScalarProperty Name="cu_lamtnoh" ColumnName="cu_lamtnoh" />
-                <ScalarProperty Name="cu_kamtno" ColumnName="cu_kamtno" />
-                <ScalarProperty Name="cu_kamtlno" ColumnName="cu_kamtlno" />
-                <ScalarProperty Name="cu_kamtboss" ColumnName="cu_kamtboss" />
-                <ScalarProperty Name="ie_cancel" ColumnName="ie_cancel" />
-                <ScalarProperty Name="cu_name" ColumnName="cu_name" />
-                <ScalarProperty Name="cu_ename" ColumnName="cu_ename" />
-                <ScalarProperty Name="cu_bil" ColumnName="cu_bil" />
-                <ScalarProperty Name="cu_de_check" ColumnName="cu_de_check" />
-                <ScalarProperty Name="cu_ch" ColumnName="cu_ch" />
-                <ScalarProperty Name="cu_workhur" ColumnName="cu_workhur" />
-                <ScalarProperty Name="ie_doc" ColumnName="ie_doc" />
-                <ScalarProperty Name="ie_odid" ColumnName="ie_odid" />
-                <ScalarProperty Name="cu_billar" ColumnName="cu_billar" />
-                <ScalarProperty Name="cu_headquar" ColumnName="cu_headquar" />
-                <ScalarProperty Name="cu_billowner" ColumnName="cu_billowner" />
-                <ScalarProperty Name="cu_ldat" ColumnName="cu_ldat" />
-                <ScalarProperty Name="cu_addr" ColumnName="cu_addr" />
-                <ScalarProperty Name="ie_cser" ColumnName="ie_cser" />
-                <ScalarProperty Name="cu_taxyn" ColumnName="cu_taxyn" />
-                <ScalarProperty Name="cu_incono" ColumnName="cu_incono" />
-                <ScalarProperty Name="cu_noti" ColumnName="cu_noti" />
-                <ScalarProperty Name="cu_charg1" ColumnName="cu_charg1" />
-                <ScalarProperty Name="cu_agent" ColumnName="cu_agent" />
-                <ScalarProperty Name="cu_cashrt" ColumnName="cu_cashrt" />
-                <ScalarProperty Name="cu_cashyn" ColumnName="cu_cashyn" />
-                <ScalarProperty Name="cu_checkyn" ColumnName="cu_checkyn" />
-                <ScalarProperty Name="cu_discrt" ColumnName="cu_discrt" />
-                <ScalarProperty Name="cu_discyn" ColumnName="cu_discyn" />
-                <ScalarProperty Name="cu_pass" ColumnName="cu_pass" />
-                <ScalarProperty Name="ip_position" ColumnName="ip_position" />
-                <ScalarProperty Name="sa_pryn" ColumnName="sa_pryn" />
-                <ScalarProperty Name="cu_ctrsort" ColumnName="cu_ctrsort" />
-                <ScalarProperty Name="cu_cuno" ColumnName="cu_cuno" />
-                <ScalarProperty Name="cu_lead" ColumnName="cu_lead" />
-                <ScalarProperty Name="cu_no1" ColumnName="cu_no1" />
-                <ScalarProperty Name="cu_rtax" ColumnName="cu_rtax" />
-                <ScalarProperty Name="cu_send" ColumnName="cu_send" />
-                <ScalarProperty Name="cu_stodid" ColumnName="cu_stodid" />
-                <ScalarProperty Name="el_give" ColumnName="el_give" />
-                <ScalarProperty Name="el_mass" ColumnName="el_mass" />
-                <ScalarProperty Name="cu_code" ColumnName="cu_code" />
-                <ScalarProperty Name="ie_rtax" ColumnName="ie_rtax" />
-                <ScalarProperty Name="ie_pass" ColumnName="ie_pass" />
-                <ScalarProperty Name="ie_past" ColumnName="ie_past" />
-                <ScalarProperty Name="cu_nati" ColumnName="cu_nati" />
-                <ScalarProperty Name="cu_acname" ColumnName="cu_acname" />
-                <ScalarProperty Name="cu_scode" ColumnName="cu_scode" />
-                <ScalarProperty Name="cu_tm" ColumnName="cu_tm" />
-                <ScalarProperty Name="cu_city" ColumnName="cu_city" />
-                <ScalarProperty Name="su_iv" ColumnName="su_iv" />
-                <ScalarProperty Name="cu_ftype" ColumnName="cu_ftype" />
-                <ScalarProperty Name="cu_barea" ColumnName="cu_barea" />
-                <ScalarProperty Name="cu_utype" ColumnName="cu_utype" />
-                <ScalarProperty Name="cu_source" ColumnName="cu_source" />
-                <ScalarProperty Name="cu_stock" ColumnName="cu_stock" />
-                <ScalarProperty Name="cu_sale1" ColumnName="cu_sale1" />
-                <ScalarProperty Name="id_no" ColumnName="id_no" />
-                <ScalarProperty Name="tel_e" ColumnName="tel_e" />
-                <ScalarProperty Name="tel_n" ColumnName="tel_n" />
-                <ScalarProperty Name="tel_z" ColumnName="tel_z" />
-                <ScalarProperty Name="cu_agid" ColumnName="cu_agid" />
-                <ScalarProperty Name="cu_brok" ColumnName="cu_brok" />
-                <ScalarProperty Name="cu_chno" ColumnName="cu_chno" />
-                <ScalarProperty Name="cu_property" ColumnName="cu_property" />
-                <ScalarProperty Name="cu_hqid" ColumnName="cu_hqid" />
-                <ScalarProperty Name="cu_stack" ColumnName="cu_stack" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="iepb03h">
-            <EntityTypeMapping TypeName="jb_toolsModel.iepb03h">
-              <MappingFragment StoreEntitySet="iepb03h">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="cu_sale" ColumnName="cu_sale" />
-                <ScalarProperty Name="cu_snam" ColumnName="cu_snam" />
-                <ScalarProperty Name="cu_snam1" ColumnName="cu_snam1" />
-                <ScalarProperty Name="cu_tel" ColumnName="cu_tel" />
-                <ScalarProperty Name="cu_handtel" ColumnName="cu_handtel" />
-                <ScalarProperty Name="cu_email" ColumnName="cu_email" />
-                <ScalarProperty Name="dp_no" ColumnName="dp_no" />
-                <ScalarProperty Name="ie_pass" ColumnName="ie_pass" />
-                <ScalarProperty Name="cu_pass" ColumnName="cu_pass" />
-                <ScalarProperty Name="ie_ymd" ColumnName="ie_ymd" />
-                <ScalarProperty Name="ie_time" ColumnName="ie_time" />
-                <ScalarProperty Name="ie_user" ColumnName="ie_user" />
-                <ScalarProperty Name="ie_lymd" ColumnName="ie_lymd" />
-                <ScalarProperty Name="ie_ltime" ColumnName="ie_ltime" />
-                <ScalarProperty Name="ie_luser" ColumnName="ie_luser" />
-                <ScalarProperty Name="ie_cymd" ColumnName="ie_cymd" />
-                <ScalarProperty Name="ie_ctime" ColumnName="ie_ctime" />
-                <ScalarProperty Name="ie_cuser" ColumnName="ie_cuser" />
-                <ScalarProperty Name="ie_past" ColumnName="ie_past" />
-                <ScalarProperty Name="ie_cancel" ColumnName="ie_cancel" />
-                <ScalarProperty Name="pb_id2" ColumnName="pb_id2" />
-                <ScalarProperty Name="pa_cost" ColumnName="pa_cost" />
-                <ScalarProperty Name="pa_ssno" ColumnName="pa_ssno" />
-                <ScalarProperty Name="pa_id2" ColumnName="pa_id2" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3818,16 +3639,210 @@
             <EntityTypeMapping TypeName="jb_toolsModel.IemuTrans">
               <MappingFragment StoreEntitySet="IemuTrans">
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="IndustryName" ColumnName="IndustryName" />
                 <ScalarProperty Name="IndustryNo" ColumnName="IndustryNo" />
-                <ScalarProperty Name="CusaleName" ColumnName="CusaleName" />
                 <ScalarProperty Name="CuSale" ColumnName="CuSale" />
-                <ScalarProperty Name="CuEname" ColumnName="CuEname" />
-                <ScalarProperty Name="CuName" ColumnName="CuName" />
-                <ScalarProperty Name="CuNa" ColumnName="CuNa" />
                 <ScalarProperty Name="CuNo" ColumnName="CuNo" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iecusuh">
+            <EntityTypeMapping TypeName="jb_toolsModel.iecusuh">
+              <MappingFragment StoreEntitySet="iecusuh">
+                <ScalarProperty Name="cu_stack" ColumnName="cu_stack" />
+                <ScalarProperty Name="cu_hqid" ColumnName="cu_hqid" />
+                <ScalarProperty Name="cu_property" ColumnName="cu_property" />
+                <ScalarProperty Name="cu_chno" ColumnName="cu_chno" />
+                <ScalarProperty Name="cu_brok" ColumnName="cu_brok" />
+                <ScalarProperty Name="cu_agid" ColumnName="cu_agid" />
+                <ScalarProperty Name="tel_z" ColumnName="tel_z" />
+                <ScalarProperty Name="tel_n" ColumnName="tel_n" />
+                <ScalarProperty Name="tel_e" ColumnName="tel_e" />
+                <ScalarProperty Name="id_no" ColumnName="id_no" />
+                <ScalarProperty Name="cu_sale1" ColumnName="cu_sale1" />
+                <ScalarProperty Name="cu_stock" ColumnName="cu_stock" />
+                <ScalarProperty Name="cu_source" ColumnName="cu_source" />
+                <ScalarProperty Name="cu_utype" ColumnName="cu_utype" />
+                <ScalarProperty Name="cu_barea" ColumnName="cu_barea" />
+                <ScalarProperty Name="cu_ftype" ColumnName="cu_ftype" />
+                <ScalarProperty Name="su_iv" ColumnName="su_iv" />
+                <ScalarProperty Name="cu_city" ColumnName="cu_city" />
+                <ScalarProperty Name="cu_tm" ColumnName="cu_tm" />
+                <ScalarProperty Name="cu_scode" ColumnName="cu_scode" />
+                <ScalarProperty Name="cu_acname" ColumnName="cu_acname" />
+                <ScalarProperty Name="cu_nati" ColumnName="cu_nati" />
+                <ScalarProperty Name="ie_past" ColumnName="ie_past" />
+                <ScalarProperty Name="ie_pass" ColumnName="ie_pass" />
+                <ScalarProperty Name="ie_rtax" ColumnName="ie_rtax" />
+                <ScalarProperty Name="cu_code" ColumnName="cu_code" />
+                <ScalarProperty Name="el_mass" ColumnName="el_mass" />
+                <ScalarProperty Name="el_give" ColumnName="el_give" />
+                <ScalarProperty Name="cu_stodid" ColumnName="cu_stodid" />
+                <ScalarProperty Name="cu_send" ColumnName="cu_send" />
+                <ScalarProperty Name="cu_rtax" ColumnName="cu_rtax" />
+                <ScalarProperty Name="cu_no1" ColumnName="cu_no1" />
+                <ScalarProperty Name="cu_lead" ColumnName="cu_lead" />
+                <ScalarProperty Name="cu_cuno" ColumnName="cu_cuno" />
+                <ScalarProperty Name="cu_ctrsort" ColumnName="cu_ctrsort" />
+                <ScalarProperty Name="sa_pryn" ColumnName="sa_pryn" />
+                <ScalarProperty Name="ip_position" ColumnName="ip_position" />
+                <ScalarProperty Name="cu_pass" ColumnName="cu_pass" />
+                <ScalarProperty Name="cu_discyn" ColumnName="cu_discyn" />
+                <ScalarProperty Name="cu_discrt" ColumnName="cu_discrt" />
+                <ScalarProperty Name="cu_checkyn" ColumnName="cu_checkyn" />
+                <ScalarProperty Name="cu_cashyn" ColumnName="cu_cashyn" />
+                <ScalarProperty Name="cu_cashrt" ColumnName="cu_cashrt" />
+                <ScalarProperty Name="cu_agent" ColumnName="cu_agent" />
+                <ScalarProperty Name="cu_charg1" ColumnName="cu_charg1" />
+                <ScalarProperty Name="cu_noti" ColumnName="cu_noti" />
+                <ScalarProperty Name="cu_incono" ColumnName="cu_incono" />
+                <ScalarProperty Name="cu_taxyn" ColumnName="cu_taxyn" />
+                <ScalarProperty Name="ie_cser" ColumnName="ie_cser" />
+                <ScalarProperty Name="cu_addr" ColumnName="cu_addr" />
+                <ScalarProperty Name="cu_ldat" ColumnName="cu_ldat" />
+                <ScalarProperty Name="cu_billowner" ColumnName="cu_billowner" />
+                <ScalarProperty Name="cu_headquar" ColumnName="cu_headquar" />
+                <ScalarProperty Name="cu_billar" ColumnName="cu_billar" />
+                <ScalarProperty Name="ie_odid" ColumnName="ie_odid" />
+                <ScalarProperty Name="ie_doc" ColumnName="ie_doc" />
+                <ScalarProperty Name="cu_workhur" ColumnName="cu_workhur" />
+                <ScalarProperty Name="cu_ch" ColumnName="cu_ch" />
+                <ScalarProperty Name="cu_de_check" ColumnName="cu_de_check" />
+                <ScalarProperty Name="cu_bil" ColumnName="cu_bil" />
+                <ScalarProperty Name="cu_ename" ColumnName="cu_ename" />
+                <ScalarProperty Name="cu_name" ColumnName="cu_name" />
+                <ScalarProperty Name="ie_cancel" ColumnName="ie_cancel" />
+                <ScalarProperty Name="cu_kamtboss" ColumnName="cu_kamtboss" />
+                <ScalarProperty Name="cu_kamtlno" ColumnName="cu_kamtlno" />
+                <ScalarProperty Name="cu_kamtno" ColumnName="cu_kamtno" />
+                <ScalarProperty Name="cu_lamtnoh" ColumnName="cu_lamtnoh" />
+                <ScalarProperty Name="cu_lamtnol" ColumnName="cu_lamtnol" />
+                <ScalarProperty Name="wa_gui" ColumnName="wa_gui" />
+                <ScalarProperty Name="cu_gId" ColumnName="cu_gId" />
+                <ScalarProperty Name="cu_ipd" ColumnName="cu_ipd" />
+                <ScalarProperty Name="cu_iv" ColumnName="cu_iv" />
+                <ScalarProperty Name="cu_cr" ColumnName="cu_cr" />
+                <ScalarProperty Name="iv_page" ColumnName="iv_page" />
+                <ScalarProperty Name="ie_cuser" ColumnName="ie_cuser" />
+                <ScalarProperty Name="ie_ctime" ColumnName="ie_ctime" />
+                <ScalarProperty Name="ie_cymd" ColumnName="ie_cymd" />
+                <ScalarProperty Name="ie_luser" ColumnName="ie_luser" />
+                <ScalarProperty Name="ie_ltime" ColumnName="ie_ltime" />
+                <ScalarProperty Name="ie_lymd" ColumnName="ie_lymd" />
+                <ScalarProperty Name="ie_user" ColumnName="ie_user" />
+                <ScalarProperty Name="ie_time" ColumnName="ie_time" />
+                <ScalarProperty Name="tr_no" ColumnName="tr_no" />
+                <ScalarProperty Name="wa_comtax" ColumnName="wa_comtax" />
+                <ScalarProperty Name="wa_febu" ColumnName="wa_febu" />
+                <ScalarProperty Name="wa_tunit1" ColumnName="wa_tunit1" />
+                <ScalarProperty Name="wa_tunit" ColumnName="wa_tunit" />
+                <ScalarProperty Name="wa_apli" ColumnName="wa_apli" />
+                <ScalarProperty Name="bk_access" ColumnName="bk_access" />
+                <ScalarProperty Name="lo_lim1" ColumnName="lo_lim1" />
+                <ScalarProperty Name="lo_id" ColumnName="lo_id" />
+                <ScalarProperty Name="lo_ramt" ColumnName="lo_ramt" />
+                <ScalarProperty Name="bk_swift" ColumnName="bk_swift" />
+                <ScalarProperty Name="lo_amt" ColumnName="lo_amt" />
+                <ScalarProperty Name="lo_lim" ColumnName="lo_lim" />
+                <ScalarProperty Name="cu_incmel" ColumnName="cu_incmel" />
+                <ScalarProperty Name="cu_pay" ColumnName="cu_pay" />
+                <ScalarProperty Name="cu_sid" ColumnName="cu_sid" />
+                <ScalarProperty Name="cu_otid" ColumnName="cu_otid" />
+                <ScalarProperty Name="cu_waid" ColumnName="cu_waid" />
+                <ScalarProperty Name="cu_paid" ColumnName="cu_paid" />
+                <ScalarProperty Name="cu_cpid" ColumnName="cu_cpid" />
+                <ScalarProperty Name="cu_shid" ColumnName="cu_shid" />
+                <ScalarProperty Name="cu_bkid" ColumnName="cu_bkid" />
+                <ScalarProperty Name="cu_stid" ColumnName="cu_stid" />
+                <ScalarProperty Name="cu_ctid" ColumnName="cu_ctid" />
+                <ScalarProperty Name="cu_email" ColumnName="cu_email" />
+                <ScalarProperty Name="cu_ivar1" ColumnName="cu_ivar1" />
+                <ScalarProperty Name="cu_poar1" ColumnName="cu_poar1" />
+                <ScalarProperty Name="ck_acna" ColumnName="ck_acna" />
+                <ScalarProperty Name="dps_co" ColumnName="dps_co" />
+                <ScalarProperty Name="sa_route" ColumnName="sa_route" />
+                <ScalarProperty Name="edi_code" ColumnName="edi_code" />
+                <ScalarProperty Name="cu_odid" ColumnName="cu_odid" />
+                <ScalarProperty Name="od_id" ColumnName="od_id" />
+                <ScalarProperty Name="ie_ymd" ColumnName="ie_ymd" />
+                <ScalarProperty Name="cu_condi" ColumnName="cu_condi" />
+                <ScalarProperty Name="cu_zip" ColumnName="cu_zip" />
+                <ScalarProperty Name="cu_id" ColumnName="cu_id" />
+                <ScalarProperty Name="ck_acno" ColumnName="ck_acno" />
+                <ScalarProperty Name="bk_no" ColumnName="bk_no" />
+                <ScalarProperty Name="cu_saamt" ColumnName="cu_saamt" />
+                <ScalarProperty Name="cu_odamt" ColumnName="cu_odamt" />
+                <ScalarProperty Name="cu_pr_lc" ColumnName="cu_pr_lc" />
+                <ScalarProperty Name="cu_pre" ColumnName="cu_pre" />
+                <ScalarProperty Name="cu_crbi" ColumnName="cu_crbi" />
+                <ScalarProperty Name="cu_rela" ColumnName="cu_rela" />
+                <ScalarProperty Name="cu_taxid" ColumnName="cu_taxid" />
+                <ScalarProperty Name="cu_charg" ColumnName="cu_charg" />
+                <ScalarProperty Name="cu_ivar" ColumnName="cu_ivar" />
+                <ScalarProperty Name="cu_poar" ColumnName="cu_poar" />
+                <ScalarProperty Name="cu_invst" ColumnName="cu_invst" />
+                <ScalarProperty Name="cu_bdat" ColumnName="cu_bdat" />
+                <ScalarProperty Name="cu_chdat" ColumnName="cu_chdat" />
+                <ScalarProperty Name="cu_area" ColumnName="cu_area" />
+                <ScalarProperty Name="cu_ar" ColumnName="cu_ar" />
+                <ScalarProperty Name="cu_ck" ColumnName="cu_ck" />
+                <ScalarProperty Name="cu_sdat" ColumnName="cu_sdat" />
+                <ScalarProperty Name="cu_crdt" ColumnName="cu_crdt" />
+                <ScalarProperty Name="cu_date" ColumnName="cu_date" />
+                <ScalarProperty Name="cu_check" ColumnName="cu_check" />
+                <ScalarProperty Name="cu_tax" ColumnName="cu_tax" />
+                <ScalarProperty Name="cu_disc" ColumnName="cu_disc" />
+                <ScalarProperty Name="cu_touch" ColumnName="cu_touch" />
+                <ScalarProperty Name="cu_boss" ColumnName="cu_boss" />
+                <ScalarProperty Name="cu_taxno" ColumnName="cu_taxno" />
+                <ScalarProperty Name="cu_type" ColumnName="cu_type" />
+                <ScalarProperty Name="cu_unit" ColumnName="cu_unit" />
+                <ScalarProperty Name="cu_na" ColumnName="cu_na" />
+                <ScalarProperty Name="cu_sale" ColumnName="cu_sale" />
+                <ScalarProperty Name="cu_no" ColumnName="cu_no" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iepb03h">
+            <EntityTypeMapping TypeName="jb_toolsModel.iepb03h">
+              <MappingFragment StoreEntitySet="iepb03h">
+                <ScalarProperty Name="pa_id2" ColumnName="pa_id2" />
+                <ScalarProperty Name="pa_ssno" ColumnName="pa_ssno" />
+                <ScalarProperty Name="pa_cost" ColumnName="pa_cost" />
+                <ScalarProperty Name="pb_id2" ColumnName="pb_id2" />
+                <ScalarProperty Name="ie_cancel" ColumnName="ie_cancel" />
+                <ScalarProperty Name="ie_past" ColumnName="ie_past" />
+                <ScalarProperty Name="ie_cuser" ColumnName="ie_cuser" />
+                <ScalarProperty Name="ie_ctime" ColumnName="ie_ctime" />
+                <ScalarProperty Name="ie_cymd" ColumnName="ie_cymd" />
+                <ScalarProperty Name="ie_luser" ColumnName="ie_luser" />
+                <ScalarProperty Name="ie_ltime" ColumnName="ie_ltime" />
+                <ScalarProperty Name="ie_lymd" ColumnName="ie_lymd" />
+                <ScalarProperty Name="ie_user" ColumnName="ie_user" />
+                <ScalarProperty Name="ie_time" ColumnName="ie_time" />
+                <ScalarProperty Name="ie_ymd" ColumnName="ie_ymd" />
+                <ScalarProperty Name="cu_pass" ColumnName="cu_pass" />
+                <ScalarProperty Name="ie_pass" ColumnName="ie_pass" />
+                <ScalarProperty Name="dp_no" ColumnName="dp_no" />
+                <ScalarProperty Name="cu_email" ColumnName="cu_email" />
+                <ScalarProperty Name="cu_handtel" ColumnName="cu_handtel" />
+                <ScalarProperty Name="cu_tel" ColumnName="cu_tel" />
+                <ScalarProperty Name="cu_snam1" ColumnName="cu_snam1" />
+                <ScalarProperty Name="cu_snam" ColumnName="cu_snam" />
+                <ScalarProperty Name="cu_sale" ColumnName="cu_sale" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Industries">
+            <EntityTypeMapping TypeName="jb_toolsModel.Industries">
+              <MappingFragment StoreEntitySet="Industries">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IndustryName" ColumnName="IndustryName" />
+                <ScalarProperty Name="IndustryNo" ColumnName="IndustryNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

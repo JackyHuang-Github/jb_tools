@@ -18,13 +18,8 @@ namespace jb_tools.Models
         public string No { get; set; }
         public string Status { get; set; }
         public string CuNo { get; set; }
-        public string CuNa { get; set; }
-        public string CuName { get; set; }
-        public string CuEname { get; set; }
         public string CuSale { get; set; }
-        public string CusaleName { get; set; }
         public string IndustryNo { get; set; }
-        public string IndustryName { get; set; }
         public string Remark { get; set; }
     }
 }

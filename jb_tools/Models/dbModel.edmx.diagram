@@ -28,8 +28,6 @@
         <EntityTypeShape EntityType="jb_toolsModel.FormMaster" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jb_toolsModel.ForumBoards" Width="1.5" PointX="4.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jb_toolsModel.Forums" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="jb_toolsModel.iecusuh" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="jb_toolsModel.iepb03h" Width="1.5" PointX="10.75" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jb_toolsModel.Languages" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jb_toolsModel.Logs" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jb_toolsModel.MapPositions" Width="1.5" PointX="16.75" PointY="4.75" IsExpanded="true" />
@@ -75,6 +73,9 @@
         <EntityTypeShape EntityType="jb_toolsModel.IemuSubMenus" Width="1.5" PointX="25.375" PointY="20.75" />
         <EntityTypeShape EntityType="jb_toolsModel.IemuTranDetails" Width="1.5" PointX="25.375" PointY="24.75" />
         <EntityTypeShape EntityType="jb_toolsModel.IemuTrans" Width="1.5" PointX="3.375" PointY="26.75" />
+        <EntityTypeShape EntityType="jb_toolsModel.iecusuh" Width="1.5" PointX="13.375" PointY="14.75" />
+        <EntityTypeShape EntityType="jb_toolsModel.iepb03h" Width="1.5" PointX="15.375" PointY="25.75" />
+        <EntityTypeShape EntityType="jb_toolsModel.Industries" Width="1.5" PointX="17.375" PointY="26.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

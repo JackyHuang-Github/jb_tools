@@ -410,7 +410,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="numeric" Precision="28" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="cu_no" Type="varchar" MaxLength="8" Nullable="false" />
     <Property Name="cu_sale" Type="varchar" MaxLength="8" Nullable="false" />
     <Property Name="cu_na" Type="varchar" MaxLength="20" Nullable="false" />
@@ -634,21 +634,16 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="No" Type="char" MaxLength="11" Nullable="false" />
     <Property Name="Status" Type="char" MaxLength="1" Nullable="false" />
-    <Property Name="CuNo" Type="varchar" MaxLength="8" Nullable="false" />
-    <Property Name="CuNa" Type="nvarchar" MaxLength="40" Nullable="false" />
-    <Property Name="CuName" Type="nvarchar" MaxLength="120" />
-    <Property Name="CuEname" Type="nvarchar" MaxLength="120" />
-    <Property Name="CuSale" Type="varchar" MaxLength="8" />
-    <Property Name="CusaleName" Type="nvarchar" MaxLength="60" />
-    <Property Name="IndustryNo" Type="nvarchar" MaxLength="50" />
-    <Property Name="IndustryName" Type="nvarchar" MaxLength="250" />
+    <Property Name="CuNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CuSale" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IndustryNo" Type="varchar" MaxLength="50" />
     <Property Name="Remark" Type="nvarchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="iepb03h">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="numeric" Precision="28" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="cu_sale" Type="varchar" MaxLength="8" Nullable="false" />
     <Property Name="cu_snam" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="cu_snam1" Type="varchar" MaxLength="20" Nullable="false" />
@@ -673,6 +668,15 @@
     <Property Name="pa_cost" Type="varchar" MaxLength="1" Nullable="false" />
     <Property Name="pa_ssno" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="pa_id2" Type="varchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Industries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IndustryNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IndustryName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="Languages">
     <Key>
@@ -1234,6 +1238,7 @@
     <EntitySet Name="IemuTranDetails" EntityType="Self.IemuTranDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="IemuTrans" EntityType="Self.IemuTrans" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="iepb03h" EntityType="Self.iepb03h" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Industries" EntityType="Self.Industries" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MapPositions" EntityType="Self.MapPositions" Schema="dbo" store:Type="Tables" />

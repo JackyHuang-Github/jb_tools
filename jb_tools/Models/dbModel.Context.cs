@@ -48,8 +48,6 @@ namespace jb_tools.Models
         public virtual DbSet<FormMaster> FormMaster { get; set; }
         public virtual DbSet<ForumBoards> ForumBoards { get; set; }
         public virtual DbSet<Forums> Forums { get; set; }
-        public virtual DbSet<iecusuh> iecusuh { get; set; }
-        public virtual DbSet<iepb03h> iepb03h { get; set; }
         public virtual DbSet<Languages> Languages { get; set; }
         public virtual DbSet<Logs> Logs { get; set; }
         public virtual DbSet<MapPositions> MapPositions { get; set; }
@@ -95,5 +93,8 @@ namespace jb_tools.Models
         public virtual DbSet<IemuSubMenus> IemuSubMenus { get; set; }
         public virtual DbSet<IemuTranDetails> IemuTranDetails { get; set; }
         public virtual DbSet<IemuTrans> IemuTrans { get; set; }
+        public virtual DbSet<iecusuh> iecusuh { get; set; }
+        public virtual DbSet<iepb03h> iepb03h { get; set; }
+        public virtual DbSet<Industries> Industries { get; set; }
     }
 }

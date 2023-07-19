@@ -11,6 +11,13 @@ namespace jb_tools.Models
     [MetadataType(typeof(z_metaIemuTrans))]
     public partial class IemuTrans
     {
+        [NotMapped]
+        [Display(Name = "客戶簡稱")]
+        public string cu_na { get; set; }
+        [Display(Name = "經辦人姓名")]
+        public string cu_snam { get; set; }
+        [Display(Name = "產業別名稱")]
+        public string IndustryName { get; set; }
     }
 }
 
@@ -22,7 +29,7 @@ public abstract class z_metaIemuTrans
     [Required(ErrorMessage = "不可空白!!")]
     [Column(CheckBox = false, Hidden = true, DropdownClass = "")]
     [Default(DefaultValueType = enDefaultValueType.Int_0, DefaultValue = "")]
-    public int No { get; set; }
+    public string No { get; set; }
     [Display(Name = "狀態碼")]
     [Required(ErrorMessage = "不可空白!!")]
     [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
@@ -33,35 +40,14 @@ public abstract class z_metaIemuTrans
     [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
     [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
     public string CuNo { get; set; }
-    [Display(Name = "客戶簡稱")]
-    [Required(ErrorMessage = "不可空白!!")]
-    [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
-    [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
-    public string CuNa { get; set; }
-    [Display(Name = "公司全稱")]
-    [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
-    [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
-    public string CuName { get; set; }
-    [Display(Name = "英文全稱")]
-    [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
-    [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
-    public string CuEname { get; set; }
     [Display(Name = "經辦人代號")]
     [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
     [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
     public string CuSale { get; set; }
-    [Display(Name = "經辦人姓名")]
-    [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
-    [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
-    public string CusaleName { get; set; }
     [Display(Name = "產業別代號")]
     [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
     [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
     public string IndustryNo { get; set; }
-    [Display(Name = "產業別名稱")]
-    [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
-    [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
-    public string IndustryName { get; set; }
     [Display(Name = "備註")]
     [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
     [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]

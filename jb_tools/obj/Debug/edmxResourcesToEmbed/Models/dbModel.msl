@@ -414,195 +414,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="iecusuh">
-      <EntityTypeMapping TypeName="jb_toolsModel.iecusuh">
-        <MappingFragment StoreEntitySet="iecusuh">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="cu_no" ColumnName="cu_no" />
-          <ScalarProperty Name="cu_sale" ColumnName="cu_sale" />
-          <ScalarProperty Name="cu_na" ColumnName="cu_na" />
-          <ScalarProperty Name="cu_unit" ColumnName="cu_unit" />
-          <ScalarProperty Name="cu_type" ColumnName="cu_type" />
-          <ScalarProperty Name="cu_taxno" ColumnName="cu_taxno" />
-          <ScalarProperty Name="cu_boss" ColumnName="cu_boss" />
-          <ScalarProperty Name="cu_touch" ColumnName="cu_touch" />
-          <ScalarProperty Name="cu_disc" ColumnName="cu_disc" />
-          <ScalarProperty Name="cu_tax" ColumnName="cu_tax" />
-          <ScalarProperty Name="cu_check" ColumnName="cu_check" />
-          <ScalarProperty Name="cu_date" ColumnName="cu_date" />
-          <ScalarProperty Name="cu_crdt" ColumnName="cu_crdt" />
-          <ScalarProperty Name="cu_sdat" ColumnName="cu_sdat" />
-          <ScalarProperty Name="cu_ck" ColumnName="cu_ck" />
-          <ScalarProperty Name="cu_ar" ColumnName="cu_ar" />
-          <ScalarProperty Name="cu_area" ColumnName="cu_area" />
-          <ScalarProperty Name="cu_chdat" ColumnName="cu_chdat" />
-          <ScalarProperty Name="cu_bdat" ColumnName="cu_bdat" />
-          <ScalarProperty Name="cu_invst" ColumnName="cu_invst" />
-          <ScalarProperty Name="cu_poar" ColumnName="cu_poar" />
-          <ScalarProperty Name="cu_ivar" ColumnName="cu_ivar" />
-          <ScalarProperty Name="cu_charg" ColumnName="cu_charg" />
-          <ScalarProperty Name="cu_taxid" ColumnName="cu_taxid" />
-          <ScalarProperty Name="cu_rela" ColumnName="cu_rela" />
-          <ScalarProperty Name="cu_crbi" ColumnName="cu_crbi" />
-          <ScalarProperty Name="cu_pre" ColumnName="cu_pre" />
-          <ScalarProperty Name="cu_pr_lc" ColumnName="cu_pr_lc" />
-          <ScalarProperty Name="cu_odamt" ColumnName="cu_odamt" />
-          <ScalarProperty Name="cu_saamt" ColumnName="cu_saamt" />
-          <ScalarProperty Name="bk_no" ColumnName="bk_no" />
-          <ScalarProperty Name="ck_acno" ColumnName="ck_acno" />
-          <ScalarProperty Name="cu_id" ColumnName="cu_id" />
-          <ScalarProperty Name="cu_zip" ColumnName="cu_zip" />
-          <ScalarProperty Name="cu_condi" ColumnName="cu_condi" />
-          <ScalarProperty Name="ie_ymd" ColumnName="ie_ymd" />
-          <ScalarProperty Name="od_id" ColumnName="od_id" />
-          <ScalarProperty Name="cu_odid" ColumnName="cu_odid" />
-          <ScalarProperty Name="edi_code" ColumnName="edi_code" />
-          <ScalarProperty Name="sa_route" ColumnName="sa_route" />
-          <ScalarProperty Name="dps_co" ColumnName="dps_co" />
-          <ScalarProperty Name="ck_acna" ColumnName="ck_acna" />
-          <ScalarProperty Name="cu_poar1" ColumnName="cu_poar1" />
-          <ScalarProperty Name="cu_ivar1" ColumnName="cu_ivar1" />
-          <ScalarProperty Name="cu_email" ColumnName="cu_email" />
-          <ScalarProperty Name="cu_ctid" ColumnName="cu_ctid" />
-          <ScalarProperty Name="cu_stid" ColumnName="cu_stid" />
-          <ScalarProperty Name="cu_bkid" ColumnName="cu_bkid" />
-          <ScalarProperty Name="cu_shid" ColumnName="cu_shid" />
-          <ScalarProperty Name="cu_cpid" ColumnName="cu_cpid" />
-          <ScalarProperty Name="cu_paid" ColumnName="cu_paid" />
-          <ScalarProperty Name="cu_waid" ColumnName="cu_waid" />
-          <ScalarProperty Name="cu_otid" ColumnName="cu_otid" />
-          <ScalarProperty Name="cu_sid" ColumnName="cu_sid" />
-          <ScalarProperty Name="cu_pay" ColumnName="cu_pay" />
-          <ScalarProperty Name="cu_incmel" ColumnName="cu_incmel" />
-          <ScalarProperty Name="lo_lim" ColumnName="lo_lim" />
-          <ScalarProperty Name="lo_amt" ColumnName="lo_amt" />
-          <ScalarProperty Name="bk_swift" ColumnName="bk_swift" />
-          <ScalarProperty Name="lo_ramt" ColumnName="lo_ramt" />
-          <ScalarProperty Name="lo_id" ColumnName="lo_id" />
-          <ScalarProperty Name="lo_lim1" ColumnName="lo_lim1" />
-          <ScalarProperty Name="bk_access" ColumnName="bk_access" />
-          <ScalarProperty Name="wa_apli" ColumnName="wa_apli" />
-          <ScalarProperty Name="wa_tunit" ColumnName="wa_tunit" />
-          <ScalarProperty Name="wa_tunit1" ColumnName="wa_tunit1" />
-          <ScalarProperty Name="wa_febu" ColumnName="wa_febu" />
-          <ScalarProperty Name="wa_comtax" ColumnName="wa_comtax" />
-          <ScalarProperty Name="tr_no" ColumnName="tr_no" />
-          <ScalarProperty Name="ie_time" ColumnName="ie_time" />
-          <ScalarProperty Name="ie_user" ColumnName="ie_user" />
-          <ScalarProperty Name="ie_lymd" ColumnName="ie_lymd" />
-          <ScalarProperty Name="ie_ltime" ColumnName="ie_ltime" />
-          <ScalarProperty Name="ie_luser" ColumnName="ie_luser" />
-          <ScalarProperty Name="ie_cymd" ColumnName="ie_cymd" />
-          <ScalarProperty Name="ie_ctime" ColumnName="ie_ctime" />
-          <ScalarProperty Name="ie_cuser" ColumnName="ie_cuser" />
-          <ScalarProperty Name="iv_page" ColumnName="iv_page" />
-          <ScalarProperty Name="cu_cr" ColumnName="cu_cr" />
-          <ScalarProperty Name="cu_iv" ColumnName="cu_iv" />
-          <ScalarProperty Name="cu_ipd" ColumnName="cu_ipd" />
-          <ScalarProperty Name="cu_gId" ColumnName="cu_gId" />
-          <ScalarProperty Name="wa_gui" ColumnName="wa_gui" />
-          <ScalarProperty Name="cu_lamtnol" ColumnName="cu_lamtnol" />
-          <ScalarProperty Name="cu_lamtnoh" ColumnName="cu_lamtnoh" />
-          <ScalarProperty Name="cu_kamtno" ColumnName="cu_kamtno" />
-          <ScalarProperty Name="cu_kamtlno" ColumnName="cu_kamtlno" />
-          <ScalarProperty Name="cu_kamtboss" ColumnName="cu_kamtboss" />
-          <ScalarProperty Name="ie_cancel" ColumnName="ie_cancel" />
-          <ScalarProperty Name="cu_name" ColumnName="cu_name" />
-          <ScalarProperty Name="cu_ename" ColumnName="cu_ename" />
-          <ScalarProperty Name="cu_bil" ColumnName="cu_bil" />
-          <ScalarProperty Name="cu_de_check" ColumnName="cu_de_check" />
-          <ScalarProperty Name="cu_ch" ColumnName="cu_ch" />
-          <ScalarProperty Name="cu_workhur" ColumnName="cu_workhur" />
-          <ScalarProperty Name="ie_doc" ColumnName="ie_doc" />
-          <ScalarProperty Name="ie_odid" ColumnName="ie_odid" />
-          <ScalarProperty Name="cu_billar" ColumnName="cu_billar" />
-          <ScalarProperty Name="cu_headquar" ColumnName="cu_headquar" />
-          <ScalarProperty Name="cu_billowner" ColumnName="cu_billowner" />
-          <ScalarProperty Name="cu_ldat" ColumnName="cu_ldat" />
-          <ScalarProperty Name="cu_addr" ColumnName="cu_addr" />
-          <ScalarProperty Name="ie_cser" ColumnName="ie_cser" />
-          <ScalarProperty Name="cu_taxyn" ColumnName="cu_taxyn" />
-          <ScalarProperty Name="cu_incono" ColumnName="cu_incono" />
-          <ScalarProperty Name="cu_noti" ColumnName="cu_noti" />
-          <ScalarProperty Name="cu_charg1" ColumnName="cu_charg1" />
-          <ScalarProperty Name="cu_agent" ColumnName="cu_agent" />
-          <ScalarProperty Name="cu_cashrt" ColumnName="cu_cashrt" />
-          <ScalarProperty Name="cu_cashyn" ColumnName="cu_cashyn" />
-          <ScalarProperty Name="cu_checkyn" ColumnName="cu_checkyn" />
-          <ScalarProperty Name="cu_discrt" ColumnName="cu_discrt" />
-          <ScalarProperty Name="cu_discyn" ColumnName="cu_discyn" />
-          <ScalarProperty Name="cu_pass" ColumnName="cu_pass" />
-          <ScalarProperty Name="ip_position" ColumnName="ip_position" />
-          <ScalarProperty Name="sa_pryn" ColumnName="sa_pryn" />
-          <ScalarProperty Name="cu_ctrsort" ColumnName="cu_ctrsort" />
-          <ScalarProperty Name="cu_cuno" ColumnName="cu_cuno" />
-          <ScalarProperty Name="cu_lead" ColumnName="cu_lead" />
-          <ScalarProperty Name="cu_no1" ColumnName="cu_no1" />
-          <ScalarProperty Name="cu_rtax" ColumnName="cu_rtax" />
-          <ScalarProperty Name="cu_send" ColumnName="cu_send" />
-          <ScalarProperty Name="cu_stodid" ColumnName="cu_stodid" />
-          <ScalarProperty Name="el_give" ColumnName="el_give" />
-          <ScalarProperty Name="el_mass" ColumnName="el_mass" />
-          <ScalarProperty Name="cu_code" ColumnName="cu_code" />
-          <ScalarProperty Name="ie_rtax" ColumnName="ie_rtax" />
-          <ScalarProperty Name="ie_pass" ColumnName="ie_pass" />
-          <ScalarProperty Name="ie_past" ColumnName="ie_past" />
-          <ScalarProperty Name="cu_nati" ColumnName="cu_nati" />
-          <ScalarProperty Name="cu_acname" ColumnName="cu_acname" />
-          <ScalarProperty Name="cu_scode" ColumnName="cu_scode" />
-          <ScalarProperty Name="cu_tm" ColumnName="cu_tm" />
-          <ScalarProperty Name="cu_city" ColumnName="cu_city" />
-          <ScalarProperty Name="su_iv" ColumnName="su_iv" />
-          <ScalarProperty Name="cu_ftype" ColumnName="cu_ftype" />
-          <ScalarProperty Name="cu_barea" ColumnName="cu_barea" />
-          <ScalarProperty Name="cu_utype" ColumnName="cu_utype" />
-          <ScalarProperty Name="cu_source" ColumnName="cu_source" />
-          <ScalarProperty Name="cu_stock" ColumnName="cu_stock" />
-          <ScalarProperty Name="cu_sale1" ColumnName="cu_sale1" />
-          <ScalarProperty Name="id_no" ColumnName="id_no" />
-          <ScalarProperty Name="tel_e" ColumnName="tel_e" />
-          <ScalarProperty Name="tel_n" ColumnName="tel_n" />
-          <ScalarProperty Name="tel_z" ColumnName="tel_z" />
-          <ScalarProperty Name="cu_agid" ColumnName="cu_agid" />
-          <ScalarProperty Name="cu_brok" ColumnName="cu_brok" />
-          <ScalarProperty Name="cu_chno" ColumnName="cu_chno" />
-          <ScalarProperty Name="cu_property" ColumnName="cu_property" />
-          <ScalarProperty Name="cu_hqid" ColumnName="cu_hqid" />
-          <ScalarProperty Name="cu_stack" ColumnName="cu_stack" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="iepb03h">
-      <EntityTypeMapping TypeName="jb_toolsModel.iepb03h">
-        <MappingFragment StoreEntitySet="iepb03h">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="cu_sale" ColumnName="cu_sale" />
-          <ScalarProperty Name="cu_snam" ColumnName="cu_snam" />
-          <ScalarProperty Name="cu_snam1" ColumnName="cu_snam1" />
-          <ScalarProperty Name="cu_tel" ColumnName="cu_tel" />
-          <ScalarProperty Name="cu_handtel" ColumnName="cu_handtel" />
-          <ScalarProperty Name="cu_email" ColumnName="cu_email" />
-          <ScalarProperty Name="dp_no" ColumnName="dp_no" />
-          <ScalarProperty Name="ie_pass" ColumnName="ie_pass" />
-          <ScalarProperty Name="cu_pass" ColumnName="cu_pass" />
-          <ScalarProperty Name="ie_ymd" ColumnName="ie_ymd" />
-          <ScalarProperty Name="ie_time" ColumnName="ie_time" />
-          <ScalarProperty Name="ie_user" ColumnName="ie_user" />
-          <ScalarProperty Name="ie_lymd" ColumnName="ie_lymd" />
-          <ScalarProperty Name="ie_ltime" ColumnName="ie_ltime" />
-          <ScalarProperty Name="ie_luser" ColumnName="ie_luser" />
-          <ScalarProperty Name="ie_cymd" ColumnName="ie_cymd" />
-          <ScalarProperty Name="ie_ctime" ColumnName="ie_ctime" />
-          <ScalarProperty Name="ie_cuser" ColumnName="ie_cuser" />
-          <ScalarProperty Name="ie_past" ColumnName="ie_past" />
-          <ScalarProperty Name="ie_cancel" ColumnName="ie_cancel" />
-          <ScalarProperty Name="pb_id2" ColumnName="pb_id2" />
-          <ScalarProperty Name="pa_cost" ColumnName="pa_cost" />
-          <ScalarProperty Name="pa_ssno" ColumnName="pa_ssno" />
-          <ScalarProperty Name="pa_id2" ColumnName="pa_id2" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Languages">
       <EntityTypeMapping TypeName="jb_toolsModel.Languages">
         <MappingFragment StoreEntitySet="Languages">
@@ -1258,16 +1069,210 @@
       <EntityTypeMapping TypeName="jb_toolsModel.IemuTrans">
         <MappingFragment StoreEntitySet="IemuTrans">
           <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="IndustryName" ColumnName="IndustryName" />
           <ScalarProperty Name="IndustryNo" ColumnName="IndustryNo" />
-          <ScalarProperty Name="CusaleName" ColumnName="CusaleName" />
           <ScalarProperty Name="CuSale" ColumnName="CuSale" />
-          <ScalarProperty Name="CuEname" ColumnName="CuEname" />
-          <ScalarProperty Name="CuName" ColumnName="CuName" />
-          <ScalarProperty Name="CuNa" ColumnName="CuNa" />
           <ScalarProperty Name="CuNo" ColumnName="CuNo" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="No" ColumnName="No" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="iecusuh">
+      <EntityTypeMapping TypeName="jb_toolsModel.iecusuh">
+        <MappingFragment StoreEntitySet="iecusuh">
+          <ScalarProperty Name="cu_stack" ColumnName="cu_stack" />
+          <ScalarProperty Name="cu_hqid" ColumnName="cu_hqid" />
+          <ScalarProperty Name="cu_property" ColumnName="cu_property" />
+          <ScalarProperty Name="cu_chno" ColumnName="cu_chno" />
+          <ScalarProperty Name="cu_brok" ColumnName="cu_brok" />
+          <ScalarProperty Name="cu_agid" ColumnName="cu_agid" />
+          <ScalarProperty Name="tel_z" ColumnName="tel_z" />
+          <ScalarProperty Name="tel_n" ColumnName="tel_n" />
+          <ScalarProperty Name="tel_e" ColumnName="tel_e" />
+          <ScalarProperty Name="id_no" ColumnName="id_no" />
+          <ScalarProperty Name="cu_sale1" ColumnName="cu_sale1" />
+          <ScalarProperty Name="cu_stock" ColumnName="cu_stock" />
+          <ScalarProperty Name="cu_source" ColumnName="cu_source" />
+          <ScalarProperty Name="cu_utype" ColumnName="cu_utype" />
+          <ScalarProperty Name="cu_barea" ColumnName="cu_barea" />
+          <ScalarProperty Name="cu_ftype" ColumnName="cu_ftype" />
+          <ScalarProperty Name="su_iv" ColumnName="su_iv" />
+          <ScalarProperty Name="cu_city" ColumnName="cu_city" />
+          <ScalarProperty Name="cu_tm" ColumnName="cu_tm" />
+          <ScalarProperty Name="cu_scode" ColumnName="cu_scode" />
+          <ScalarProperty Name="cu_acname" ColumnName="cu_acname" />
+          <ScalarProperty Name="cu_nati" ColumnName="cu_nati" />
+          <ScalarProperty Name="ie_past" ColumnName="ie_past" />
+          <ScalarProperty Name="ie_pass" ColumnName="ie_pass" />
+          <ScalarProperty Name="ie_rtax" ColumnName="ie_rtax" />
+          <ScalarProperty Name="cu_code" ColumnName="cu_code" />
+          <ScalarProperty Name="el_mass" ColumnName="el_mass" />
+          <ScalarProperty Name="el_give" ColumnName="el_give" />
+          <ScalarProperty Name="cu_stodid" ColumnName="cu_stodid" />
+          <ScalarProperty Name="cu_send" ColumnName="cu_send" />
+          <ScalarProperty Name="cu_rtax" ColumnName="cu_rtax" />
+          <ScalarProperty Name="cu_no1" ColumnName="cu_no1" />
+          <ScalarProperty Name="cu_lead" ColumnName="cu_lead" />
+          <ScalarProperty Name="cu_cuno" ColumnName="cu_cuno" />
+          <ScalarProperty Name="cu_ctrsort" ColumnName="cu_ctrsort" />
+          <ScalarProperty Name="sa_pryn" ColumnName="sa_pryn" />
+          <ScalarProperty Name="ip_position" ColumnName="ip_position" />
+          <ScalarProperty Name="cu_pass" ColumnName="cu_pass" />
+          <ScalarProperty Name="cu_discyn" ColumnName="cu_discyn" />
+          <ScalarProperty Name="cu_discrt" ColumnName="cu_discrt" />
+          <ScalarProperty Name="cu_checkyn" ColumnName="cu_checkyn" />
+          <ScalarProperty Name="cu_cashyn" ColumnName="cu_cashyn" />
+          <ScalarProperty Name="cu_cashrt" ColumnName="cu_cashrt" />
+          <ScalarProperty Name="cu_agent" ColumnName="cu_agent" />
+          <ScalarProperty Name="cu_charg1" ColumnName="cu_charg1" />
+          <ScalarProperty Name="cu_noti" ColumnName="cu_noti" />
+          <ScalarProperty Name="cu_incono" ColumnName="cu_incono" />
+          <ScalarProperty Name="cu_taxyn" ColumnName="cu_taxyn" />
+          <ScalarProperty Name="ie_cser" ColumnName="ie_cser" />
+          <ScalarProperty Name="cu_addr" ColumnName="cu_addr" />
+          <ScalarProperty Name="cu_ldat" ColumnName="cu_ldat" />
+          <ScalarProperty Name="cu_billowner" ColumnName="cu_billowner" />
+          <ScalarProperty Name="cu_headquar" ColumnName="cu_headquar" />
+          <ScalarProperty Name="cu_billar" ColumnName="cu_billar" />
+          <ScalarProperty Name="ie_odid" ColumnName="ie_odid" />
+          <ScalarProperty Name="ie_doc" ColumnName="ie_doc" />
+          <ScalarProperty Name="cu_workhur" ColumnName="cu_workhur" />
+          <ScalarProperty Name="cu_ch" ColumnName="cu_ch" />
+          <ScalarProperty Name="cu_de_check" ColumnName="cu_de_check" />
+          <ScalarProperty Name="cu_bil" ColumnName="cu_bil" />
+          <ScalarProperty Name="cu_ename" ColumnName="cu_ename" />
+          <ScalarProperty Name="cu_name" ColumnName="cu_name" />
+          <ScalarProperty Name="ie_cancel" ColumnName="ie_cancel" />
+          <ScalarProperty Name="cu_kamtboss" ColumnName="cu_kamtboss" />
+          <ScalarProperty Name="cu_kamtlno" ColumnName="cu_kamtlno" />
+          <ScalarProperty Name="cu_kamtno" ColumnName="cu_kamtno" />
+          <ScalarProperty Name="cu_lamtnoh" ColumnName="cu_lamtnoh" />
+          <ScalarProperty Name="cu_lamtnol" ColumnName="cu_lamtnol" />
+          <ScalarProperty Name="wa_gui" ColumnName="wa_gui" />
+          <ScalarProperty Name="cu_gId" ColumnName="cu_gId" />
+          <ScalarProperty Name="cu_ipd" ColumnName="cu_ipd" />
+          <ScalarProperty Name="cu_iv" ColumnName="cu_iv" />
+          <ScalarProperty Name="cu_cr" ColumnName="cu_cr" />
+          <ScalarProperty Name="iv_page" ColumnName="iv_page" />
+          <ScalarProperty Name="ie_cuser" ColumnName="ie_cuser" />
+          <ScalarProperty Name="ie_ctime" ColumnName="ie_ctime" />
+          <ScalarProperty Name="ie_cymd" ColumnName="ie_cymd" />
+          <ScalarProperty Name="ie_luser" ColumnName="ie_luser" />
+          <ScalarProperty Name="ie_ltime" ColumnName="ie_ltime" />
+          <ScalarProperty Name="ie_lymd" ColumnName="ie_lymd" />
+          <ScalarProperty Name="ie_user" ColumnName="ie_user" />
+          <ScalarProperty Name="ie_time" ColumnName="ie_time" />
+          <ScalarProperty Name="tr_no" ColumnName="tr_no" />
+          <ScalarProperty Name="wa_comtax" ColumnName="wa_comtax" />
+          <ScalarProperty Name="wa_febu" ColumnName="wa_febu" />
+          <ScalarProperty Name="wa_tunit1" ColumnName="wa_tunit1" />
+          <ScalarProperty Name="wa_tunit" ColumnName="wa_tunit" />
+          <ScalarProperty Name="wa_apli" ColumnName="wa_apli" />
+          <ScalarProperty Name="bk_access" ColumnName="bk_access" />
+          <ScalarProperty Name="lo_lim1" ColumnName="lo_lim1" />
+          <ScalarProperty Name="lo_id" ColumnName="lo_id" />
+          <ScalarProperty Name="lo_ramt" ColumnName="lo_ramt" />
+          <ScalarProperty Name="bk_swift" ColumnName="bk_swift" />
+          <ScalarProperty Name="lo_amt" ColumnName="lo_amt" />
+          <ScalarProperty Name="lo_lim" ColumnName="lo_lim" />
+          <ScalarProperty Name="cu_incmel" ColumnName="cu_incmel" />
+          <ScalarProperty Name="cu_pay" ColumnName="cu_pay" />
+          <ScalarProperty Name="cu_sid" ColumnName="cu_sid" />
+          <ScalarProperty Name="cu_otid" ColumnName="cu_otid" />
+          <ScalarProperty Name="cu_waid" ColumnName="cu_waid" />
+          <ScalarProperty Name="cu_paid" ColumnName="cu_paid" />
+          <ScalarProperty Name="cu_cpid" ColumnName="cu_cpid" />
+          <ScalarProperty Name="cu_shid" ColumnName="cu_shid" />
+          <ScalarProperty Name="cu_bkid" ColumnName="cu_bkid" />
+          <ScalarProperty Name="cu_stid" ColumnName="cu_stid" />
+          <ScalarProperty Name="cu_ctid" ColumnName="cu_ctid" />
+          <ScalarProperty Name="cu_email" ColumnName="cu_email" />
+          <ScalarProperty Name="cu_ivar1" ColumnName="cu_ivar1" />
+          <ScalarProperty Name="cu_poar1" ColumnName="cu_poar1" />
+          <ScalarProperty Name="ck_acna" ColumnName="ck_acna" />
+          <ScalarProperty Name="dps_co" ColumnName="dps_co" />
+          <ScalarProperty Name="sa_route" ColumnName="sa_route" />
+          <ScalarProperty Name="edi_code" ColumnName="edi_code" />
+          <ScalarProperty Name="cu_odid" ColumnName="cu_odid" />
+          <ScalarProperty Name="od_id" ColumnName="od_id" />
+          <ScalarProperty Name="ie_ymd" ColumnName="ie_ymd" />
+          <ScalarProperty Name="cu_condi" ColumnName="cu_condi" />
+          <ScalarProperty Name="cu_zip" ColumnName="cu_zip" />
+          <ScalarProperty Name="cu_id" ColumnName="cu_id" />
+          <ScalarProperty Name="ck_acno" ColumnName="ck_acno" />
+          <ScalarProperty Name="bk_no" ColumnName="bk_no" />
+          <ScalarProperty Name="cu_saamt" ColumnName="cu_saamt" />
+          <ScalarProperty Name="cu_odamt" ColumnName="cu_odamt" />
+          <ScalarProperty Name="cu_pr_lc" ColumnName="cu_pr_lc" />
+          <ScalarProperty Name="cu_pre" ColumnName="cu_pre" />
+          <ScalarProperty Name="cu_crbi" ColumnName="cu_crbi" />
+          <ScalarProperty Name="cu_rela" ColumnName="cu_rela" />
+          <ScalarProperty Name="cu_taxid" ColumnName="cu_taxid" />
+          <ScalarProperty Name="cu_charg" ColumnName="cu_charg" />
+          <ScalarProperty Name="cu_ivar" ColumnName="cu_ivar" />
+          <ScalarProperty Name="cu_poar" ColumnName="cu_poar" />
+          <ScalarProperty Name="cu_invst" ColumnName="cu_invst" />
+          <ScalarProperty Name="cu_bdat" ColumnName="cu_bdat" />
+          <ScalarProperty Name="cu_chdat" ColumnName="cu_chdat" />
+          <ScalarProperty Name="cu_area" ColumnName="cu_area" />
+          <ScalarProperty Name="cu_ar" ColumnName="cu_ar" />
+          <ScalarProperty Name="cu_ck" ColumnName="cu_ck" />
+          <ScalarProperty Name="cu_sdat" ColumnName="cu_sdat" />
+          <ScalarProperty Name="cu_crdt" ColumnName="cu_crdt" />
+          <ScalarProperty Name="cu_date" ColumnName="cu_date" />
+          <ScalarProperty Name="cu_check" ColumnName="cu_check" />
+          <ScalarProperty Name="cu_tax" ColumnName="cu_tax" />
+          <ScalarProperty Name="cu_disc" ColumnName="cu_disc" />
+          <ScalarProperty Name="cu_touch" ColumnName="cu_touch" />
+          <ScalarProperty Name="cu_boss" ColumnName="cu_boss" />
+          <ScalarProperty Name="cu_taxno" ColumnName="cu_taxno" />
+          <ScalarProperty Name="cu_type" ColumnName="cu_type" />
+          <ScalarProperty Name="cu_unit" ColumnName="cu_unit" />
+          <ScalarProperty Name="cu_na" ColumnName="cu_na" />
+          <ScalarProperty Name="cu_sale" ColumnName="cu_sale" />
+          <ScalarProperty Name="cu_no" ColumnName="cu_no" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="iepb03h">
+      <EntityTypeMapping TypeName="jb_toolsModel.iepb03h">
+        <MappingFragment StoreEntitySet="iepb03h">
+          <ScalarProperty Name="pa_id2" ColumnName="pa_id2" />
+          <ScalarProperty Name="pa_ssno" ColumnName="pa_ssno" />
+          <ScalarProperty Name="pa_cost" ColumnName="pa_cost" />
+          <ScalarProperty Name="pb_id2" ColumnName="pb_id2" />
+          <ScalarProperty Name="ie_cancel" ColumnName="ie_cancel" />
+          <ScalarProperty Name="ie_past" ColumnName="ie_past" />
+          <ScalarProperty Name="ie_cuser" ColumnName="ie_cuser" />
+          <ScalarProperty Name="ie_ctime" ColumnName="ie_ctime" />
+          <ScalarProperty Name="ie_cymd" ColumnName="ie_cymd" />
+          <ScalarProperty Name="ie_luser" ColumnName="ie_luser" />
+          <ScalarProperty Name="ie_ltime" ColumnName="ie_ltime" />
+          <ScalarProperty Name="ie_lymd" ColumnName="ie_lymd" />
+          <ScalarProperty Name="ie_user" ColumnName="ie_user" />
+          <ScalarProperty Name="ie_time" ColumnName="ie_time" />
+          <ScalarProperty Name="ie_ymd" ColumnName="ie_ymd" />
+          <ScalarProperty Name="cu_pass" ColumnName="cu_pass" />
+          <ScalarProperty Name="ie_pass" ColumnName="ie_pass" />
+          <ScalarProperty Name="dp_no" ColumnName="dp_no" />
+          <ScalarProperty Name="cu_email" ColumnName="cu_email" />
+          <ScalarProperty Name="cu_handtel" ColumnName="cu_handtel" />
+          <ScalarProperty Name="cu_tel" ColumnName="cu_tel" />
+          <ScalarProperty Name="cu_snam1" ColumnName="cu_snam1" />
+          <ScalarProperty Name="cu_snam" ColumnName="cu_snam" />
+          <ScalarProperty Name="cu_sale" ColumnName="cu_sale" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Industries">
+      <EntityTypeMapping TypeName="jb_toolsModel.Industries">
+        <MappingFragment StoreEntitySet="Industries">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IndustryName" ColumnName="IndustryName" />
+          <ScalarProperty Name="IndustryNo" ColumnName="IndustryNo" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

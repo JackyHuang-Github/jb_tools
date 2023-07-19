@@ -3,6 +3,33 @@
 @{
     ViewBag.Title = "CreateEdit";
     Layout = "~/Views/Shared/_LayoutCard.cshtml";
+
+    List<SelectListItem> statusList = new List<SelectListItem>();
+    using (ListItemData listData = new ListItemData())
+    {
+        statusList = listData.Status_IemuTransList();
+    }
+
+    List<SelectListItem> customerList = new List<SelectListItem>();
+    using (ListItemData listData = new ListItemData())
+    {
+        customerList = listData.CustomerList();
+    }
+
+    List<SelectListItem> cusaleList = new List<SelectListItem>();
+    using (ListItemData listData = new ListItemData())
+    {
+        cusaleList = listData.CusaleList();
+    }
+
+    List<SelectListItem> industryList = new List<SelectListItem>();
+    using (ListItemData listData = new ListItemData())
+    {
+        industryList = listData.IndustryList();
+    }
+
+    // 判斷目前的編輯模式
+    // var editMode = (Model.Id == 0) ? enAction.Create : enAction.Edit;
 }
 
 @*關閉 未完待續 視窗*@
@@ -19,104 +46,71 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-horizontal mt-2">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="row form-group">
-                    @Html.LabelFor(m => m.No, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(m => m.No, new { htmlAttributes = new { @class = "form-control col-md-10" } })
-                        @Html.ValidationMessageFor(m => m.No, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+        <div class="form-horizontal mt-2">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                <div class="row form-group">
-                    @Html.LabelFor(m => m.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(m => m.Status, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(m => m.Status, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    @Html.LabelFor(m => m.CuNo, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(m => m.CuNo, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(m => m.CuNo, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    @Html.LabelFor(m => m.CuNa, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(m => m.CuNa, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(m => m.CuNa, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    @Html.LabelFor(m => m.CuName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(m => m.CuName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(m => m.CuName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    @Html.LabelFor(m => m.CuEname, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(m => m.CuEname, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(m => m.CuEname, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    @Html.LabelFor(m => m.CuSale, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(m => m.CuSale, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(m => m.CuSale, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    @Html.LabelFor(m => m.CusaleName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(m => m.CusaleName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(m => m.CusaleName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    @Html.LabelFor(m => m.IndustryNo, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(m => m.IndustryNo, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(m => m.IndustryNo, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    @Html.LabelFor(m => m.IndustryName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(m => m.IndustryName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(m => m.IndustryName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    @Html.LabelFor(m => m.Remark, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(m => m.Remark, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(m => m.Remark, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <hr />
-                <div class="row form-group mt-2">
-                    <div class="col-12">
-                        <input type="submit" value="確認編輯" class="btn btn-primary" />
-                        @Html.ActionLink(ActionService.ReturnIndex, ActionService.Index, ActionService.Controller, new { area = "" }, new { @class = "btn btn-success" })
-                    </div>
+            @* 單號 *@
+            <div class="row form-group mb-1">
+                @Html.LabelFor(m => m.No, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.No, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    @Html.ValidationMessageFor(m => m.No, "", new { @class = "text-danger" })
                 </div>
             </div>
+
+            @* 狀態碼 *@
+            <div class="row form-group mb-1">
+                @Html.LabelFor(m => m.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.Status, statusList, new { @class = "form-control", disabled = "disabled" })
+                    @Html.ValidationMessageFor(m => m.Status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @* 客戶代號 *@
+            <div class="row form-group mb-1">
+                @Html.LabelFor(m => m.CuNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.CuNo, customerList, new { @class = "form-control", autofocus = true })
+                    @Html.ValidationMessageFor(m => m.CuNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @* 經辦人代號 *@
+            <div class="row form-group mb-1">
+                @Html.LabelFor(m => m.CuSale, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.CuSale, cusaleList, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CuSale, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @* 產業別代號 *@
+            <div class="row form-group mb-1">
+                @Html.LabelFor(m => m.IndustryNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.IndustryNo, industryList, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IndustryNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @* 備註 *@
+            <div class="row form-group">
+                @Html.LabelFor(m => m.Remark, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.Remark, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.Remark, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <hr />
+            <div class="row form-group mt-2">
+                <div class="col-12">
+                    <input type="submit" value="確認編輯" class="btn btn-primary" />
+                    @Html.ActionLink(ActionService.ReturnIndex, ActionService.Index, ActionService.Controller, new { area = "" }, new { @class = "btn btn-success" })
+                </div>
+            </div>
+        </div>
         }
     </div>
 </div>

@@ -12,12 +12,13 @@
     white-space: normal;
 }
 
+/* Jacky 1120719 mark，這段設定將導致 Card 的欄位永遠只能那麼寬，無法改變 */
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+/*input,
 select,
 textarea {
     max-width: 280px;
-}
+}*/
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* Jacky 1120703 */

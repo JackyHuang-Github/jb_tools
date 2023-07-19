@@ -14,7 +14,7 @@ namespace jb_tools.Models
     
     public partial class iecusuh
     {
-        public decimal Id { get; set; }
+        public int Id { get; set; }
         public string cu_no { get; set; }
         public string cu_sale { get; set; }
         public string cu_na { get; set; }

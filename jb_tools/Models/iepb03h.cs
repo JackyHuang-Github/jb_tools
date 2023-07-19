@@ -14,7 +14,7 @@ namespace jb_tools.Models
     
     public partial class iepb03h
     {
-        public decimal Id { get; set; }
+        public int Id { get; set; }
         public string cu_sale { get; set; }
         public string cu_snam { get; set; }
         public string cu_snam1 { get; set; }
