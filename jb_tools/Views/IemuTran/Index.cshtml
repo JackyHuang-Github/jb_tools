@@ -27,27 +27,12 @@
                             <th class="tableTitle px-1">
                                 @Html.DisplayNameFor(model => model.CuNo)
                             </th>
-                            @*<th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.CuNa)
-                            </th>
-                            <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.CuName)
-                            </th>
-                            <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.CuEname)
-                            </th>*@
                             <th class="tableTitle px-1">
                                 @Html.DisplayNameFor(model => model.CuSale)
-                            </th>
-                            @*<th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.CusaleName)
                             </th>
                             <th class="tableTitle px-1">
                                 @Html.DisplayNameFor(model => model.IndustryNo)
                             </th>
-                            <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.IndustryName)
-                            </th>*@
                             <th class="tableTitle px-1">
                                 @Html.DisplayNameFor(model => model.Remark)
                             </th>
@@ -76,29 +61,14 @@
                                     @Html.DisplayFor(modelItem => item.Status)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CuNo)
-                                </td>
-                                @*<td>
-                                    @Html.DisplayFor(modelItem => item.CuNa)
+                                    @Html.DisplayFor(modelItem => item.CuNo)&nbsp;&nbsp;@Html.DisplayFor(modeItem => item.cu_na)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CuName)
+                                    @Html.DisplayFor(modelItem => item.CuSale)&nbsp;&nbsp;@Html.DisplayFor(modeItem => item.cu_snam)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CuEname)
-                                </td>*@
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CuSale)
+                                    @Html.DisplayFor(modelItem => item.IndustryNo)&nbsp;&nbsp;@Html.DisplayFor(modeItem => item.IndustryName)
                                 </td>
-                                @*<td>
-                                    @Html.DisplayFor(modelItem => item.CusaleName)
-                                </td>*@
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.IndustryNo)
-                                </td>
-                                @*<td>
-                                    @Html.DisplayFor(modelItem => item.IndustryName)
-                                </td>*@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Remark)
                                 </td>

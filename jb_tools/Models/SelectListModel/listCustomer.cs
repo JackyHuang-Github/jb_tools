@@ -19,7 +19,7 @@ public partial class ListItemData : BaseClass
                 .OrderBy(m => m.cu_no)
                 .Select(u => new SelectListItem
                 {
-                    Text = u.cu_no + " " + u.cu_na,
+                    Text = u.cu_no + SelectListService.Delimiter + u.cu_na,
                     Value = u.cu_no
                 }).ToList();
             return (List<SelectListItem>)data;

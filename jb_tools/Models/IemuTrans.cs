@@ -16,6 +16,7 @@ namespace jb_tools.Models
     {
         public int Id { get; set; }
         public string No { get; set; }
+        public System.DateTime Date { get; set; }
         public string Status { get; set; }
         public string CuNo { get; set; }
         public string CuSale { get; set; }

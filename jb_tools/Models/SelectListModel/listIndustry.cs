@@ -19,7 +19,7 @@ public partial class ListItemData : BaseClass
                 .OrderBy(m => m.IndustryNo)
                 .Select(u => new SelectListItem
                 {
-                    Text = u.IndustryNo + " " + u.IndustryName,
+                    Text = u.IndustryNo + SelectListService.Delimiter + u.IndustryName,
                     Value = u.IndustryNo
                 }).ToList();
             return (List<SelectListItem>)data;

@@ -633,6 +633,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="No" Type="char" MaxLength="11" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
     <Property Name="Status" Type="char" MaxLength="1" Nullable="false" />
     <Property Name="CuNo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="CuSale" Type="varchar" MaxLength="50" Nullable="false" />

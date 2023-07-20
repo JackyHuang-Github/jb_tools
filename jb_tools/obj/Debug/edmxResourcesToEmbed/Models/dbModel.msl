@@ -1065,19 +1065,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="IemuTrans">
-      <EntityTypeMapping TypeName="jb_toolsModel.IemuTrans">
-        <MappingFragment StoreEntitySet="IemuTrans">
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="IndustryNo" ColumnName="IndustryNo" />
-          <ScalarProperty Name="CuSale" ColumnName="CuSale" />
-          <ScalarProperty Name="CuNo" ColumnName="CuNo" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="No" ColumnName="No" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="iecusuh">
       <EntityTypeMapping TypeName="jb_toolsModel.iecusuh">
         <MappingFragment StoreEntitySet="iecusuh">
@@ -1273,6 +1260,20 @@
           <ScalarProperty Name="Remark" ColumnName="Remark" />
           <ScalarProperty Name="IndustryName" ColumnName="IndustryName" />
           <ScalarProperty Name="IndustryNo" ColumnName="IndustryNo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IemuTrans">
+      <EntityTypeMapping TypeName="jb_toolsModel.IemuTrans">
+        <MappingFragment StoreEntitySet="IemuTrans">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IndustryNo" ColumnName="IndustryNo" />
+          <ScalarProperty Name="CuSale" ColumnName="CuSale" />
+          <ScalarProperty Name="CuNo" ColumnName="CuNo" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="No" ColumnName="No" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

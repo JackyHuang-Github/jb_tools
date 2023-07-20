@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using DocumentFormat.OpenXml.Drawing.ChartDrawing;
+using DocumentFormat.OpenXml.Drawing.Charts;
 using jb_tools.Models;
 using System;
 using System.Collections.Generic;
@@ -65,13 +67,12 @@ public class z_repoIemuTrans : BaseClass
     {
         string str_query = @"
 SELECT
-	IemuTrans.Id, IemuTrans.No, IemuTrans.Status, IemuTrans.CuNo, iecusuh.cu_na, IemuTrans.CuSale, 
+	IemuTrans.Id, IemuTrans.No, IemuTrans.Date, IemuTrans.Status, IemuTrans.CuNo, iecusuh.cu_na, IemuTrans.CuSale, 
     iepb03h.cu_snam, IemuTrans.IndustryNo, Industries.IndustryName, IemuTrans.Remark
 FROM IemuTrans 
 LEFT OUTER JOIN iecusuh ON IemuTrans.CuNo = iecusuh.cu_no
 LEFT OUTER JOIN iepb03h ON IemuTrans.CuSale = iepb03h.cu_sale 
 LEFT OUTER JOIN Industries ON IemuTrans.IndustryNo = Industries.IndustryNo
-ORDER BY IemuTrans.No
 ";
         return str_query;
     }
@@ -88,6 +89,7 @@ ORDER BY IemuTrans.No
         {
             str_query += " WHERE ( ";
             str_query += $"IemuTrans.No LIKE '%{searchText}%' OR ";
+            str_query += $"IemuTrans.Date LIKE '%{searchText}%' OR ";
             str_query += $"IemuTrans.Status LIKE '%{searchText}%' OR ";
             str_query += $"IemuTrans.CuNo LIKE '%{searchText}%' OR ";
             str_query += $"iecusuh.CuNa LIKE '%{searchText}%' OR ";
@@ -141,5 +143,27 @@ ORDER BY IemuTrans.No
     }
     #endregion
     #region 自定義事件及函數
+    /// <summary>
+    /// 取得新單號
+    /// </summary>
+    /// <returns></returns>
+    public string GetNewNo()
+    {
+        string newNo = "";
+        string today = 
+            string.Format(DateTime.Now.ToString("yyyy")) +
+            string.Format(DateTime.Now.ToString("MM")) +
+            string.Format(DateTime.Now.ToString("dd"));
+
+        var iemuTrans = new List<IemuTrans>();
+        var count = iemuTrans
+            .Count(x => x.No.Substring(0, 4).Equals("2023"));
+        count++;
+        newNo = $"{today}{count:000}";
+
+        //.Where(x => x.No.Substring(0, 8) == today)
+
+        return newNo;
+    }
     #endregion
 }

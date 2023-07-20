@@ -1,12 +1,14 @@
 ﻿@*@if (SecurityService.IsDelete)*@
 @*{*@
 
-@* Jacky 1120718 這段測試程式正常無誤 *@
-@*<input type="button" id="@ActionService.Delete" value="@ActionService.DeleteName" class="btn btn-sm btn-danger"
-    onclick="console.log('test !!');" />*@
+@* Jacky 1120719 設定刪除按鈕 *@
+@*<input type="button" id="@ActionService.Delete" value="@ActionService.DeleteName" class="btn btn-sm btn-danger border-info"
+       onclick="DeleteData(@ActionService.RowId , '@ActionService.RowData');" />*@
 
-<input type="button" id="@ActionService.Delete" value="@ActionService.DeleteName" class="btn btn-sm btn-danger border-info" 
-       onclick="DeleteData(@ActionService.RowId , '@ActionService.RowData');" />
+@* Jacky 1120720 改用 fontawesone 圖示顯示 *@
+<a class="btn btn-sm btn-danger border-info" href="#" onclick="DeleteData(@ActionService.RowId , '@ActionService.RowData');">
+    <i class="fas fa-trash-alt fa-lg"></i>
+</a>
 
 <script>
     function DeleteData(id, data) {

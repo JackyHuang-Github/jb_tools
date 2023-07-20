@@ -22,7 +22,7 @@ public partial class ListItemData : BaseClass
                 .ThenBy(m => m.CodeNo)
                 .Select(u => new SelectListItem
                 {
-                    Text = u.CodeNo + " " + u.CodeName,
+                    Text = u.CodeNo + SelectListService.Delimiter + u.CodeName,
                     Value = u.CodeNo
                 }).ToList();
             return (List<SelectListItem>)data;

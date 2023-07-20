@@ -638,6 +638,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="No" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Status" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="CuNo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CuSale" Type="varchar" MaxLength="50" Nullable="false" />
@@ -2272,10 +2273,10 @@
           <EntitySet Name="IemuMainMenus" EntityType="jb_toolsModel.IemuMainMenus" />
           <EntitySet Name="IemuSubMenus" EntityType="jb_toolsModel.IemuSubMenus" />
           <EntitySet Name="IemuTranDetails" EntityType="jb_toolsModel.IemuTranDetails" />
-          <EntitySet Name="IemuTrans" EntityType="jb_toolsModel.IemuTrans" />
           <EntitySet Name="iecusuh" EntityType="jb_toolsModel.iecusuh" />
           <EntitySet Name="iepb03h" EntityType="jb_toolsModel.iepb03h" />
           <EntitySet Name="Industries" EntityType="jb_toolsModel.Industries" />
+          <EntitySet Name="IemuTrans" EntityType="jb_toolsModel.IemuTrans" />
         </EntityContainer>
         <EntityType Name="DetailMenus">
           <Key>
@@ -2355,18 +2356,6 @@
           <Property Name="Scid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DetailOrder" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Program" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="IemuTrans">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="No" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="CuNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CuSale" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IndustryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="iecusuh">
@@ -2563,6 +2552,19 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IndustryNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IndustryName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="IemuTrans">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="No" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CuNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CuSale" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IndustryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
@@ -3635,19 +3637,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="IemuTrans">
-            <EntityTypeMapping TypeName="jb_toolsModel.IemuTrans">
-              <MappingFragment StoreEntitySet="IemuTrans">
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="IndustryNo" ColumnName="IndustryNo" />
-                <ScalarProperty Name="CuSale" ColumnName="CuSale" />
-                <ScalarProperty Name="CuNo" ColumnName="CuNo" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="No" ColumnName="No" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="iecusuh">
             <EntityTypeMapping TypeName="jb_toolsModel.iecusuh">
               <MappingFragment StoreEntitySet="iecusuh">
@@ -3843,6 +3832,20 @@
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="IndustryName" ColumnName="IndustryName" />
                 <ScalarProperty Name="IndustryNo" ColumnName="IndustryNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IemuTrans">
+            <EntityTypeMapping TypeName="jb_toolsModel.IemuTrans">
+              <MappingFragment StoreEntitySet="IemuTrans">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IndustryNo" ColumnName="IndustryNo" />
+                <ScalarProperty Name="CuSale" ColumnName="CuSale" />
+                <ScalarProperty Name="CuNo" ColumnName="CuNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="No" ColumnName="No" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
