@@ -22,6 +22,9 @@
                                 @Html.DisplayNameFor(model => model.No)
                             </th>
                             <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.Date)
+                            </th>
+                            <th class="tableTitle px-1">
                                 @Html.DisplayNameFor(model => model.Status)
                             </th>
                             <th class="tableTitle px-1">
@@ -58,7 +61,10 @@
                                     @Html.DisplayFor(modelItem => item.No)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Status)
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)&nbsp;&nbsp;@Html.DisplayFor(modeItem => item.CodeName)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.CuNo)&nbsp;&nbsp;@Html.DisplayFor(modeItem => item.cu_na)

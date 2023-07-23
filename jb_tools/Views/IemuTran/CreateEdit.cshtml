@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "CreateEdit";
     Layout = "~/Views/Shared/_LayoutCard.cshtml";
+    ActionService.RowId = Model.Id;
 
     List<SelectListItem> statusList = new List<SelectListItem>();
     using (ListItemData listData = new ListItemData())
@@ -28,8 +29,8 @@
         industryList = listData.IndustryList();
     }
 
-    // 判斷目前的編輯模式
-    // var editMode = (Model.Id == 0) ? enAction.Create : enAction.Edit;
+    // 取得目前的編輯模式
+    var editMode = ViewBag.Action;
 }
 
 @*關閉 未完待續 視窗*@
@@ -38,7 +39,14 @@
 <div class="card mt-5 shadow w-50">
     <div class="card-header text-white bg-primary">
         <div class="d-flex justify-content-center">
-            <h3>IEMenu - @ActionService.CreateName</h3>
+            @if (editMode == enAction.Create)
+            {
+                <h3>IEMenu - @ActionService.CreateName</h3>
+            }
+            else
+            {
+                <h3>IEMenu - @ActionService.EditName</h3>
+            }
         </div>
     </div>
     <div class="card-body pt-4">
@@ -46,73 +54,115 @@
         {
             @Html.AntiForgeryToken()
 
-        <div class="form-horizontal mt-2">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-horizontal mt-2">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(m => m.Id)
 
-            @* 單號 *@
-            <div class="row form-group mb-1">
-                @Html.LabelFor(m => m.No, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(m => m.No, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-                    @Html.ValidationMessageFor(m => m.No, "", new { @class = "text-danger" })
+                @* 單號 *@
+                <div class="row form-group mb-1">
+                    @Html.LabelFor(m => m.No, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @* 注意：這裡只能用 readoly 不能用 disabled，因為會被 Form Submit 忽略之，也就是不會傳送至 Server *@
+                        @* readonly 用法：@readonly = true，但是元素 <SELECT> <OPTION> <BUTTON> 不支援 readonly *@
+                        @* disabled 用法：@readonly = true *@
+                        @Html.EditorFor(m => m.No, new { htmlAttributes = new { @class = "form-control readonly_bgc", @readonly = true } })
+                        @Html.ValidationMessageFor(m => m.No, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* 日期 *@
+                <div class="row form-group mb-1">
+                    @Html.LabelFor(m => m.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(m => m.Date, new { htmlAttributes = new { @class = "form-control readonly_bgc", @readonly = true } })
+                        @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* 狀態碼 *@
+                <div class="row form-group mb-1">
+                    @Html.LabelFor(m => m.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @if (editMode == enAction.Create)
+                        {
+                            @* @Html.DropDownListFor(m => m.Status, statusList, new { @class = "form-control readonly_bgc", @readonly = true }) *@
+                            @* Jacky 1120723 因為 DropDownListFor 不支援 readonly 所以這裡改為 TextBoxFor，後面再加 [狀態名稱] *@
+                            @Html.TextBoxFor(m => m.Status, new { @class = "form-control readonly_bgc", @readonly = true }) 
+                            @Html.DisplayFor(m => m.CodeName)
+                        }
+                        else
+                        {
+                            @Html.DropDownListFor(m => m.Status, statusList, new { @class = "form-control", autofocus = true })
+                        }
+
+                        @Html.ValidationMessageFor(m => m.Status, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* 客戶代號 *@
+                <div class="row form-group mb-1">
+                    @Html.LabelFor(m => m.CuNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @if (editMode == enAction.Create)
+                        {
+                            @Html.DropDownListFor(m => m.CuNo, customerList, new { @class = "form-control", autofocus = true })
+                        }
+                        else
+                        {
+                            @* @Html.DropDownListFor(m => m.CuNo, customerList, new { @class = "form-control readonly_bgc", @readonly = true }) *@
+                            @* Jacky 1120723 因為 DropDownListFor 不支援 readonly 所以這裡改為 TextBoxFor，後面再加 [客戶簡稱] *@
+                            @Html.TextBoxFor(m => m.CuNo, new { @class = "form-control readonly_bgc", @readonly = true }) 
+                            @Html.DisplayFor(m => m.cu_na)
+                        }
+
+                        @Html.ValidationMessageFor(m => m.CuNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* 經辦人代號 *@
+                <div class="row form-group mb-1">
+                    @Html.LabelFor(m => m.CuSale, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.CuSale, cusaleList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.CuSale, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* 產業別代號 *@
+                <div class="row form-group mb-1">
+                    @Html.LabelFor(m => m.IndustryNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.IndustryNo, industryList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.IndustryNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* 備註 *@
+                <div class="row form-group">
+                    @Html.LabelFor(m => m.Remark, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(m => m.Remark, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Remark, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <hr />
+                <div class="row form-group mt-2">
+                    <div class="col-12">
+                        <input type="submit" value="確認編輯" class="btn btn-primary" accesskey="J" alt="確認編輯 (Alt + J)"
+                            title="確認編輯 (Alt + J)"/>
+
+                        @*<a href="javascript:submitForm()" class="btn btn-primary" accesskey="J"
+                           alt="確認編輯 (Alt + J)" title="確認編輯 (Alt + J)">確認編輯</a>*@
+
+                        @Html.ActionLink(ActionService.ReturnIndex, ActionService.Index, ActionService.Controller, new { area = ActionService.Area }, 
+                            new { @class = "btn btn-success", accesskey = "K", alt = "返回列表 (Alt + K)", title = "返回列表 (Alt + K)" })
+
+                        @* Jacky 1120720 想利用 a 標籤來模擬 submit 的功能 *@
+                        @*<a href="#" onclick="document.getElementById('myform').submit(); return false;"></a>*@
+                    </div>
                 </div>
             </div>
-
-            @* 狀態碼 *@
-            <div class="row form-group mb-1">
-                @Html.LabelFor(m => m.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(m => m.Status, statusList, new { @class = "form-control", disabled = "disabled" })
-                    @Html.ValidationMessageFor(m => m.Status, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            @* 客戶代號 *@
-            <div class="row form-group mb-1">
-                @Html.LabelFor(m => m.CuNo, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(m => m.CuNo, customerList, new { @class = "form-control", autofocus = true })
-                    @Html.ValidationMessageFor(m => m.CuNo, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            @* 經辦人代號 *@
-            <div class="row form-group mb-1">
-                @Html.LabelFor(m => m.CuSale, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(m => m.CuSale, cusaleList, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.CuSale, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            @* 產業別代號 *@
-            <div class="row form-group mb-1">
-                @Html.LabelFor(m => m.IndustryNo, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(m => m.IndustryNo, industryList, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.IndustryNo, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            @* 備註 *@
-            <div class="row form-group">
-                @Html.LabelFor(m => m.Remark, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(m => m.Remark, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(m => m.Remark, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <hr />
-            <div class="row form-group mt-2">
-                <div class="col-12">
-                    <input type="submit" value="確認編輯" class="btn btn-primary" />
-                    @* Jacky 1120720 想利用 a 標籤來模擬 submit 的功能
-                        <a href="#" onclick="document.getElementById('myform').submit(); return false;"></a>*@
-                    @Html.ActionLink(ActionService.ReturnIndex, ActionService.Index, ActionService.Controller, new { area = "" }, new { @class = "btn btn-success" })
-                </div>
-            </div>
-        </div>
         }
     </div>
 </div>

@@ -490,4 +490,12 @@ public static class PrgService
         }
         return str_icon;
     }
+
+    public static string SetIndex(int pageNumber = 1, int pageCount = 0, string searchText = "")
+    {
+        SearchText = searchText;
+        SetProgram();
+        SetAction(ActionService.IndexName, enCardSize.Max, pageNumber, pageCount);
+        return $"第 {pageNumber} 頁，共 {pageCount} 頁";
+    }
 }

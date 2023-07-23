@@ -1,7 +1,10 @@
 ﻿using Dapper;
 using DocumentFormat.OpenXml.Drawing.ChartDrawing;
 using DocumentFormat.OpenXml.Drawing.Charts;
+using DocumentFormat.OpenXml.Math;
+using DocumentFormat.OpenXml.Wordprocessing;
 using jb_tools.Models;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,9 +70,10 @@ public class z_repoIemuTrans : BaseClass
     {
         string str_query = @"
 SELECT
-	IemuTrans.Id, IemuTrans.No, IemuTrans.Date, IemuTrans.Status, IemuTrans.CuNo, iecusuh.cu_na, IemuTrans.CuSale, 
-    iepb03h.cu_snam, IemuTrans.IndustryNo, Industries.IndustryName, IemuTrans.Remark
+	IemuTrans.Id, IemuTrans.No, IemuTrans.Date, IemuTrans.Status, CodeDatas.CodeName, IemuTrans.CuNo, iecusuh.cu_na, 
+    IemuTrans.CuSale, iepb03h.cu_snam, IemuTrans.IndustryNo, Industries.IndustryName, IemuTrans.Remark
 FROM IemuTrans 
+LEFT OUTER JOIN CodeDatas ON IemuTrans.Status = CodeDatas.CodeNo AND CodeDatas.BaseNo = 'Status_IemuTrans'
 LEFT OUTER JOIN iecusuh ON IemuTrans.CuNo = iecusuh.cu_no
 LEFT OUTER JOIN iepb03h ON IemuTrans.CuSale = iepb03h.cu_sale 
 LEFT OUTER JOIN Industries ON IemuTrans.IndustryNo = Industries.IndustryNo
@@ -91,6 +95,7 @@ LEFT OUTER JOIN Industries ON IemuTrans.IndustryNo = Industries.IndustryNo
             str_query += $"IemuTrans.No LIKE '%{searchText}%' OR ";
             str_query += $"IemuTrans.Date LIKE '%{searchText}%' OR ";
             str_query += $"IemuTrans.Status LIKE '%{searchText}%' OR ";
+            str_query += $"IemuTrans.CodeName LIKE '%{searchText}%' OR ";
             str_query += $"IemuTrans.CuNo LIKE '%{searchText}%' OR ";
             str_query += $"iecusuh.CuNa LIKE '%{searchText}%' OR ";
             str_query += $"IemuTrans.CuSale LIKE '%{searchText}%' OR ";
@@ -142,28 +147,86 @@ LEFT OUTER JOIN Industries ON IemuTrans.IndustryNo = Industries.IndustryNo
         return (model != null);
     }
     #endregion
+    
     #region 自定義事件及函數
+    // Jacky 1120721
     /// <summary>
     /// 取得新單號
     /// </summary>
     /// <returns></returns>
     public string GetNewNo()
     {
-        string newNo = "";
-        string today = 
-            string.Format(DateTime.Now.ToString("yyyy")) +
-            string.Format(DateTime.Now.ToString("MM")) +
-            string.Format(DateTime.Now.ToString("dd"));
+        using (DapperRepository dp = new DapperRepository())
+        {
+            int count = 0;
+            string newNo = "";
+            string today =
+                string.Format(DateTime.Now.ToString("yyyy")) +
+                string.Format(DateTime.Now.ToString("MM")) +
+                string.Format(DateTime.Now.ToString("dd"));
+            string sql =
+                @"SELECT COUNT(*) FROM IemuTrans" + 
+                " WHERE SUBSTRING(No, 1, 8) = @today";
 
-        var iemuTrans = new List<IemuTrans>();
-        var count = iemuTrans
-            .Count(x => x.No.Substring(0, 4).Equals("2023"));
-        count++;
-        newNo = $"{today}{count:000}";
+            // for testing
+            // today = "20230720";
 
-        //.Where(x => x.No.Substring(0, 8) == today)
+            // 寫法一：
+            dp.CommandText = sql;
+            // true 為加入參數前，是否將參數全數清空
+            dp.ParametersAdd("today", today, true);
+            dp.CommandType = System.Data.CommandType.Text;
+            count = dp.QueryScalar();
 
-        return newNo;
+            // 寫法二：
+            // DynamicParameters parm = new DynamicParameters();
+            // parm.Add("today", today);
+            // count = dp.QueryScalar(sql, parm, System.Data.CommandType.Text);
+
+            // count 加一            
+            count++;
+
+            // 寫法一：
+            newNo = $"{today}{count:000}";
+
+            // 寫法二：
+            // newNo = today + count.ToString().PadLeft(3, '0');
+
+            return newNo;
+        }
     }
+
+    // Jacky 1120723
+    // for TextBoxFor 使用，不然在新增畫面時，帶不出 [狀態碼]、[狀態名稱]
+    /// <summary>
+    /// 取得狀態名稱
+    /// </summary>
+    /// <returns></returns>
+    public string GetCodeName(string codeNo)
+    {
+        using (z_repoCodeDatas codeDatas = new z_repoCodeDatas())
+        {
+            const string baseNo = "Status_IemuTrans";
+            var data = codeDatas.repo.ReadSingle(m => m.BaseNo == baseNo && m.CodeNo == codeNo);
+            return data.CodeName;
+        }
+    }
+
+    // Jacky 1120723
+    // for TextBoxFor 使用，不然在修改畫面時，帶不出 [客戶簡稱]
+    /// <summary>
+    /// 取得客戶簡稱
+    /// </summary>
+    /// <param name="cuNo"></param>
+    /// <returns></returns>
+    public string GetCustomerSimpleName(string cuNo)
+    {
+        using (z_repoiecusuh iecusuh = new z_repoiecusuh())
+        {
+            var data = iecusuh.repo.ReadSingle(m => m.cu_no == cuNo);
+            return data.cu_na;
+        }
+    }
+
     #endregion
 }

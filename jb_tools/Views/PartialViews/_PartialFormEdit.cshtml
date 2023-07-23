@@ -4,9 +4,12 @@
 *@
 
 @* Jacky 1120719 設定修改按鈕 *@
-@*@Html.ActionLink(ActionService.EditName, ActionService.CreateEdit, ActionService.Controller, new { area = ActionService.Area, id = ActionService.RowId }, new { @class = "btn btn-sm btn-success border-info" })*@
+@*@Html.ActionLink(ActionService.EditName, ActionService.CreateEdit, ActionService.Controller, new { area = "", id = ActionService.RowId }, new { @class = "btn btn-sm btn-success border-info" })*@
 
-@* Jacky 1120720 改用 fontawesone 圖示顯示 *@
-<a class="btn btn-sm btn-success border-info" href="@Url.Action(ActionService.CreateEdit , ActionService.Controller)">
+@* Jacky 1120723 改用 fontawesone 圖示顯示 *@
+@* 直接組裝 URL，記得要加 "/" + 該筆資料的 Id *@ 
+<a href="@Url.Action(ActionService.CreateEdit, ActionService.Controller)/@ActionService.RowId"
+        class="btn btn-sm btn-success border-info"
+        accesskey="K" alt="修改 (Alt + K)" title="修改 (Alt + K)" >
     <i class="far fa-edit"></i>
 </a>

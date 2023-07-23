@@ -12,6 +12,9 @@ namespace jb_tools.Models
     public partial class IemuTrans
     {
         [NotMapped]
+        [Display(Name = "狀態名稱")]
+        public string CodeName { get; set; }
+        [NotMapped]
         [Display(Name = "客戶簡稱")]
         public string cu_na { get; set; }
         [NotMapped]

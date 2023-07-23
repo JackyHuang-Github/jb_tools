@@ -6,7 +6,10 @@
 @* Jacky 1120719 設定新增按鈕 *@
 @*@Html.ActionLink(ActionService.CreateName, ActionService.CreateEdit, ActionService.Controller, new { area = ActionService.Area, id = 0 }, new { @class = "btn btn-sm btn-primary border-warning" })*@
 
-@* Jacky 1120720 改用 fontawesone 圖示顯示 *@
-<a class="btn btn-sm btn-primary border-warning" href="@Url.Action(ActionService.CreateEdit , ActionService.Controller)" accesskey="I">
+@* Jacky 1120723 改用 fontawesone 圖示顯示 *@
+@* 直接組裝 URL，記得要加 "/" + 該筆資料的 Id = 0 *@
+<a href="@Url.Action(ActionService.CreateEdit, ActionService.Controller)/0"
+       class="btn btn-sm btn-primary border-warning"
+       accesskey="J" alt="新增 (Alt + J)" title="新增 (Alt + J)">
     <i class="fas fa-plus fa-lg"></i>
 </a>

@@ -13,9 +13,9 @@ public partial class ListItemData : BaseClass
     /// <returns></returns>
     public List<SelectListItem> CustomerList()
     {
-        using (z_repoiecusuh model = new z_repoiecusuh())
+        using (z_repoiecusuh iecusuh = new z_repoiecusuh())
         {
-            var data = model.repo.ReadAll()
+            var data = iecusuh.repo.ReadAll()
                 .OrderBy(m => m.cu_no)
                 .Select(u => new SelectListItem
                 {

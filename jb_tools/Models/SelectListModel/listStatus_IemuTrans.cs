@@ -14,10 +14,10 @@ public partial class ListItemData : BaseClass
     /// <returns></returns>
     public List<SelectListItem> Status_IemuTransList()
     {
-        using (z_repoCodeDatas model = new z_repoCodeDatas())
+        using (z_repoCodeDatas codeDatas = new z_repoCodeDatas())
         {
             const string baseNo = "Status_IemuTrans";
-            var data = model.repo.ReadAll(m => m.BaseNo == baseNo)
+            var data = codeDatas.repo.ReadAll(m => m.BaseNo == baseNo)
                 .OrderBy(m => m.SortNo)
                 .ThenBy(m => m.CodeNo)
                 .Select(u => new SelectListItem

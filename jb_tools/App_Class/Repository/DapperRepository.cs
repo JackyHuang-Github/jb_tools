@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using DocumentFormat.OpenXml.Spreadsheet;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -415,5 +416,110 @@ public class DapperRepository : BaseClass, IDapperRepository
         parm.Add("keyValue", SessionService.KeyValue);
         parm.Add("noValue", value);
         return !HasRow(str_query, parm);
+    }
+
+    // Jacky 1120721 新增 ExecuteScalar
+    /// <summary>
+    /// 讀取數量
+    /// </summary>
+    /// <returns></returns>
+    public int QueryScalar()
+    {
+        return QueryScalar(CommandText, Parameter, CommandType);
+    }
+
+    // Jacky 1120721 新增 ExecuteScalar
+    /// <summary>
+    /// 讀取數量
+    /// </summary>
+    /// <param name="commandText"></param>
+    /// <returns></returns>
+    public int QueryScalar(string commandText)
+    {
+        return Execute(commandText, Parameter, CommandType);
+    }
+
+    // Jacky 1120721 新增 ExecuteScalar
+    /// <summary>
+    /// 讀取數量
+    /// </summary>
+    /// <param name="parm"></param>
+    /// <returns></returns>
+    public int QueryScalar(DynamicParameters parm)
+    {
+        return Execute(CommandText, parm, CommandType);
+    }
+
+    // Jacky 1120721 新增 ExecuteScalar
+    /// <summary>
+    /// 讀取數量
+    /// </summary>
+    /// <param name="commandType"></param>
+    /// <returns></returns>
+    public int QueryScalar(CommandType commandType)
+    {
+        return QueryScalar(CommandText, Parameter, commandType);
+    }
+
+    // Jacky 1120721 新增 ExecuteScalar
+    /// <summary>
+    /// 讀取數量
+    /// </summary>
+    /// <param name="parm"></param>
+    /// <param name="commandType"></param>
+    /// <returns></returns>
+    public int QueryScalar(DynamicParameters parm, CommandType commandType)
+    {
+        return QueryScalar(CommandText, parm, commandType);
+    }
+
+    // Jacky 1120721 新增 ExecuteScalar
+    /// <summary>
+    /// 讀取數量
+    /// </summary>
+    /// <param name="commandText"></param>
+    /// <param name="parm"></param>
+    /// <returns></returns>
+    public int QueryScalar(string commandText, DynamicParameters parm)
+    {
+        return QueryScalar(commandText, parm, CommandType);
+    }
+
+    // Jacky 1120721 新增 ExecuteScalar
+    /// <summary>
+    /// 讀取數量
+    /// </summary>
+    /// <param name="commandText"></param>
+    /// <param name="commandType"></param>
+    /// <returns></returns>
+    public int QueryScalar(string commandText, CommandType commandType)
+    {
+        return QueryScalar(commandText, Parameter, commandType);
+    }
+
+    // Jacky 1120721 新增 ExecuteScalar
+    /// <summary>
+    /// 讀取數量
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="commandText"></param>
+    /// <param name="parameters"></param>
+    /// <param name="commType"></param>
+    /// <returns></returns>
+    public int QueryScalar(string commandText, DynamicParameters parameters, CommandType commType)
+    {
+        using (var conn = new SqlConnection(ConnectString))
+        {
+            var result = 0;
+            try
+            {
+                if (parameters.ParameterNames.Count() > 0)
+                    result = conn.ExecuteScalar<int>(sql: commandText, param: parameters, commandType: commType);
+                else
+                    result = conn.ExecuteScalar<int>(sql: commandText, commandType: commType);
+            }
+            catch (Exception ex) { ErrorMessage = ex.Message; }
+            return result;
+        }
     }
 }
