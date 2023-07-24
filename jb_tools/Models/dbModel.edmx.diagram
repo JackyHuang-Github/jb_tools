@@ -71,11 +71,11 @@
         <EntityTypeShape EntityType="jb_toolsModel.IemuLog" Width="1.5" PointX="25.375" PointY="13.75" />
         <EntityTypeShape EntityType="jb_toolsModel.IemuMainMenus" Width="1.5" PointX="25.375" PointY="16.75" />
         <EntityTypeShape EntityType="jb_toolsModel.IemuSubMenus" Width="1.5" PointX="25.375" PointY="20.75" />
-        <EntityTypeShape EntityType="jb_toolsModel.IemuTranDetails" Width="1.5" PointX="25.375" PointY="24.75" />
         <EntityTypeShape EntityType="jb_toolsModel.iecusuh" Width="1.5" PointX="13.375" PointY="14.75" />
         <EntityTypeShape EntityType="jb_toolsModel.iepb03h" Width="1.5" PointX="15.375" PointY="25.75" />
         <EntityTypeShape EntityType="jb_toolsModel.Industries" Width="1.5" PointX="17.375" PointY="26.75" />
         <EntityTypeShape EntityType="jb_toolsModel.IemuTrans" Width="1.5" PointX="3.375" PointY="26.75" />
+        <EntityTypeShape EntityType="jb_toolsModel.IemuTranDetails" Width="1.5" PointX="25.375" PointY="24.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

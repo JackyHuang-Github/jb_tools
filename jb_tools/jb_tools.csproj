@@ -213,6 +213,7 @@
     <Compile Include="Controllers\IemuMainMenuController.cs" />
     <Compile Include="Controllers\IemuSubMenuController.cs" />
     <Compile Include="Controllers\IemuTranController.cs" />
+    <Compile Include="Controllers\IemuTranSubController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -357,6 +358,7 @@
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MetadataModel\metaIemuDetailMenus.cs" />
+    <Compile Include="Models\MetadataModel\metaIemuTranDetails.cs" />
     <Compile Include="Models\MetadataModel\metaIemuTrans.cs" />
     <Compile Include="Models\MetadataModel\metaIemuSubMenus.cs" />
     <Compile Include="Models\MetadataModel\metaIemuMainMenus.cs" />
@@ -442,6 +444,7 @@
     <Compile Include="Models\RepositoryModel\repoForumBoards.cs" />
     <Compile Include="Models\RepositoryModel\repoForums.cs" />
     <Compile Include="Models\RepositoryModel\repoHtmlEditor.cs" />
+    <Compile Include="Models\RepositoryModel\repoIemuTranDetails.cs" />
     <Compile Include="Models\RepositoryModel\repoiepb03h.cs" />
     <Compile Include="Models\RepositoryModel\repoiecusuh.cs" />
     <Compile Include="Models\RepositoryModel\repoIemuDetailMenus.cs" />
@@ -545,6 +548,7 @@
     <Compile Include="Models\ViewModel\vmFileManager.cs" />
     <Compile Include="Models\ViewModel\vmGeneratorModel.cs" />
     <Compile Include="Models\ViewModel\vmHtmlEditor.cs" />
+    <Compile Include="Models\ViewModel\vmIemuTranModel.cs" />
     <Compile Include="Models\ViewModel\vmLogin.cs" />
     <Compile Include="Models\ViewModel\vmMetadataModel.cs" />
     <Compile Include="Models\ViewModel\vmOrderModel.cs" />
@@ -1434,7 +1438,7 @@
     <Content Include="Views\IemuDetailMenu\Delete.cshtml" />
     <Content Include="Views\IemuTran\CreateEdit.cshtml" />
     <Content Include="Views\IemuTran\Delete.cshtml" />
-    <Content Include="Views\Shared\_LayoutCard.cshtml" />
+    <Content Include="Views\Shared\_LayoutCardIemuTran.cshtml" />
     <Content Include="webfonts\fa-brands-400.svg" />
     <Content Include="webfonts\fa-regular-400.svg" />
     <Content Include="webfonts\fa-solid-900.svg" />
@@ -1450,6 +1454,9 @@
     <Content Include="webfonts\fa-brands-400.woff" />
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
+    <Content Include="Views\PartialViews\_PartialFormThreeDots.cshtml" />
+    <Content Include="Views\Shared\_LayoutIEMenuMaker3.cshtml" />
+    <Content Include="Views\IemuTranSub\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\resColumn.en-US.resx" />

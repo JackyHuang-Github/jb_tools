@@ -8,25 +8,31 @@ using System.Web.UI.WebControls;
 
 namespace jb_tools.Models
 {
-    [MetadataType(typeof(z_metaIemuTrans))]
-    public partial class IemuTrans
+    [MetadataType(typeof(z_metaIemuTranDetails))]
+    public partial class IemuTranDetails
     {
         [NotMapped]
-        [Display(Name = "狀態名稱")]
-        public string CodeName { get; set; }
+        [Display(Name = "大分類識別")]
+        public string McId { get; set; }
+        [Display(Name = "大分類名稱")]
+        public string MName { get; set; }
         [NotMapped]
-        [Display(Name = "客戶簡稱")]
-        public string cu_na { get; set; }
+        [Display(Name = "中分類名稱")]
+        public string SName { get; set; }
         [NotMapped]
-        [Display(Name = "經辦人姓名")]
-        public string cu_snam { get; set; }
+        [Display(Name = "程式名稱")]
+        public string PName { get; set; }
+        [Display(Name = "英文名稱")]
+        public string PEName { get; set; }
+        [Display(Name = "程式路徑")]
+        public string ProgramPath { get; set; }
         [NotMapped]
-        [Display(Name = "產業別名稱")]
-        public string IndustryName { get; set; }
+        [Display(Name = "位置或檔案路徑二")]
+        public string PosOrPath2 { get; set; }
     }
 }
 
-public abstract class z_metaIemuTrans
+public abstract class z_metaIemuTranDetails
 {
     [Key]
     public int Id { get; set; }
@@ -35,30 +41,31 @@ public abstract class z_metaIemuTrans
     [Column(CheckBox = false, Hidden = true, DropdownClass = "")]
     [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
     public string No { get; set; }
-    [Display(Name = "日期")]
-    [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
+    [Display(Name = "項次")]
     [Required(ErrorMessage = "不可空白!!")]
     [Column(CheckBox = false, Hidden = true, DropdownClass = "")]
-    [Default(DefaultValueType = enDefaultValueType.Date_Today, DefaultValue = "")]
-    public DateTime Date { get; set; }
-    [Display(Name = "狀態碼")]
+    [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
+    public string Seq { get; set; }
+    [Display(Name = "大分類代號")]
     [Required(ErrorMessage = "不可空白!!")]
     [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
     [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
-    public string Status { get; set; }
-    [Display(Name = "客戶代號")]
+    public string MainCode { get; set; }
+    [Display(Name = "中分類識別")]
     [Required(ErrorMessage = "不可空白!!")]
     [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
     [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
-    public string CuNo { get; set; }
-    [Display(Name = "經辦人代號")]
+    public string ScId { get; set; }
+    [Display(Name = "細分類序號")]
+    [Required(ErrorMessage = "不可空白!!")]
     [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
     [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
-    public string CuSale { get; set; }
-    [Display(Name = "產業別代號")]
+    public string DetailOrder { get; set; }
+    [Display(Name = "程式代號")]
+    [Required(ErrorMessage = "不可空白!!")]
     [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
     [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
-    public string IndustryNo { get; set; }
+    public string Program { get; set; }
     [Display(Name = "備註")]
     [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
     [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]

@@ -91,10 +91,10 @@ namespace jb_tools.Models
         public virtual DbSet<IemuLog> IemuLog { get; set; }
         public virtual DbSet<IemuMainMenus> IemuMainMenus { get; set; }
         public virtual DbSet<IemuSubMenus> IemuSubMenus { get; set; }
-        public virtual DbSet<IemuTranDetails> IemuTranDetails { get; set; }
         public virtual DbSet<iecusuh> iecusuh { get; set; }
         public virtual DbSet<iepb03h> iepb03h { get; set; }
         public virtual DbSet<Industries> Industries { get; set; }
         public virtual DbSet<IemuTrans> IemuTrans { get; set; }
+        public virtual DbSet<IemuTranDetails> IemuTranDetails { get; set; }
     }
 }

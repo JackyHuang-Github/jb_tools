@@ -8,7 +8,8 @@ namespace jb_tools.Controllers
 {
     public class IemuSubMenuController : Controller
     {
-        // GET: IemuSubMenu
+        [HttpGet]
+        [AllowAnonymous]
         public ActionResult Index()
         {
             using (z_repoIemuSubMenus subMenus = new z_repoIemuSubMenus())

@@ -11,7 +11,7 @@ namespace jb_tools.Controllers
     public class IemuTranController : Controller
     {
         [HttpGet]
-        // GET: IemuTran
+        [AllowAnonymous]
         public ActionResult Index(int page = 1, string searchText = "")
         {
             using (z_repoIemuTrans iemuTrans = new z_repoIemuTrans())
@@ -35,6 +35,7 @@ namespace jb_tools.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult CreateEdit(int id = 0)
         {
             using (z_repoIemuTrans iemuTrans = new z_repoIemuTrans())

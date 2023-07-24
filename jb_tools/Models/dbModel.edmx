@@ -627,7 +627,7 @@
           <Property Name="No" Type="char" MaxLength="11" Nullable="false" />
           <Property Name="Seq" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="MainCode" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Scid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ScId" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DetailOrder" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Program" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="250" />
@@ -2272,11 +2272,11 @@
           <EntitySet Name="IemuLog" EntityType="jb_toolsModel.IemuLog" />
           <EntitySet Name="IemuMainMenus" EntityType="jb_toolsModel.IemuMainMenus" />
           <EntitySet Name="IemuSubMenus" EntityType="jb_toolsModel.IemuSubMenus" />
-          <EntitySet Name="IemuTranDetails" EntityType="jb_toolsModel.IemuTranDetails" />
           <EntitySet Name="iecusuh" EntityType="jb_toolsModel.iecusuh" />
           <EntitySet Name="iepb03h" EntityType="jb_toolsModel.iepb03h" />
           <EntitySet Name="Industries" EntityType="jb_toolsModel.Industries" />
           <EntitySet Name="IemuTrans" EntityType="jb_toolsModel.IemuTrans" />
+          <EntitySet Name="IemuTranDetails" EntityType="jb_toolsModel.IemuTranDetails" />
         </EntityContainer>
         <EntityType Name="DetailMenus">
           <Key>
@@ -2343,19 +2343,6 @@
           <Property Name="Ename" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="PosOrPath" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="PosOrPath2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="IemuTranDetails">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="No" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
-          <Property Name="Seq" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="MainCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Scid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DetailOrder" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Program" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="iecusuh">
@@ -2565,6 +2552,19 @@
           <Property Name="CuNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CuSale" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IndustryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="IemuTranDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="No" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Seq" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="MainCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ScId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DetailOrder" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Program" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
@@ -3623,20 +3623,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="IemuTranDetails">
-            <EntityTypeMapping TypeName="jb_toolsModel.IemuTranDetails">
-              <MappingFragment StoreEntitySet="IemuTranDetails">
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Program" ColumnName="Program" />
-                <ScalarProperty Name="DetailOrder" ColumnName="DetailOrder" />
-                <ScalarProperty Name="Scid" ColumnName="Scid" />
-                <ScalarProperty Name="MainCode" ColumnName="MainCode" />
-                <ScalarProperty Name="Seq" ColumnName="Seq" />
-                <ScalarProperty Name="No" ColumnName="No" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="iecusuh">
             <EntityTypeMapping TypeName="jb_toolsModel.iecusuh">
               <MappingFragment StoreEntitySet="iecusuh">
@@ -3845,6 +3831,20 @@
                 <ScalarProperty Name="CuNo" ColumnName="CuNo" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IemuTranDetails">
+            <EntityTypeMapping TypeName="jb_toolsModel.IemuTranDetails">
+              <MappingFragment StoreEntitySet="IemuTranDetails">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Program" ColumnName="Program" />
+                <ScalarProperty Name="DetailOrder" ColumnName="DetailOrder" />
+                <ScalarProperty Name="ScId" ColumnName="ScId" />
+                <ScalarProperty Name="MainCode" ColumnName="MainCode" />
+                <ScalarProperty Name="Seq" ColumnName="Seq" />
                 <ScalarProperty Name="No" ColumnName="No" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

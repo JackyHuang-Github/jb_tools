@@ -114,7 +114,7 @@ LEFT OUTER JOIN Industries ON IemuTrans.IndustryNo = Industries.IndustryNo
     /// <returns></returns>
     private string GetSQLOrderBy()
     {
-        return " ORDER BY IemuTrans.No";
+        return " ORDER BY IemuTrans.No DESC";
     }
 
     /// <summary>

@@ -4,9 +4,11 @@
     ViewBag.Title = "編輯 IEMenu";
     Layout = "~/Views/Shared/_LayoutIEMenuMaker2.cshtml";
     ViewBag.FunctionAreaTitle = ViewBag.Title;
+    ViewBag.ThreeDotsTargetController = "IemuTranSub";
+    ViewBag.ThreeDotsTargetAction = "Index";
 }
 
-<div class="container-fluid p-1 contentArea">
+<div class="container-fluid p-1 contentArea1">
     <div class="row">
         <div class="col">
             <div class="@ViewBag.tableShowStyle">
@@ -19,27 +21,26 @@
                                 </div>
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.No)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().No)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.Date)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().Date)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.Status)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().Status)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.CuNo)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().CuNo)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.CuSale)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().CuSale)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.IndustryNo)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().IndustryNo)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.Remark)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().Remark)
                             </th>
-                            <th></th>
                         </tr>
                     </thead>
 
@@ -55,6 +56,9 @@
                                     </div>
                                     <div class="m-1 float-start">
                                         @Html.Partial("~/Views/PartialViews/_PartialFormDelete.cshtml")
+                                    </div>
+                                    <div class="m-1 float-start">
+                                        @Html.Partial("~/Views/PartialViews/_PartialFormThreeDots.cshtml")
                                     </div>
                                 </td>
                                 <td>

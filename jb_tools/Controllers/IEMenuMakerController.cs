@@ -86,7 +86,7 @@ namespace jb_tools.Controllers
                         ViewBag.PageInfo = "第 1 頁，共 1 頁";
                         ViewBag.tableShowStyle = tableShowStyle;
                         var model = iemuTrans.GetDapperDataList("");
-                        return RedirectToAction("Index", "IemuTrun", model);
+                        return RedirectToAction("Index", "IemuTran", model);
                     }
 
                 default:

@@ -6,7 +6,7 @@
     ViewBag.FunctionAreaTitle = ViewBag.Title;
 }
 
-<div class="container-fluid p-1 contentArea">
+<div class="container-fluid p-1 contentArea1">
     <div class="row">
         <div class="col">
             <div class="@ViewBag.tableShowStyle">
@@ -19,34 +19,34 @@
                                 </div>
                             </th>
                             <th class="tableTitle text-center">
-                                @Html.DisplayNameFor(model => model.SortNum)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().SortNum)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.MainCode)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().MainCode)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.ScId)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().ScId)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.DetailOrder)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().DetailOrder)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.Program)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().Program)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.Name)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.Ename)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().Ename)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.ProgramPath)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().ProgramPath)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.PosOrPath2)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().PosOrPath2)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.Remark)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().Remark)
                             </th>
                         </tr>
                     </thead>

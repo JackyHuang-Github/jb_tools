@@ -18,7 +18,7 @@ namespace jb_tools.Models
         public string No { get; set; }
         public string Seq { get; set; }
         public string MainCode { get; set; }
-        public string Scid { get; set; }
+        public string ScId { get; set; }
         public string DetailOrder { get; set; }
         public string Program { get; set; }
         public string Remark { get; set; }

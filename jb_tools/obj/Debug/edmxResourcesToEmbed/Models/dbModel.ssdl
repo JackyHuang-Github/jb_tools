@@ -622,7 +622,7 @@
     <Property Name="No" Type="char" MaxLength="11" Nullable="false" />
     <Property Name="Seq" Type="varchar" MaxLength="4" Nullable="false" />
     <Property Name="MainCode" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Scid" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ScId" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="DetailOrder" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Program" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Remark" Type="nvarchar" MaxLength="250" />

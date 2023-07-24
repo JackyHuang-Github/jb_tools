@@ -1051,20 +1051,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="IemuTranDetails">
-      <EntityTypeMapping TypeName="jb_toolsModel.IemuTranDetails">
-        <MappingFragment StoreEntitySet="IemuTranDetails">
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="Program" ColumnName="Program" />
-          <ScalarProperty Name="DetailOrder" ColumnName="DetailOrder" />
-          <ScalarProperty Name="Scid" ColumnName="Scid" />
-          <ScalarProperty Name="MainCode" ColumnName="MainCode" />
-          <ScalarProperty Name="Seq" ColumnName="Seq" />
-          <ScalarProperty Name="No" ColumnName="No" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="iecusuh">
       <EntityTypeMapping TypeName="jb_toolsModel.iecusuh">
         <MappingFragment StoreEntitySet="iecusuh">
@@ -1273,6 +1259,20 @@
           <ScalarProperty Name="CuNo" ColumnName="CuNo" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="No" ColumnName="No" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IemuTranDetails">
+      <EntityTypeMapping TypeName="jb_toolsModel.IemuTranDetails">
+        <MappingFragment StoreEntitySet="IemuTranDetails">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Program" ColumnName="Program" />
+          <ScalarProperty Name="DetailOrder" ColumnName="DetailOrder" />
+          <ScalarProperty Name="ScId" ColumnName="ScId" />
+          <ScalarProperty Name="MainCode" ColumnName="MainCode" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
           <ScalarProperty Name="No" ColumnName="No" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>

@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "CreateEdit";
-    Layout = "~/Views/Shared/_LayoutCard.cshtml";
+    Layout = "~/Views/Shared/_LayoutCardIemuTran.cshtml";
     ActionService.RowId = Model.Id;
 
     List<SelectListItem> statusList = new List<SelectListItem>();
@@ -33,9 +33,6 @@
     var editMode = ViewBag.Action;
 }
 
-@*關閉 未完待續 視窗*@
-@*@Html.Partial("~/Views/PartialViews/_PartialToBeContinued.cshtml")*@
-
 <div class="card mt-5 shadow w-50">
     <div class="card-header text-white bg-primary">
         <div class="d-flex justify-content-center">
@@ -64,7 +61,7 @@
                     <div class="col-md-10">
                         @* 注意：這裡只能用 readoly 不能用 disabled，因為會被 Form Submit 忽略之，也就是不會傳送至 Server *@
                         @* readonly 用法：@readonly = true，但是元素 <SELECT> <OPTION> <BUTTON> 不支援 readonly *@
-                        @* disabled 用法：@readonly = true *@
+                        @* disabled 用法：disabled = "disabled" *@
                         @Html.EditorFor(m => m.No, new { htmlAttributes = new { @class = "form-control readonly_bgc", @readonly = true } })
                         @Html.ValidationMessageFor(m => m.No, "", new { @class = "text-danger" })
                     </div>
@@ -155,8 +152,8 @@
                         @*<a href="javascript:submitForm()" class="btn btn-primary" accesskey="J"
                            alt="確認編輯 (Alt + J)" title="確認編輯 (Alt + J)">確認編輯</a>*@
 
-                        @Html.ActionLink(ActionService.ReturnIndex, ActionService.Index, ActionService.Controller, new { area = ActionService.Area }, 
-                            new { @class = "btn btn-success", accesskey = "K", alt = "返回列表 (Alt + K)", title = "返回列表 (Alt + K)" })
+                        @Html.ActionLink(ActionService.Return, ActionService.Index, ActionService.Controller, new { area = "" },
+                            new { @class = "btn btn-success", accesskey = "K", alt = ActionService.Return + " (Alt + K)", title = ActionService.Return + " (Alt + K)" })
 
                         @* Jacky 1120720 想利用 a 標籤來模擬 submit 的功能 *@
                         @*<a href="#" onclick="document.getElementById('myform').submit(); return false;"></a>*@

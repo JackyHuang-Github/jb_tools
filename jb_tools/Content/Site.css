@@ -95,8 +95,14 @@ textarea {
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* Jacky 1120716 限制整個表身最大高度(包含編輯資訊欄)，右側才不會出現捲軸捲動 */
-.contentArea {
+.contentArea1 {
     height: 88vh;
+    overflow: hidden;
+    border: 2px solid red;
+}
+/* Jacky 1120716 限制整個表身最大高度(包含編輯資訊欄)，右側才不會出現捲軸捲動 */
+.contentArea2 {
+    height: 94vh;
     overflow: hidden;
     border: 2px solid red;
 }

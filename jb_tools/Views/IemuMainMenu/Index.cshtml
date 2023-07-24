@@ -6,7 +6,7 @@
     ViewBag.FunctionAreaTitle = ViewBag.Title;
 }
 
-<div class="container-fluid p-1 contentArea">
+<div class="container-fluid p-1 contentArea1">
     <div class="row">
         <div class="col">
             <div class="@ViewBag.tableShowStyle">
@@ -19,22 +19,22 @@
                                 </div>
                             </th>
                             <th class="tableTitle text-center">
-                                @Html.DisplayNameFor(model => model.SortNum)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().SortNum)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.MainCode)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().MainCode)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.McId)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().McId)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.Name)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.Ename)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().Ename)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.Remark)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().Remark)
                             </th>
                         </tr>
                     </thead>
