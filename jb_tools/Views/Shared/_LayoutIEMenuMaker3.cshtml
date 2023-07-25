@@ -46,13 +46,16 @@
 <body class="bg-black">
     <div class="container-fluid">
         <div class="row mx-0">
-            <div class="col-12 bg-warning mt-0 p-1">
+            <div class="col-12 bg-warning mt-0 py-0">
                 <div class="row">
-                    <div class="col-5">
-                        <span class="float-start">@RenderSection("functionArea", required: false)</span>
+                    <div class="col-5 pt-1">
+                        <span class="float-start">@RenderSection("functionAreaLeft", required: false)</span>
                     </div>
-                    <div class="col-7">
+                    <div class="col-2 pt-1">
                         <h6 class="float-start pt-1" style="font-weight: 600;">@ViewBag.FunctionAreaTitle</h6>
+                    </div>
+                    <div class="col-5">
+                        <span class="float-end">@RenderSection("functionAreaRight", required: false)</span>
                     </div>
                 </div>
             </div>

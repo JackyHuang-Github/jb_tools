@@ -1458,6 +1458,7 @@
     <Content Include="Views\PartialViews\_PartialFormThreeDots.cshtml" />
     <Content Include="Views\Shared\_LayoutIEMenuMaker3.cshtml" />
     <Content Include="Views\IemuTranSub\Index.cshtml" />
+    <Content Include="Views\PartialViews\_PartialPagination.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\resColumn.en-US.resx" />

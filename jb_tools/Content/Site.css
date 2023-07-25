@@ -26,9 +26,10 @@ textarea {
 .navBg {
     background-color: rgba(0, 0, 0, 0.3);
 }
-.navBg:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
+
+    .navBg:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -36,23 +37,23 @@ textarea {
 .tableFixedHead {
     overflow: auto;
     /* 限制最大高度，Table 才不會出現超出上端的不預期捲動 */
-    height: 86.5vh;
+    height: 86vh;
     border: 2px solid orange;
 }
 
-.tableFixedHead thead th {
-    /* 固定 header */
-    position: sticky;       
-    top: 0;
-    z-index: 1;
-    /* 標題藍色字 */
-    color: blue;            
-}
+    .tableFixedHead thead th {
+        /* 固定 header */
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        /* 標題藍色字 */
+        color: blue;
+    }
 
-.tableFixedHead tbody th {
-    position: sticky;
-    left: 0;
-}
+    .tableFixedHead tbody th {
+        position: sticky;
+        left: 0;
+    }
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -60,34 +61,34 @@ textarea {
 .tableFixedHeadBorderShadow {
     overflow: auto;
     /* 限制最大高度，Table 才不會出現超出上端的不預期捲動 */
-    height: 86.5vh;
+    height: 86vh;
     border: 2px solid orange;
 }
 
-.tableFixedHeadBorderShadow thead th {
-    /* 固定 header */
-    position: sticky;       
-    top: 0;
-    z-index: 1;
-    color: blue;            
-}
+    .tableFixedHeadBorderShadow thead th {
+        /* 固定 header */
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        color: blue;
+    }
 
-.tableFixedHeadBorderShadow tbody th {
-    position: sticky;
-    left: 0;
-}
+    .tableFixedHeadBorderShadow tbody th {
+        position: sticky;
+        left: 0;
+    }
 
-.tableFixedHeadBorderShadow, .tableFixedHeadBorderShadow td {
-    box-shadow: inset 1px -1px #000;
-}
+    .tableFixedHeadBorderShadow, .tableFixedHeadBorderShadow td {
+        box-shadow: inset 1px -1px #000;
+    }
 
-.tableFixedHeadBorderShadow th {
-    box-shadow: inset 1px 1px #000, 0 1px #000;
-}
+        .tableFixedHeadBorderShadow th {
+            box-shadow: inset 1px 1px #000, 0 1px #000;
+        }
 
-.tableFixedHeadBorderShadow tbody th {
-    box-shadow: inset 1px 1px #000, 0 1px #000;
-}
+        .tableFixedHeadBorderShadow tbody th {
+            box-shadow: inset 1px 1px #000, 0 1px #000;
+        }
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -101,7 +102,7 @@ textarea {
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* Jacky 1120716 限制整個表身最大高度(包含編輯資訊欄)，右側才不會出現捲軸捲動 */
 .contentArea1 {
-    height: 88vh;
+    height: 87vh;
     overflow: hidden;
     border: 2px solid red;
 }
@@ -114,7 +115,7 @@ textarea {
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
-/* Jacky 1120723 設定為 readonly 欄位的背景顏色 */ 
+/* Jacky 1120723 設定為 readonly 欄位的背景顏色 */
 .readonly_bgc {
     background-color: #eee;
 }
@@ -128,14 +129,14 @@ textarea {
     border: 2px solid orange;
 }
 
-/*
+    /*
     Jacky 1120725
     關閉 BS5 產生的 margin-bottom: 1rem;
     這造成 multiple table 的表頭 table 底部多出不必要的空白
 */
-.tableMultipleNormalHead.table {
-    margin-bottom: 0;
-}
+    .tableMultipleNormalHead.table {
+        margin-bottom: 0;
+    }
 /* ======================================================================================================= */
 
 /* ======================================================================================================= */
@@ -147,18 +148,18 @@ textarea {
     border: 2px solid orange;
 }
 
-.tableMultipleFixedHead thead th {
-    /* 固定 header */
-    position: sticky; 
-    top: 0;
-    z-index: 1;
-    color: blue; 
-}
+    .tableMultipleFixedHead thead th {
+        /* 固定 header */
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        color: blue;
+    }
 
-.tableMultipleFixedHead tbody th {
-    position: sticky;
-    left: 0;
-}
+    .tableMultipleFixedHead tbody th {
+        position: sticky;
+        left: 0;
+    }
 /* ======================================================================================================= */
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -171,17 +172,17 @@ textarea {
     border: 2px solid orange;
 }
 
-.tableMultipleNormalHeadBorderShadow, .tableMultipleNormalHeadBorderShadow td {
-    box-shadow: inset 1px -1px #000;
-}
+    .tableMultipleNormalHeadBorderShadow, .tableMultipleNormalHeadBorderShadow td {
+        box-shadow: inset 1px -1px #000;
+    }
 
-.tableMultipleNormalHeadBorderShadow th {
-    box-shadow: inset 1px 1px #000, 0 1px #000;
-}
+        .tableMultipleNormalHeadBorderShadow th {
+            box-shadow: inset 1px 1px #000, 0 1px #000;
+        }
 
-.tableMultipleNormalHeadBorderShadow tbody th {
-    box-shadow: inset 1px 1px #000, 0 1px #000;
-}
+        .tableMultipleNormalHeadBorderShadow tbody th {
+            box-shadow: inset 1px 1px #000, 0 1px #000;
+        }
 /* ======================================================================================================= */
 
 /* ======================================================================================================= */
@@ -194,29 +195,66 @@ textarea {
     border: 2px solid orange;
 }
 
-.tableMultipleFixedHeadBorderShadow thead th {
-    /* 固定 header */
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    color: blue;
-}
+    .tableMultipleFixedHeadBorderShadow thead th {
+        /* 固定 header */
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        color: blue;
+    }
 
-.tableMultipleFixedHeadBorderShadow tbody th {
-    position: sticky;
-    left: 0;
-}
+    .tableMultipleFixedHeadBorderShadow tbody th {
+        position: sticky;
+        left: 0;
+    }
 
-.tableMultipleFixedHeadBorderShadow, .tableMultipleFixedHeadBorderShadow td {
-    box-shadow: inset 1px -1px #000;
-}
+    .tableMultipleFixedHeadBorderShadow, .tableMultipleFixedHeadBorderShadow td {
+        box-shadow: inset 1px -1px #000;
+    }
 
-.tableMultipleFixedHeadBorderShadow th {
-    box-shadow: inset 1px 1px #000, 0 1px #000;
-}
+        .tableMultipleFixedHeadBorderShadow th {
+            box-shadow: inset 1px 1px #000, 0 1px #000;
+        }
 
-.tableMultipleFixedHeadBorderShadow tbody th {
-    box-shadow: inset 1px 1px #000, 0 1px #000;
-}
+        .tableMultipleFixedHeadBorderShadow tbody th {
+            box-shadow: inset 1px 1px #000, 0 1px #000;
+        }
 /* ======================================================================================================= */
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* Pager */
+.pager {
+    margin: 8px 3px;
+    padding: 3px;
+}
+
+.pager .disabled {
+    border: 1px solid #ddd;
+    color: #999;
+    margin-top: 4px;
+    padding: 3px;
+    text-align: center;
+}
+
+.pager .current {
+    background-color: #6ea9bf;
+    border: 1px solid #6e99aa;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 4px;
+    padding: 3px 5px;
+    text-align: center;
+}
+
+.pager span, .pager a {
+    margin: 4px 3px;
+}
+
+.pager a {
+    border: 1px solid #aaa;
+    padding: 3px 5px;
+    text-align: center;
+    text-decoration: none;
+}
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
