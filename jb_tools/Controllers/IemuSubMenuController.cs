@@ -19,7 +19,7 @@ namespace jb_tools.Controllers
 
                 Session["CurrentController"] = "IemuSubMenu";
                 if (Session["TableShowStyle"] == null)
-                    Session["TableShowStyle"] = "tableFixHead";
+                    Session["TableShowStyle"] = "tableFixedHead";
                 var tableShowStyle = Session["TableShowStyle"].ToString();
 
                 ViewBag.tableShowStyle = tableShowStyle;

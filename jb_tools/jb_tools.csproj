@@ -203,6 +203,7 @@
     <Compile Include="App_Class\Services\SelectListService.cs" />
     <Compile Include="App_Class\Services\SendMailService.cs" />
     <Compile Include="App_Class\Services\SessionService.cs" />
+    <Compile Include="App_Class\Services\SettingService.cs" />
     <Compile Include="App_Class\Services\UserService.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />

@@ -33,20 +33,23 @@ textarea {
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* Jacky 1120714 固定 table header 方式 */
-.tableFixHead {
+.tableFixedHead {
     overflow: auto;
-    height: 86.5vh;         /* 限制最大高度，Table 才不會出現超出上端的不預期捲動 */
-    border: 2px solid orange; 
+    /* 限制最大高度，Table 才不會出現超出上端的不預期捲動 */
+    height: 86.5vh;
+    border: 2px solid orange;
 }
 
-.tableFixHead thead th {
-    position: sticky;       /* 固定 header */
+.tableFixedHead thead th {
+    /* 固定 header */
+    position: sticky;       
     top: 0;
     z-index: 1;
-    color: blue;            /* 標題藍色字 */
+    /* 標題藍色字 */
+    color: blue;            
 }
 
-.tableFixHead tbody th {
+.tableFixedHead tbody th {
     position: sticky;
     left: 0;
 }
@@ -54,33 +57,35 @@ textarea {
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* Jacky 1120714 修正 border shadow 問題 */
-.tableFixHeadBorderShadow {
+.tableFixedHeadBorderShadow {
     overflow: auto;
-    height: 86.5vh;         /* 限制最大高度，Table 才不會出現超出上端的不預期捲動 */
+    /* 限制最大高度，Table 才不會出現超出上端的不預期捲動 */
+    height: 86.5vh;
     border: 2px solid orange;
 }
 
-.tableFixHeadBorderShadow thead th {
-    position: sticky;       /* 固定 header */
+.tableFixedHeadBorderShadow thead th {
+    /* 固定 header */
+    position: sticky;       
     top: 0;
     z-index: 1;
-    color: blue;            /* 標題藍色字 */
+    color: blue;            
 }
 
-.tableFixHeadBorderShadow tbody th {
+.tableFixedHeadBorderShadow tbody th {
     position: sticky;
     left: 0;
 }
 
-.tableFixHeadBorderShadow, .tableFixHeadBorderShadow td {
+.tableFixedHeadBorderShadow, .tableFixedHeadBorderShadow td {
     box-shadow: inset 1px -1px #000;
 }
 
-.tableFixHeadBorderShadow th {
+.tableFixedHeadBorderShadow th {
     box-shadow: inset 1px 1px #000, 0 1px #000;
 }
 
-.tableFixHeadBorderShadow tbody th {
+.tableFixedHeadBorderShadow tbody th {
     box-shadow: inset 1px 1px #000, 0 1px #000;
 }
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -113,4 +118,105 @@ textarea {
 .readonly_bgc {
     background-color: #eee;
 }
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ======================================================================================================= */
+/* Jacky 1120725 多表格設定 for 正常未特別固定表頭位置的 table */
+.tableMultipleNormalHead {
+    height: 83px;
+    border: 2px solid orange;
+}
+
+/*
+    Jacky 1120725
+    關閉 BS5 產生的 margin-bottom: 1rem;
+    這造成 multiple table 的表頭 table 底部多出不必要的空白
+*/
+.tableMultipleNormalHead.table {
+    margin-bottom: 0;
+}
+/* ======================================================================================================= */
+
+/* ======================================================================================================= */
+/* Jacky 1120725 多表格設定 for 特別固定表頭位置的 table */
+.tableMultipleFixedHead {
+    overflow: auto;
+    /* 限制最大高度，Table 才不會出現超出上端的不預期捲動 */
+    height: 81vh;
+    border: 2px solid orange;
+}
+
+.tableMultipleFixedHead thead th {
+    /* 固定 header */
+    position: sticky; 
+    top: 0;
+    z-index: 1;
+    color: blue; 
+}
+
+.tableMultipleFixedHead tbody th {
+    position: sticky;
+    left: 0;
+}
+/* ======================================================================================================= */
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ======================================================================================================= */
+/* Jacky 1120725 多表格設定 for 正常未特別固定表頭位置的 table */
+/* 有陰影效果 */
+.tableMultipleNormalHeadBorderShadow {
+    height: 83px;
+    border: 2px solid orange;
+}
+
+.tableMultipleNormalHeadBorderShadow, .tableMultipleNormalHeadBorderShadow td {
+    box-shadow: inset 1px -1px #000;
+}
+
+.tableMultipleNormalHeadBorderShadow th {
+    box-shadow: inset 1px 1px #000, 0 1px #000;
+}
+
+.tableMultipleNormalHeadBorderShadow tbody th {
+    box-shadow: inset 1px 1px #000, 0 1px #000;
+}
+/* ======================================================================================================= */
+
+/* ======================================================================================================= */
+/* Jacky 1120725 多表格設定 for 特別固定表頭位置的 table */
+/* 有陰影效果 */
+.tableMultipleFixedHeadBorderShadow {
+    overflow: auto;
+    /* 限制最大高度，Table 才不會出現超出上端的不預期捲動 */
+    height: 81vh;
+    border: 2px solid orange;
+}
+
+.tableMultipleFixedHeadBorderShadow thead th {
+    /* 固定 header */
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    color: blue;
+}
+
+.tableMultipleFixedHeadBorderShadow tbody th {
+    position: sticky;
+    left: 0;
+}
+
+.tableMultipleFixedHeadBorderShadow, .tableMultipleFixedHeadBorderShadow td {
+    box-shadow: inset 1px -1px #000;
+}
+
+.tableMultipleFixedHeadBorderShadow th {
+    box-shadow: inset 1px 1px #000, 0 1px #000;
+}
+
+.tableMultipleFixedHeadBorderShadow tbody th {
+    box-shadow: inset 1px 1px #000, 0 1px #000;
+}
+/* ======================================================================================================= */
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */

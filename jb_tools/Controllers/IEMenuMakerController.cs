@@ -1,4 +1,5 @@
 ﻿using jb_tools.Models;
+using jb_tools.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,27 +18,50 @@ namespace jb_tools.Controllers
 
         public ActionResult TableShowStyle_TableHover()
         {
-            return ChoiceActionResult("tableFixHead");
+            return ChoiceActionResult("tableFixedHead");
+            //return ChoiceActionResult(SettingService.EnumTableShowStyle.TableFixedHead);
         }
 
         public ActionResult TableShowStyle_BorderShadow()
         {
-            return ChoiceActionResult("tableFixHeadBorderShadow");
+            return ChoiceActionResult("tableFixedHeadBorderShadow");
+            //return ChoiceActionResult(SettingService.EnumTableShowStyle.TableFixedHeadBorderShadow);
         }
 
+        //private ActionResult ChoiceActionResult(SettingService.EnumTableShowStyle enTableShowStyle)
         private ActionResult ChoiceActionResult(string tableShowStyle)
         {
+            //SettingService.SetTableShowStyle(enTableShowStyle);
+
             if (Session["CurrentController"] == null)
                 Session["CurrentController"] = "IemuMainMenu";
 
             var controllerName = Session["CurrentController"].ToString();
-            if (controllerName == "")
-            {
-                controllerName = "IemuMainMenu";
-                Session["CurrentController"] = "IemuMainMenu";
-            }
 
-            Session["TableShowStyle"] = tableShowStyle;
+            // Jacky 1120725 為 IemuTranSub 的多表格做額外判斷
+            if (controllerName == "IemuTranSub")
+            {
+                string multipleTablesNormalHead = "";
+                string multipleTablesFixedHead = "";
+
+                if (tableShowStyle == "tableFixedHead")
+                {
+                    multipleTablesNormalHead = "tableMultipleNormalHead";
+                    multipleTablesFixedHead = "tableMultipleFixedHead";
+                }
+                if (tableShowStyle == "tableFixedHeadBorderShadow")
+                {
+                    multipleTablesNormalHead = "tableMultipleNormalHeadBorderShadow";
+                    multipleTablesFixedHead = "tableMultipleFixedHeadBorderShadow";
+                }
+
+                Session["MultipleTablesShowStyleNormalHead"] = multipleTablesNormalHead;
+                Session["MultipleTablesShowStyleFixedHead"] = multipleTablesFixedHead;
+            }
+            else
+            {
+                Session["TableShowStyle"] = tableShowStyle;
+            }
 
             switch (controllerName)
             {
@@ -48,7 +72,7 @@ namespace jb_tools.Controllers
                         PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
                         ViewBag.SearchText = "";
                         ViewBag.PageInfo = "第 1 頁，共 1 頁";
-                        ViewBag.tableShowStyle = tableShowStyle;
+                        ViewBag.TableShowStyle = tableShowStyle;
                         var model = mainMenus.GetDapperDataList("");
                         return RedirectToAction("Index", "IemuMainMenu", model);
                     }
@@ -60,7 +84,7 @@ namespace jb_tools.Controllers
                         PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
                         ViewBag.SearchText = "";
                         ViewBag.PageInfo = "第 1 頁，共 1 頁";
-                        ViewBag.tableShowStyle = tableShowStyle;
+                        ViewBag.TableShowStyle = tableShowStyle;
                         var model = subMenus.GetDapperDataList("");
                         return RedirectToAction("Index", "IemuSubMenu", model);
                     }
@@ -72,7 +96,7 @@ namespace jb_tools.Controllers
                         PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
                         ViewBag.SearchText = "";
                         ViewBag.PageInfo = "第 1 頁，共 1 頁";
-                        ViewBag.tableShowStyle = tableShowStyle;
+                        ViewBag.TableShowStyle = tableShowStyle;
                         var model = detailMenus.GetDapperDataList("");
                         return RedirectToAction("Index", "IemuDetailMenu", model);
                     }
@@ -84,7 +108,7 @@ namespace jb_tools.Controllers
                         PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
                         ViewBag.SearchText = "";
                         ViewBag.PageInfo = "第 1 頁，共 1 頁";
-                        ViewBag.tableShowStyle = tableShowStyle;
+                        ViewBag.TableShowStyle = tableShowStyle;
                         var model = iemuTrans.GetDapperDataList("");
                         return RedirectToAction("Index", "IemuTran", model);
                     }
@@ -96,7 +120,7 @@ namespace jb_tools.Controllers
                         PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
                         ViewBag.SearchText = "";
                         ViewBag.PageInfo = "第 1 頁，共 1 頁";
-                        ViewBag.tableShowStyle = "tableFixHead";
+                        ViewBag.TableShowStyle = "tableFixedHead";
                         var model = mainMenus.GetDapperDataList("");
                         return RedirectToAction("Index", "IemuMainMenu", model);
                     }

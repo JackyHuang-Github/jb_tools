@@ -21,7 +21,7 @@ namespace jb_tools.Controllers
 
                 Session["CurrentController"] = "IemuTran";
                 if (Session["TableShowStyle"] == null)
-                    Session["TableShowStyle"] = "tableFixHead";
+                    Session["TableShowStyle"] = "tableFixedHead";
                 var tableShowStyle = Session["TableShowStyle"].ToString();
 
                 var model = iemuTrans.GetDapperDataList(searchText);
