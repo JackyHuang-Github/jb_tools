@@ -1,4 +1,14 @@
-﻿<ul class="pagination pagination-sm m-0 pt-1">
+﻿@*@using PagedList;
+
+@section styles {
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}
+
+@section functionAreaRight {
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+}*@
+
+<ul class="pagination pagination-sm m-0 pt-1">
     <li class="page-item">
         <a class="page-link" href="#" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
@@ -23,3 +33,4 @@
         </a>
     </li>
 </ul>
+

@@ -1,10 +1,13 @@
-﻿using jb_tools.Models;
+﻿using PagedList;
+using DocumentFormat.OpenXml.Wordprocessing;
+using jb_tools.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using DocumentFormat.OpenXml.Drawing.Charts;
 
 namespace jb_tools.Controllers
 {
@@ -12,7 +15,7 @@ namespace jb_tools.Controllers
     {
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Index(int page = 1, string searchText = "")
+        public ActionResult Index(int page = 1, int pageSize = PageListService.CountPerPage, string searchText = "")
         {
             using (z_repoIemuTrans iemuTrans = new z_repoIemuTrans())
             {
@@ -24,11 +27,14 @@ namespace jb_tools.Controllers
                     Session["TableShowStyle"] = "tableFixedHead";
                 var tableShowStyle = Session["TableShowStyle"].ToString();
 
-                var model = iemuTrans.GetDapperDataList(searchText);
-                //var model = modelData.ToPagedList(page, PrgService.PageSize);
+                // var model = iemuTrans.GetDapperDataList(searchText);
+                // Jacky 1120726 for 分頁模式
+                var model = iemuTrans.repo.ReadAll().OrderByDescending(m => m.No).ToPagedList(page, pageSize);
+                PrgService.SetAction(ActionService.IndexName, enCardSize.Max, model.PageNumber, model.PageCount);
+
                 ViewBag.tableShowStyle = tableShowStyle;
                 ViewBag.SearchText = "";
-                //ViewBag.PageInfo = PrgService.SetIndex(model.PageNumber, model.PageCount, searchText);
+                ViewBag.PageInfo = $"第 {model.PageNumber} 頁，共 {model.PageCount} 頁";
 
                 return View(model);
             }

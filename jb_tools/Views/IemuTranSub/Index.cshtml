@@ -20,8 +20,20 @@
             })
 }
 
+@*@section functionAreaRight {
+        @Html.Partial("~/Views/PartialViews/_PartialPagination.cshtml")
+    }*@
+
+@section styles {
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}
+
 @section functionAreaRight {
-    @Html.Partial("~/Views/PartialViews/_PartialPagination.cshtml")
+    @* Jacky 1120726 for 分頁模式 *@
+    @if (Model.IemuTranDetailsModel.Count() > 0)
+    {
+        @Html.PagedListPager(Model.IemuTranDetailsModel, page => Url.Action("Index", new { page }))
+    }
 }
 
 <div class="container-fluid p-1 contentArea2">

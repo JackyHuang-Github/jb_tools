@@ -13,7 +13,7 @@ using System.Web;
 public class BaseClass : IDisposable
 {
     #region 解構子
-    string str_user_no = "";
+    //string str_user_no = "";
     private bool disposed = false;
     private SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
 

@@ -197,6 +197,7 @@
     <Compile Include="App_Class\Services\GmailService.cs" />
     <Compile Include="App_Class\Services\GoogleMapService.cs" />
     <Compile Include="App_Class\Services\ImageService.cs" />
+    <Compile Include="App_Class\Services\PageListService.cs" />
     <Compile Include="App_Class\Services\PrgService.cs" />
     <Compile Include="App_Class\Services\ResourceService.cs" />
     <Compile Include="App_Class\Services\SecurityService.cs" />

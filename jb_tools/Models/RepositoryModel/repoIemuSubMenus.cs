@@ -12,6 +12,7 @@ public class z_repoIemuSubMenus : BaseClass
     /// Repository 變數
     /// <summary>
     public IEFGenericRepository<IemuSubMenus> repo;
+    
     /// <summary>
     /// 建構子
     /// <summary>

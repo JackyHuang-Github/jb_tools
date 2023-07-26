@@ -47,14 +47,15 @@
     <div class="container-fluid">
         <div class="row mx-0">
             <div class="col-12 bg-warning mt-0 py-0">
-                <div class="row">
-                    <div class="col-5 pt-1">
+                @* Jacky 1120726 直接限定高度為 41px，以強迫高度不被改變 *@
+                <div class="row" style="height: 41px;">
+                    <div class="col-4 pt-1">
                         <span class="float-start">@RenderSection("functionAreaLeft", required: false)</span>
                     </div>
-                    <div class="col-2 pt-1">
+                    <div class="col-2 pt-1 d-flex justify-content-center">
                         <h6 class="float-start pt-1" style="font-weight: 600;">@ViewBag.FunctionAreaTitle</h6>
                     </div>
-                    <div class="col-5">
+                    <div class="col-6">
                         <span class="float-end">@RenderSection("functionAreaRight", required: false)</span>
                     </div>
                 </div>

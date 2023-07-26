@@ -67,6 +67,7 @@ public class z_repoIemuTranDetails : BaseClass
     /// <summary>
     /// <param name="searchText">查詢條件</param>
     /// <returns></returns>
+    /// Jacky 1120726 for 分頁模式
     public List<IemuTranDetails> GetDapperDataListByNo(string iemuTranNo)
     {
         using (DapperRepository dp = new DapperRepository())
@@ -142,7 +143,7 @@ LEFT OUTER JOIN IemuDetailMenus ON IemuTranDetails.MainCode = IemuDetailMenus.Ma
     /// <returns></returns>
     private string GetSQLOrderBy()
     {
-        return " ORDER BY IemuTranDetails.No, IemuTranDetails.Seq";
+        return " ORDER BY IemuTranDetails.Seq";
     }
 
     /// <summary>

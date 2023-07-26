@@ -439,7 +439,7 @@ public class CodeBase : BaseClass
             is_required = "";
             display_name = "";
             column_format = "";
-            bln_hidden = false;
+            //bln_hidden = false;
             PropertyInfo metaName = myMetadataInfo.Where(m => m.Name == item.Name).FirstOrDefault();
             if (metaName != null)
             {

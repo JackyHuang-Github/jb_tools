@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using jb_tools.Models;
+using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +13,7 @@ namespace jb_tools.Controllers
     {
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = PageListService.CountPerPage, string searchText = "")
         {
             using (z_repoIemuMainMenus mainMenus = new z_repoIemuMainMenus())
             {
@@ -22,10 +25,15 @@ namespace jb_tools.Controllers
                     Session["TableShowStyle"] = "tableFixedHead";
                 var tableShowStyle = Session["tableShowStyle"].ToString();
 
+                // var model = mainMenus.GetDapperDataList("");
+                // Jacky 1120726 for 分頁模式
+                var model = mainMenus.repo.ReadAll().OrderBy(m => m.SortNum).ToPagedList(page, pageSize);
+                PrgService.SetAction(ActionService.IndexName, enCardSize.Max, model.PageNumber, model.PageCount);
+
                 ViewBag.tableShowStyle = tableShowStyle;
-                ViewBag.SearchText = "";
-                ViewBag.PageInfo = "第 1 頁，共 1 頁";
-                var model = mainMenus.GetDapperDataList("");
+                ViewBag.SearchText = searchText;
+                ViewBag.PageInfo = $"第 {model.PageNumber} 頁，共 {model.PageCount} 頁";
+
                 return View(model);
             }
         }
