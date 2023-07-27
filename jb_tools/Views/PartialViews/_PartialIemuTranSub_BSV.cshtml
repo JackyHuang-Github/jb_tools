@@ -1,27 +1,29 @@
-﻿@* Jacky 1120719 設定刪除按鈕 *@
-@*<input type="button" id="@ActionService.Delete" value="@ActionService.DeleteName" class="btn btn-sm btn-danger border-info"
-    onclick="DeleteData(@ActionService.RowId , '@ActionService.RowData');" />*@
+﻿@* Jacky 1120727 帶入標準資料 *@
 
-@* Jacky 1120720 改用 fontawesone 圖示顯示 *@
-<a class="btn btn-sm btn-danger border-info" href="#" 
-        accesskey="L" alt="刪除 (Alt + L)" title="刪除 (Alt + L)" 
-        onclick="DeleteData(@ActionService.RowId, '@ActionService.RowData');">
-    <i class="fas fa-trash-alt fa-lg"></i>
-</a>
+<input type="button" id="BringStandardValues" value="帶入標準資料"
+       class="btn btn-sm btn-success border-danger"
+       style="font-weight: 600;"
+       onclick="return IsBringStandardValues('@ActionService.RowData2');" />
 
 <script>
-    function DeleteData(id, data) {
-        var message = '是否確定要刪除';
-        if (!!data) {
-            message += ' [' + data + '] ?'
-        }
-        else {
-            message += '此筆資料?'
+    function IsBringStandardValues(no) {
+        if (no == "") {
+            Swal.fire({
+                title: "<strong>沒有 IEMenu 交易單表頭資料！</strong>",
+                text: '沒有 IEMenu 交易單表頭資料！',
+                icon: 'error',
+                showCancelButton: false,
+                focusConfirm: true,
+                closeOnConfirm: true,
+                confirmButtonText: '<i class="fas fa-check pe-2"></i>確定'
+            });
+
+            return false;
         }
 
         Swal.fire({
-            title: "<strong>您確定要刪除？</strong>",
-            text: message,
+            title: "<strong>是否要帶入標準資料？</strong>",
+            text: '是否要帶入標準資料到表身資料表？',
             icon: 'question',
             showCancelButton: true,
             focusConfirm: false,
@@ -31,8 +33,8 @@
         }).then(function (result) {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "@Url.Action(ActionService.Delete, ActionService.Controller, new { area = "" })",
-                    data: { "id": id },
+                    url: "@Url.Action("BringStandardValues", "IemuTranSub", new { area = "" })",
+                    data: { "No": No },
                     type: "POST",
                     dataType: "json",
                 }).done(function (value) {

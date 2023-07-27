@@ -204,7 +204,6 @@
     <Compile Include="App_Class\Services\SelectListService.cs" />
     <Compile Include="App_Class\Services\SendMailService.cs" />
     <Compile Include="App_Class\Services\SessionService.cs" />
-    <Compile Include="App_Class\Services\SettingService.cs" />
     <Compile Include="App_Class\Services\UserService.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -1397,7 +1396,7 @@
     <Content Include="Views\PartialViews\_PartialCodePropertyList.cshtml" />
     <Content Include="Views\PartialViews\_PartialErrorMessage.cshtml" />
     <Content Include="Views\PartialViews\_PartialFormCancel.cshtml" />
-    <Content Include="Views\PartialViews\_PartialFormCreate.cshtml" />
+    <Content Include="Views\PartialViews\_PartialIemuTranSub_BSV.cshtml" />
     <Content Include="Views\PartialViews\_PartialFormDelete.cshtml" />
     <Content Include="Views\PartialViews\_PartialFormDetail.cshtml" />
     <Content Include="Views\PartialViews\_PartialFormDownload.cshtml" />
@@ -1460,6 +1459,7 @@
     <Content Include="Views\Shared\_LayoutIEMenuMaker3.cshtml" />
     <Content Include="Views\IemuTranSub\Index.cshtml" />
     <Content Include="Views\PartialViews\_PartialPagination.cshtml" />
+    <Content Include="Views\PartialViews\_PartialFormCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\resColumn.en-US.resx" />
@@ -1475,8 +1475,12 @@
     <EmbeddedResource Include="Resources\resMessage.resx" />
     <EmbeddedResource Include="Resources\resMessage.zh-TW.resx" />
     <EmbeddedResource Include="Resources\resProgram.en-US.resx" />
-    <EmbeddedResource Include="Resources\resProgram.resx" />
-    <EmbeddedResource Include="Resources\resProgram.zh-TW.resx" />
+    <EmbeddedResource Include="Resources\resProgram.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\resProgram.zh-TW.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

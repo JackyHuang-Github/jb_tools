@@ -18,21 +18,16 @@ namespace jb_tools.Controllers
 
         public ActionResult TableShowStyle_TableHover()
         {
-            return ChoiceActionResult("tableFixedHead");
-            //return ChoiceActionResult(SettingService.EnumTableShowStyle.TableFixedHead);
+            return ChoiceActionResult("tableFixedHeadHover");
         }
 
         public ActionResult TableShowStyle_BorderShadow()
         {
             return ChoiceActionResult("tableFixedHeadBorderShadow");
-            //return ChoiceActionResult(SettingService.EnumTableShowStyle.TableFixedHeadBorderShadow);
         }
 
-        //private ActionResult ChoiceActionResult(SettingService.EnumTableShowStyle enTableShowStyle)
         private ActionResult ChoiceActionResult(string tableShowStyle)
         {
-            //SettingService.SetTableShowStyle(enTableShowStyle);
-
             if (Session["CurrentController"] == null)
                 Session["CurrentController"] = "IemuMainMenu";
 
@@ -44,7 +39,7 @@ namespace jb_tools.Controllers
                 string multipleTablesNormalHead = "";
                 string multipleTablesFixedHead = "";
 
-                if (tableShowStyle == "tableFixedHead")
+                if (tableShowStyle == "tableFixedHeadHover")
                 {
                     multipleTablesNormalHead = "tableMultipleNormalHead";
                     multipleTablesFixedHead = "tableMultipleFixedHead";
@@ -120,7 +115,7 @@ namespace jb_tools.Controllers
                         PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
                         ViewBag.SearchText = "";
                         ViewBag.PageInfo = "第 1 頁，共 1 頁";
-                        ViewBag.TableShowStyle = "tableFixedHead";
+                        ViewBag.TableShowStyle = "tableFixedHeadHover";
                         var model = mainMenus.GetDapperDataList("");
                         return RedirectToAction("Index", "IemuMainMenu", model);
                     }

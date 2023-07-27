@@ -22,7 +22,7 @@ namespace jb_tools.Controllers
 
                 Session["CurrentController"] = "IemuMainMenu";
                 if (Session["TableShowStyle"] == null)
-                    Session["TableShowStyle"] = "tableFixedHead";
+                    Session["TableShowStyle"] = "tableFixedHeadHover";
                 var tableShowStyle = Session["tableShowStyle"].ToString();
 
                 // var model = mainMenus.GetDapperDataList("");

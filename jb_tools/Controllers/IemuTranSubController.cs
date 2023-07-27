@@ -20,7 +20,7 @@ namespace jb_tools.Controllers
         {
             using (z_repoIemuTrans iemuTrans = new z_repoIemuTrans())
             {
-                using(z_repoIemuTranDetails iemuTranDetails = new z_repoIemuTranDetails())
+                using (z_repoIemuTranDetails iemuTranDetails = new z_repoIemuTranDetails())
                 {
                     PrgService.SearchText = "";
                     PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
@@ -32,13 +32,17 @@ namespace jb_tools.Controllers
                     string multipleTablesNormalHead = "";
                     string multipleTablesFixedHead = "";
 
+                    if (Session["TableShowStyle"] == null)
+                    {
+                        Session["TableShowStyle"] = "tableFixedHeadHover";
+                    }
                     string tableShowStyle = Session["TableShowStyle"].ToString();
                     if (tableShowStyle == "")
                     {
-                        tableShowStyle = "tableFixedHead";
+                        tableShowStyle = "tableFixedHeadHover";
                     }
 
-                    if (tableShowStyle == "tableFixedHead")
+                    if (tableShowStyle == "tableFixedHeadHover")
                     {
                         multipleTablesNormalHead = "tableMultipleNormalHead";
                         multipleTablesFixedHead = "tableMultipleFixedHead";
@@ -53,15 +57,10 @@ namespace jb_tools.Controllers
                     Session["MultipleTablesShowStyleFixedHead"] = multipleTablesFixedHead;
                     /* ----------------------------------------------------------------------------------------------------------- */
 
-                    //vmIemuTranModel vmModel = new vmIemuTranModel();
-                    //vmModel.IemuTranModel = iemuTrans.GetDapperData(id);
-                    //vmModel.IemuTranDetailsModel = iemuTranDetails.GetDapperDataTranDetailsList(vmModel.IemuTranModel.No);
-
-                    // var model = detailMenus.GetDapperDataList("");
                     // Jacky 1120726 for 分頁模式
                     vmIemuTranModel vmModel = new vmIemuTranModel();
                     vmModel.IemuTranModel = iemuTrans.GetDapperData(id);
-                    var model = iemuTranDetails.repo.ReadAll().Where(m => m.No == vmModel.IemuTranModel.No).OrderBy(m => m.Seq).ToPagedList(page, pageSize);
+                    IPagedList<IemuTranDetails> model = iemuTranDetails.repo.ReadAll().Where(m => m.No == vmModel.IemuTranModel.No).OrderBy(m => m.Seq).ToPagedList(page, pageSize);
                     vmModel.IemuTranDetailsModel = (IPagedList<IemuTranDetails>)model;
                     PrgService.SetAction(ActionService.IndexName, enCardSize.Max, model.PageNumber, model.PageCount);
 
@@ -76,6 +75,20 @@ namespace jb_tools.Controllers
                     return View(vmModel);
                 }
             }
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult CreateEdit(int id = 0)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult BringStandardValues(string no) 
+        { 
+            return View(); 
         }
     }
 }

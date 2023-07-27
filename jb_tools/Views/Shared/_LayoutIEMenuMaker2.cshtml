@@ -63,7 +63,7 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            基本資料
+                            標準資料
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="@Url.Action("Index" , "IemuMainMenu" , new { area = "" })">大分類</a></li>
@@ -94,15 +94,17 @@
     <div class="container-fluid">
         <div class="row mt-4 mx-0 pt-4">
             <div class="col">
-                @* Jacky 1120726 直接限定高度為 41px，以強迫高度不被改變 *@
-                <div class="row bg-warning" style="height: 41px;">
-                    <div class="col-4">
+                @* Jacky 1120726 直接限定高度為 40px，以強迫高度不被改變 *@
+                <div class="row bg-warning" style="height: 40px;">
+                    <div class="col-4 d-flex align-items-center">
                         <span class="float-start">@RenderSection("functionAreaLeft", required: false)</span>
                     </div>
-                    <div class="col-2 pt-1 d-flex justify-content-center">
-                        <h6 class="float-start pt-1" style="font-weight: 600;">@ViewBag.FunctionAreaTitle</h6>
+                    <div class="col-2 pt-2 d-flex justify-content-center">
+                        @*<h6 class="float-start pt-1" style="font-weight: 600;">@ViewBag.FunctionAreaTitle</h6>*@
+                        <h6 class="float-start pt-1"><strong>@ViewBag.FunctionAreaTitle</strong></h6>
                     </div>
-                    <div class="col-6">
+                    @* Jacky 1120726 直接指定字體大小為 12px，以強迫字體大小不被改變 *@
+                    <div class="col-6" style="font-size:12px; margin-top:3px;">
                         <span class="float-end">@RenderSection("functionAreaRight", required: false)</span>
                     </div>
                 </div>

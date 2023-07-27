@@ -17,6 +17,12 @@ public static class ActionService
     /// Row Data
     /// </summary>
     public static string RowData { get; set; }
+
+    /// <summary>
+    /// Jacky 1120727 增加
+    /// </summary>
+    public static string RowData2 { get; set; }
+
     /// <summary>
     /// 取得預設 Home 名稱
     /// </summary>
