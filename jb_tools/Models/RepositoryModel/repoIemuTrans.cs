@@ -44,6 +44,24 @@ public class z_repoIemuTrans : BaseClass
     }
 
     /// <summary>
+    /// 以 Dapper 來讀取單筆 IEMenu 交易檔(表頭) 資料
+    /// </summary>
+    /// <param name="no">IEMenu 交易檔(表頭) No</param>
+    /// <returns></returns>
+    public IemuTrans GetDapperDataByNo(string no)
+    {
+        using (DapperRepository dp = new DapperRepository())
+        {
+            string str_query = GetSQLSelect();
+            str_query += " WHERE IemuTrans.No = @no";
+            DynamicParameters parm = new DynamicParameters();
+            parm.Add("No", no);
+            var model = dp.ReadSingle<IemuTrans>(str_query, parm);
+            return model;
+        }
+    }
+
+    /// <summary>
     /// 以 Dapper 來讀取資料集合
     /// <summary>
     /// <param name="searchText">查詢條件</param>

@@ -7,6 +7,7 @@ using jb_tools.Models;
 using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -177,7 +178,6 @@ LEFT OUTER JOIN IemuDetailMenus ON IemuTranDetails.MainCode = IemuDetailMenus.Ma
     }
     #endregion
 
-
     #region 自定義事件及函數
     //Jacky 1120724
     /// <summary>
@@ -190,5 +190,23 @@ LEFT OUTER JOIN IemuDetailMenus ON IemuTranDetails.MainCode = IemuDetailMenus.Ma
         return GetDapperDataListByNo(iemuTransNo);
     }
 
+    /// <summary>
+    /// Jacky 1120727 帶入標準資料
+    /// </summary>
+    /// <param name="no"></param>
+    public string BringStandardValues(string no)
+    {
+        using (DapperRepository dp = new DapperRepository())
+        {
+            dp.CommandType = CommandType.StoredProcedure;
+            dp.CommandText = "dbo.sp_IemuTranSub_BringStandardValues";
+            dp.ParametersAdd("no", no, true);
+            dp.Execute();
+            string errorMessage = "";
+            if (!string.IsNullOrEmpty(dp.ErrorMessage))
+                errorMessage = dp.ErrorMessage.Trim();
+            return errorMessage;
+        }
+    }
     #endregion
 }
