@@ -8,7 +8,10 @@
     ViewBag.FunctionAreaTitle = ViewBag.Title;
 
     // Jacky 1120727 記錄表頭 IemuTrans 的 No，以帶入表身
-    ActionService.RowData2 = Model.IemuTranModel.No;
+    ViewBag.IemuTranModel_No = Model.IemuTranModel.No;
+
+    // Jacky 1120728 帶入表身是否已經存在資料
+    ViewBag.IsExistedData = Model.IemuTranDetailsModel.Count() > 0 ? true : false;
 }
 
 @section functionAreaLeft {

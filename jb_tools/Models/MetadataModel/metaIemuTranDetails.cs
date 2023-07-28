@@ -14,6 +14,7 @@ namespace jb_tools.Models
         [NotMapped]
         [Display(Name = "大分類識別")]
         public string McId { get; set; }
+        [NotMapped]
         [Display(Name = "大分類名稱")]
         public string MName { get; set; }
         [NotMapped]
@@ -22,8 +23,10 @@ namespace jb_tools.Models
         [NotMapped]
         [Display(Name = "程式名稱")]
         public string PName { get; set; }
+        [NotMapped]
         [Display(Name = "英文名稱")]
         public string PEName { get; set; }
+        [NotMapped]
         [Display(Name = "程式路徑")]
         public string ProgramPath { get; set; }
         [NotMapped]

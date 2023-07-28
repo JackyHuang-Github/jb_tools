@@ -91,14 +91,14 @@ public class z_repoIemuTranDetails : BaseClass
         string str_query = @"
 SELECT 
 	IemuTranDetails.Id, IemuTranDetails.No, IemuTranDetails.Seq, 
-	IemuTranDetails.MainCode, IemuMainMenus.Name AS MName, 
-	IemuTranDetails.ScId, IemuSubMenus.Name AS SName, 
+	IemuTranDetails.MainCode, ISNULL(IemuMainMenus.Name, '') AS MName, 
+	IemuTranDetails.ScId, ISNULL(IemuSubMenus.Name, '') AS SName, 
 	IemuTranDetails.DetailOrder, 
     IemuTranDetails.Program, 
-	IemuDetailMenus.Name AS PName, 
-    IemuDetailMenus.Ename AS PEName, 
-    IemuDetailMenus.ProgramPath AS ProgramPath, 
-	IemuDetailMenus.PosOrPath2 AS PosOrPath2,
+	ISNULL(IemuDetailMenus.Name, '') AS PName, 
+    ISNULL(IemuDetailMenus.Ename, '')  AS PEName, 
+    ISNULL(IemuDetailMenus.ProgramPath, '')  AS ProgramPath, 
+	ISNULL(IemuDetailMenus.PosOrPath2, '')  AS PosOrPath2,
 	IemuTranDetails.Remark
 FROM IemuTranDetails 
 LEFT OUTER JOIN IemuMainMenus ON IemuTranDetails.MainCode = IemuMainMenus.MainCode

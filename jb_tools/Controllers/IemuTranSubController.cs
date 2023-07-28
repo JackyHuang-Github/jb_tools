@@ -16,7 +16,7 @@ namespace jb_tools.Controllers
     {
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Index(int id = 0, int page = PageListService.CountPerPage, int pageSize = PageListService.CountPerPage, string searchText = "")
+        public ActionResult Index(int id = 0, int page = 1, int pageSize = PageListService.CountPerPage, string searchText = "")
         {
             using (z_repoIemuTrans iemuTrans = new z_repoIemuTrans())
             {
@@ -53,40 +53,27 @@ namespace jb_tools.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         /// Jacky 1120727
         /// <summary>
         /// 帶入標準資料
         /// no (單號)
         /// </summary>
-        public ActionResult BringStandardValues(string no, int page = PageListService.CountPerPage, int pageSize = PageListService.CountPerPage, string searchText = "")
+        public ActionResult BringStandardValues(string no)
         {
-            using (z_repoIemuTrans iemuTrans = new z_repoIemuTrans())
+            using (z_repoIemuTranDetails iemuTranDetails = new z_repoIemuTranDetails())
             {
-                using (z_repoIemuTranDetails iemuTranDetails = new z_repoIemuTranDetails())
-                {
-                    Session["CurrentController"] = "IemuTranSub";
+                Session["CurrentController"] = "IemuTranSub";
 
-                    vmIemuTranModel vmModel = new vmIemuTranModel();
-                    vmModel.IemuTranModel = iemuTrans.GetDapperDataByNo(no);
-
-                    // Jacky 1120727 帶入標準資料
-                    string errorMessage = iemuTranDetails.BringStandardValues(no);
-                    if (!string.IsNullOrEmpty(errorMessage)) 
-                    {
-                        string errorMessage2 = "";
-                        errorMessage2 = errorMessage;
-                    }
-
-                    // Jacky 1120726 for 分頁模式
-                    IPagedList<IemuTranDetails> model = iemuTranDetails.repo.ReadAll().Where(m => m.No == no).OrderBy(m => m.Seq).ToPagedList(page, pageSize);
-                    // Jacky 1120727
-                    // 注意：這裡必須再將 model 強迫轉型成 IPagedList<IemuTranDetails> 型態，不然 Compiler 會持續報錯，且下次程式會不斷從這裡開始
-                    vmModel.IemuTranDetailsModel = (IPagedList<IemuTranDetails>)model;
-                    PrgService.SetAction(ActionService.IndexName, enCardSize.Max, model.PageNumber, model.PageCount);
-
-                    return View(vmModel);
-                }
+                // Jacky 1120727 帶入標準資料
+                string errorMessage = iemuTranDetails.BringStandardValues(no);
+                dmJsonMessage result = new dmJsonMessage() 
+                { 
+                    // errorMessage 若為空則 Mode = true，否則為 false
+                    Mode = string.IsNullOrEmpty(errorMessage), 
+                    Message = string.IsNullOrEmpty(errorMessage) ? "已帶入標準資料至表身！" : errorMessage
+                };
+                return Json(result, JsonRequestBehavior.AllowGet);
             }
         }
 

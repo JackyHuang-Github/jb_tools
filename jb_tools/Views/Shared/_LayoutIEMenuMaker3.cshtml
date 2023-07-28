@@ -49,15 +49,14 @@
             <div class="col-12 bg-warning mt-0 py-0">
                 @* Jacky 1120726 直接限定高度為 40px，以強迫高度不被改變 *@
                 <div class="row" style="height: 40px;">
-                    <div class="col-4 d-flex align-items-center">
+                    <div class="col-4" style="margin-top:5px;">
                         <span class="float-start">@RenderSection("functionAreaLeft", required: false)</span>
                     </div>
-                    <div class="col-2 pt-1 d-flex justify-content-center">
-                        @*<h6 class="float-start pt-1" style="font-weight: 600;">@ViewBag.FunctionAreaTitle</h6>*@
+                    <div class="col-2 d-flex justify-content-center" style="margin-top:6px;">
                         <h6 class="float-start pt-1"><strong>@ViewBag.FunctionAreaTitle</strong></h6>
                     </div>
                     @* Jacky 1120726 直接指定字體大小為 12px，以強迫字體大小不被改變 *@
-                    <div class="col-6 d-flex align-content-center" style="font-size:12px;">
+                    <div class="col-6" style="font-size:12px; margin-top:3px;">
                         <span class="float-end">@RenderSection("functionAreaRight", required: false)</span>
                     </div>
                 </div>

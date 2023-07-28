@@ -1,15 +1,31 @@
 ﻿@{
-    if (TempData["ErrorMessage"] != null)
+    if (ViewBag.ErrorMessage != "")
     {
-        string str_message = TempData["ErrorMessage"].ToString();
+        string str_message = ViewBag.ErrorMessage;
         if (!string.IsNullOrEmpty(str_message))
         {
             <script type="text/javascript">
+                Swal.fire({
+                    title: "<strong>錯誤訊息</strong>",
+                    text: @str_message,
+                    icon: 'error',
+                    showCancelButton: false,
+                    focusConfirm: true,
+                    confirmButtonText: '<i class="fas fa-check pe-2"></i>確定',
+                }).then(function(result) {
+                    if (result.isConfirmed)
+                    {
+                        window.location.href = '@Url.Action(ActionService.Index, ActionService.Controller, new { area = "" })';
+                    }
+                });
+            </script>
+
+            @*<script type="text/javascript">
             Swal.fire({
                 title: '<strong>訊息提示</strong>',
                 html: '@Html.Raw(str_message)'
             })
-            </script>
+            </script>*@
         }
     }
 }
