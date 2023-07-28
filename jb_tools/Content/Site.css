@@ -34,14 +34,14 @@ textarea {
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* Jacky 1120714 固定 table header 方式 */
-.tableFixedHead {
+.tableFixedHeadHover {
     overflow: auto;
     /* 限制最大高度，Table 才不會出現超出上端的不預期捲動 */
     height: 85.5vh;
     border: 2px solid orange;
 }
 
-.tableFixedHead thead th {
+.tableFixedHeadHover thead th {
     /* 固定 header */
     position: sticky;
     top: 0;
@@ -50,7 +50,7 @@ textarea {
     color: blue;
 }
 
-.tableFixedHead tbody th {
+.tableFixedHeadHover tbody th {
     position: sticky;
     left: 0;
 }

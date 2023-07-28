@@ -32,9 +32,8 @@ namespace jb_tools.Controllers
                 var model = iemuTrans.repo.ReadAll().OrderByDescending(m => m.No).ToPagedList(page, pageSize);
                 PrgService.SetAction(ActionService.IndexName, enCardSize.Max, model.PageNumber, model.PageCount);
 
-                ViewBag.tableShowStyle = tableShowStyle;
+                ViewBag.TableShowStyle = tableShowStyle;
                 ViewBag.SearchText = "";
-                ViewBag.PageInfo = $"第 {model.PageNumber} 頁，共 {model.PageCount} 頁";
 
                 return View(model);
             }

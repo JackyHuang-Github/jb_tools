@@ -66,7 +66,6 @@ namespace jb_tools.Controllers
                         PrgService.SearchText = "";
                         PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
                         ViewBag.SearchText = "";
-                        ViewBag.PageInfo = "第 1 頁，共 1 頁";
                         ViewBag.TableShowStyle = tableShowStyle;
                         var model = mainMenus.GetDapperDataList("");
                         return RedirectToAction("Index", "IemuMainMenu", model);
@@ -78,7 +77,6 @@ namespace jb_tools.Controllers
                         PrgService.SearchText = "";
                         PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
                         ViewBag.SearchText = "";
-                        ViewBag.PageInfo = "第 1 頁，共 1 頁";
                         ViewBag.TableShowStyle = tableShowStyle;
                         var model = subMenus.GetDapperDataList("");
                         return RedirectToAction("Index", "IemuSubMenu", model);
@@ -90,7 +88,6 @@ namespace jb_tools.Controllers
                         PrgService.SearchText = "";
                         PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
                         ViewBag.SearchText = "";
-                        ViewBag.PageInfo = "第 1 頁，共 1 頁";
                         ViewBag.TableShowStyle = tableShowStyle;
                         var model = detailMenus.GetDapperDataList("");
                         return RedirectToAction("Index", "IemuDetailMenu", model);
@@ -102,7 +99,6 @@ namespace jb_tools.Controllers
                         PrgService.SearchText = "";
                         PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
                         ViewBag.SearchText = "";
-                        ViewBag.PageInfo = "第 1 頁，共 1 頁";
                         ViewBag.TableShowStyle = tableShowStyle;
                         var model = iemuTrans.GetDapperDataList("");
                         return RedirectToAction("Index", "IemuTran", model);
@@ -114,7 +110,6 @@ namespace jb_tools.Controllers
                         PrgService.SearchText = "";
                         PrgService.SetAction(ActionService.IndexName, enCardSize.Max, 1, 1);
                         ViewBag.SearchText = "";
-                        ViewBag.PageInfo = "第 1 頁，共 1 頁";
                         ViewBag.TableShowStyle = "tableFixedHeadHover";
                         var model = mainMenus.GetDapperDataList("");
                         return RedirectToAction("Index", "IemuMainMenu", model);
