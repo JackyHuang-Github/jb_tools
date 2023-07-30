@@ -21,6 +21,9 @@ namespace jb_tools.Models
         public string ScId { get; set; }
         public string DetailOrder { get; set; }
         public string Program { get; set; }
+        public string Name { get; set; }
+        public string Ename { get; set; }
+        public string ProgramPath { get; set; }
         public string Remark { get; set; }
     }
 }

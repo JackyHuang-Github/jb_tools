@@ -80,6 +80,33 @@ public class z_repoIemuTrans : BaseClass
         }
     }
 
+    /// Jacky 1120730
+    /// 注意：這裡另外寫這支程式是為了要搭配 IPagedList 分頁模式，且要顯示額外資料的考量，而不用 GetDapperDataList()
+    ///       若像標準資料檔(大中細標準資料檔)，因為不需要使用 [NotMapped] 顯示額外資料，就只要用 IPagedList 即可。
+    /// 為搭配 IPagedList 分頁模式所做的資料讀取，就不會一次把資料全部讀進來，造成嚴重 Lag
+    /// <summary>
+    /// 以 Dapper 來讀取資料集合
+    /// <summary>
+    /// <param page>頁號(1-Based)</param>
+    /// <param pageSize>每頁筆數</param>
+    /// <param startIndex>起始 Index(該頁起始索引)</param>
+    /// <param endIndex>結束 Index(該頁結束索引)</param>
+    /// <returns></returns>
+    public List<IemuTrans> GetDapperDataListRange(int page, int pageSize, int startIndex, int endIndex)
+    {
+        using (DapperRepository dp = new DapperRepository())
+        {
+            int skipCount = (page - 1) * pageSize;
+            int takeCount = endIndex - startIndex + 1;
+            string str_query = GetSQLSelect();
+            str_query += " ORDER BY IemuTrans.No DESC";
+            str_query += " OFFSET " + skipCount + " ROWS";
+            str_query += " FETCH NEXT " + takeCount + " ROWS ONLY";
+            var model = dp.ReadAll<IemuTrans>(str_query).ToList();
+            return model;
+        }
+    }
+
     /// <summary>
     /// 取得 SQL 欄位及表格名稱
     /// <summary>
@@ -88,8 +115,9 @@ public class z_repoIemuTrans : BaseClass
     {
         string str_query = @"
 SELECT
-	IemuTrans.Id, IemuTrans.No, IemuTrans.Date, IemuTrans.Status, CodeDatas.CodeName, IemuTrans.CuNo, iecusuh.cu_na, 
-    IemuTrans.CuSale, iepb03h.cu_snam, IemuTrans.IndustryNo, Industries.IndustryName, IemuTrans.Remark
+	IemuTrans.Id, IemuTrans.No, IemuTrans.Date, IemuTrans.Status, ISNULL(CodeDatas.CodeName, '') AS 'CodeName', 
+	IemuTrans.CuNo, ISNULL(iecusuh.cu_na, '') AS 'cu_na', IemuTrans.CuSale, ISNULL(iepb03h.cu_snam, '') AS 'cu_snam', 
+    IemuTrans.IndustryNo, ISNULL(Industries.IndustryName, '') AS 'IndustryName', IemuTrans.Remark
 FROM IemuTrans 
 LEFT OUTER JOIN CodeDatas ON IemuTrans.Status = CodeDatas.CodeNo AND CodeDatas.BaseNo = 'Status_IemuTrans'
 LEFT OUTER JOIN iecusuh ON IemuTrans.CuNo = iecusuh.cu_no

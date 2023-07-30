@@ -625,6 +625,9 @@
     <Property Name="ScId" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="DetailOrder" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Program" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Ename" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="ProgramPath" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="Remark" Type="nvarchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="IemuTrans">

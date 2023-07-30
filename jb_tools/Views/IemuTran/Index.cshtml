@@ -1,29 +1,29 @@
-﻿@*@model IEnumerable<jb_tools.Models.IemuTrans>*@
+﻿@using jb_tools.Models.ViewModel;
 
-@*Jacky 1120726 for 分頁模式*@
-@model IPagedList<jb_tools.Models.IemuTrans>
+@* Jacky 1120726 分頁模式 *@
+@* Jacky 1120730 List<T> 與 IPagedList<T> 的結合 Model *@
+@model vmIemuTranModel
 
 @{
     ViewBag.Title = "編輯 IEMenu";
     Layout = "~/Views/Shared/_LayoutIEMenuMaker2.cshtml";
     ViewBag.FunctionAreaTitle = ViewBag.Title;
+
+    // Jacky 1120725 三個點的表身細項
     ViewBag.ThreeDotsTargetController = "IemuTranSub";
     ViewBag.ThreeDotsTargetAction = "Index";
 }
 
-@*@section functionAreaRight {
-        @Html.Partial("~/Views/PartialViews/_PartialPagination.cshtml")
-    }*@
-
 @section styles {
+    @* Jacky 1120726 for 分頁模式專用的 CSS (注意：這裡所使用的是 PagedList_Jacky.css 因為有做微調) *@
     <link href="~/Content/PagedList_Jacky.css" rel="stylesheet" />
 }
 
 @section functionAreaRight {
     @* Jacky 1120726 for 分頁模式 *@
-    @if (Model.Count() > 0)
+    @if (Model.IemuTransPLModel.Count() > 0)
     {
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        @Html.PagedListPager(Model.IemuTransPLModel, page => Url.Action("Index", new { page }))
     }
 }
 
@@ -40,31 +40,31 @@
                                 </div>
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.FirstOrDefault().No)
+                                @Html.DisplayNameFor(model => Model.IemuTransModel.FirstOrDefault().No)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.FirstOrDefault().Date)
+                                @Html.DisplayNameFor(model => Model.IemuTransModel.FirstOrDefault().Date)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.FirstOrDefault().Status)
+                                @Html.DisplayNameFor(model => Model.IemuTransModel.FirstOrDefault().Status)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.FirstOrDefault().CuNo)
+                                @Html.DisplayNameFor(model => Model.IemuTransModel.FirstOrDefault().CuNo)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.FirstOrDefault().CuSale)
+                                @Html.DisplayNameFor(model => Model.IemuTransModel.FirstOrDefault().CuSale)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.FirstOrDefault().IndustryNo)
+                                @Html.DisplayNameFor(model => Model.IemuTransModel.FirstOrDefault().IndustryNo)
                             </th>
                             <th class="tableTitle px-1">
-                                @Html.DisplayNameFor(model => model.FirstOrDefault().Remark)
+                                @Html.DisplayNameFor(model => Model.IemuTransModel.FirstOrDefault().Remark)
                             </th>
                         </tr>
                     </thead>
 
                     <tbody class="table-group-divider">
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.IemuTransModel)
                         {
                             ActionService.RowId = item.Id;
                             ActionService.RowData = $"單號 {item.No}";

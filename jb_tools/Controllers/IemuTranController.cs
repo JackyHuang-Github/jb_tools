@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using DocumentFormat.OpenXml.Drawing.Charts;
+using jb_tools.Models.ViewModel;
 
 namespace jb_tools.Controllers
 {
@@ -15,6 +16,7 @@ namespace jb_tools.Controllers
     {
         [HttpGet]
         [AllowAnonymous]
+        //public ActionResult Index(string searchText = "")
         public ActionResult Index(int page = 1, int pageSize = PageListService.CountPerPage, string searchText = "")
         {
             using (z_repoIemuTrans iemuTrans = new z_repoIemuTrans())
@@ -27,15 +29,28 @@ namespace jb_tools.Controllers
                     Session["TableShowStyle"] = "tableFixedHeadHover";
                 var tableShowStyle = Session["TableShowStyle"].ToString();
 
-                // var model = iemuTrans.GetDapperDataList(searchText);
+                // Jacky 1120730 建立 List<T> 與 IPagedList<T> 的結合 Model
+                vmIemuTranModel vmModel = new vmIemuTranModel();
+
                 // Jacky 1120726 for 分頁模式
-                var model = iemuTrans.repo.ReadAll().OrderByDescending(m => m.No).ToPagedList(page, pageSize);
-                PrgService.SetAction(ActionService.IndexName, enCardSize.Max, model.PageNumber, model.PageCount);
+                // Jacky 1120730 IPagedList<T> 的 Model
+                IPagedList<IemuTrans> iemuTransPLModel = iemuTrans.repo.ReadAll().OrderByDescending(m => m.No).ToPagedList(page, pageSize);
+                vmModel.IemuTransPLModel = iemuTransPLModel;
+                PrgService.SetAction(ActionService.IndexName, enCardSize.Max, iemuTransPLModel.PageNumber, iemuTransPLModel.PageCount);
+
+                // Jacky 1120730 List<T> 的 Model
+                // 注意：這裡另外寫這支程式是為了要搭配 IPagedList 分頁模式，且要顯示額外資料的考量，而不用 GetDapperDataList()
+                //       若像標準資料檔(大中細標準資料檔)，因為不需要使用 [NotMapped] 顯示額外資料，就只要用 IPagedList 即可。
+                // 為搭配 IPagedList 分頁模式所做的資料讀取，就不會一次把資料全部讀進來，造成嚴重 Lag
+                int startIndex = iemuTransPLModel.FirstItemOnPage - 1;
+                int endIndex = iemuTransPLModel.LastItemOnPage - 1;
+                List<IemuTrans> iemuTransModel = iemuTrans.GetDapperDataListRange(page, pageSize, startIndex, endIndex);
+                vmModel.IemuTransModel = iemuTransModel;
 
                 ViewBag.TableShowStyle = tableShowStyle;
                 ViewBag.SearchText = "";
 
-                return View(model);
+                return View(vmModel);
             }
         }
 

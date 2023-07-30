@@ -66,7 +66,7 @@ public class z_repoIemuTranDetails : BaseClass
     /// <summary>
     /// 以 Dapper 來讀取資料集合(以 單號 No 來取)
     /// <summary>
-    /// <param name="searchText">查詢條件</param>
+    /// <param iemuTranNo>表頭 IemuTrans 的單號</param>
     /// <returns></returns>
     /// Jacky 1120726 for 分頁模式
     public List<IemuTranDetails> GetDapperDataListByNo(string iemuTranNo)
@@ -82,6 +82,35 @@ public class z_repoIemuTranDetails : BaseClass
         }
     }
 
+    /// Jacky 1120730
+    /// 注意：這裡另外寫這支程式是為了要搭配 IPagedList 分頁模式，且要顯示額外資料的考量，而不用 GetDapperDataList()
+    ///       若像標準資料檔(大中細標準資料檔)，因為不需要使用 [NotMapped] 顯示額外資料，就只要用 IPagedList 即可。
+    /// 為搭配 IPagedList 分頁模式所做的資料讀取，就不會一次把資料全部讀進來，造成嚴重 Lag
+    /// <summary>
+    /// 以 Dapper 來讀取資料集合
+    /// <summary>
+    /// <param iemuTranNo>表頭 IemuTrans 單號</param>
+    /// <param page>頁號(1-Based)</param>
+    /// <param pageSize>每頁筆數</param>
+    /// <param startIndex>起始 Index(該頁起始索引)</param>
+    /// <param endIndex>結束 Index(該頁結束索引)</param>
+    /// <returns></returns>
+    public List<IemuTranDetails> GetDapperDataListRange(string iemuTranNo, int page, int pageSize, int startIndex, int endIndex)
+    {
+        using (DapperRepository dp = new DapperRepository())
+        {
+            int skipCount = (page - 1) * pageSize;
+            int takeCount = endIndex - startIndex + 1;
+            string str_query = GetSQLSelect();
+            str_query += " WHERE IemuTranDetails.No = '" + iemuTranNo + "'";
+            str_query += " ORDER BY IemuTranDetails.Seq";
+            str_query += " OFFSET " + skipCount + " ROWS";
+            str_query += " FETCH NEXT " + takeCount + " ROWS ONLY";
+            var model = dp.ReadAll<IemuTranDetails>(str_query).ToList();
+            return model;
+        }
+    }
+
     /// <summary>
     /// 取得 SQL 欄位及表格名稱
     /// <summary>
@@ -91,20 +120,18 @@ public class z_repoIemuTranDetails : BaseClass
         string str_query = @"
 SELECT 
 	IemuTranDetails.Id, IemuTranDetails.No, IemuTranDetails.Seq, 
-	IemuTranDetails.MainCode, ISNULL(IemuMainMenus.Name, '') AS MName, 
-	IemuTranDetails.ScId, ISNULL(IemuSubMenus.Name, '') AS SName, 
-	IemuTranDetails.DetailOrder, 
-    IemuTranDetails.Program, 
-	ISNULL(IemuDetailMenus.Name, '') AS PName, 
-    ISNULL(IemuDetailMenus.Ename, '')  AS PEName, 
-    ISNULL(IemuDetailMenus.ProgramPath, '')  AS ProgramPath, 
-	ISNULL(IemuDetailMenus.PosOrPath2, '')  AS PosOrPath2,
+	IemuTranDetails.MainCode, ISNULL(IemuMainMenus.McId, '') AS 'McId', ISNULL(IemuMainMenus.Name, '') AS 'MName', 
+	IemuTranDetails.ScId, ISNULL(IemuSubMenus.Name, '') AS 'SName', 
+	IemuTranDetails.DetailOrder, IemuTranDetails.Program, IemuTranDetails.Name, IemuTranDetails.Ename, IemuTranDetails.ProgramPath, 
+	ISNULL(IemuDetailMenus.PosOrPath2, '') AS 'PosOrPath2',
 	IemuTranDetails.Remark
 FROM IemuTranDetails 
-LEFT OUTER JOIN IemuMainMenus ON IemuTranDetails.MainCode = IemuMainMenus.MainCode
-LEFT OUTER JOIN IemuSubMenus ON IemuTranDetails.MainCode = IemuSubMenus.MainCode AND IemuTranDetails.Scid = IemuSubMenus.ScId 
-LEFT OUTER JOIN IemuDetailMenus ON IemuTranDetails.MainCode = IemuDetailMenus.MainCode AND IemuTranDetails.Scid = IemuDetailMenus.ScId 
+LEFT JOIN IemuMainMenus ON IemuTranDetails.MainCode = IemuMainMenus.MainCode
+LEFT JOIN IemuSubMenus ON IemuTranDetails.MainCode = IemuSubMenus.MainCode AND IemuTranDetails.Scid = IemuSubMenus.ScId 
+LEFT JOIN IemuDetailMenus ON IemuTranDetails.MainCode = IemuDetailMenus.MainCode 
+    AND IemuTranDetails.Scid = IemuDetailMenus.ScId 
 	AND IemuTranDetails.Program = IemuDetailMenus.Program
+    AND IemuTranDetails.ProgramPath = IemuDetailMenus.ProgramPath
 ";
         return str_query;
     }
@@ -128,9 +155,9 @@ LEFT OUTER JOIN IemuDetailMenus ON IemuTranDetails.MainCode = IemuDetailMenus.Ma
             str_query += $"IemuTranDetails.Program LIKE '%{searchText}%' OR ";
             str_query += $"IemuMainMenus.Name LIKE '%{searchText}%' OR ";
             str_query += $"IemuSubMenus.Name LIKE '%{searchText}%' OR ";
-            str_query += $"IemuDetailMenus.Name LIKE '%{searchText}%' OR ";
-            str_query += $"IemuDetailMenus.Ename LIKE '%{searchText}%' OR ";
-            str_query += $"IemuDetailMenus.ProgramPath LIKE '%{searchText}%' OR ";
+            str_query += $"IemuTranDetails.Name LIKE '%{searchText}%' OR ";
+            str_query += $"IemuTranDetails.Ename LIKE '%{searchText}%' OR ";
+            str_query += $"IemuTranDetails.ProgramPath LIKE '%{searchText}%' OR ";
             str_query += $"IemuDetailMenus.PosOrPath2 LIKE '%{searchText}%' OR ";
             str_query += $"IemuTranDetails.Remark LIKE '%{searchText}%' ";
             str_query += ") ";
@@ -191,7 +218,7 @@ LEFT OUTER JOIN IemuDetailMenus ON IemuTranDetails.MainCode = IemuDetailMenus.Ma
     }
 
     /// <summary>
-    /// Jacky 1120727 帶入標準資料
+    /// Jacky 1120727 帶入標準資料(大中細分類全部資料)
     /// </summary>
     /// <param name="no"></param>
     public string BringStandardValues(string no)

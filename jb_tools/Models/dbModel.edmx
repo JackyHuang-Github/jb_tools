@@ -630,6 +630,9 @@
           <Property Name="ScId" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DetailOrder" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Program" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Ename" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ProgramPath" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="IemuTrans">
@@ -2565,6 +2568,9 @@
           <Property Name="ScId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DetailOrder" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Program" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Ename" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ProgramPath" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
@@ -3840,6 +3846,9 @@
             <EntityTypeMapping TypeName="jb_toolsModel.IemuTranDetails">
               <MappingFragment StoreEntitySet="IemuTranDetails">
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="ProgramPath" ColumnName="ProgramPath" />
+                <ScalarProperty Name="Ename" ColumnName="Ename" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Program" ColumnName="Program" />
                 <ScalarProperty Name="DetailOrder" ColumnName="DetailOrder" />
                 <ScalarProperty Name="ScId" ColumnName="ScId" />

@@ -550,6 +550,7 @@
     <Compile Include="Models\ViewModel\vmGeneratorModel.cs" />
     <Compile Include="Models\ViewModel\vmHtmlEditor.cs" />
     <Compile Include="Models\ViewModel\vmIemuTranModel.cs" />
+    <Compile Include="Models\ViewModel\vmIemuTranSubModel.cs" />
     <Compile Include="Models\ViewModel\vmLogin.cs" />
     <Compile Include="Models\ViewModel\vmMetadataModel.cs" />
     <Compile Include="Models\ViewModel\vmOrderModel.cs" />

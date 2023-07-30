@@ -30,15 +30,27 @@ namespace jb_tools.Controllers
                     // Jacky 1120725 設定表格樣式
                     SetTableShowStyle();
 
-                    vmIemuTranModel vmModel = new vmIemuTranModel();
-                    vmModel.IemuTranModel = iemuTrans.GetDapperData(id);
+                    // Jacky 1120730 建立 List<T> 與 IPagedList<T> 的結合 Model
+                    vmIemuTranSubModel vmModel = new vmIemuTranSubModel();
+
+                    // Jacky 1120730 表頭 IemuTrans 的 Model
+                    // 注意：這個 Model 一定要先做，因為需要這個表頭的單號來取表身資料
+                    vmModel.IemuTransModel = iemuTrans.GetDapperData(id);
 
                     // Jacky 1120726 for 分頁模式
-                    IPagedList<IemuTranDetails> model = iemuTranDetails.repo.ReadAll().Where(m => m.No == vmModel.IemuTranModel.No).OrderBy(m => m.Seq).ToPagedList(page, pageSize);
-                    // Jacky 1120727
-                    // 注意：這裡必須再將 model 強迫轉型成 IPagedList<IemuTranDetails> 型態，不然 Compiler 會持續報錯，且下次程式會不斷從這裡開始
-                    vmModel.IemuTranDetailsModel = (IPagedList<IemuTranDetails>)model;
-                    PrgService.SetAction(ActionService.IndexName, enCardSize.Max, model.PageNumber, model.PageCount);
+                    // Jacky 1120730 IPagedList<T> 的 Model
+                    IPagedList<IemuTranDetails> iemuTranDetailsPLModel = iemuTranDetails.repo.ReadAll().Where(m => m.No == vmModel.IemuTransModel.No).OrderBy(m => m.Seq).ToPagedList(page, pageSize);
+                    vmModel.IemuTranDetailsPLModel = iemuTranDetailsPLModel;
+                    PrgService.SetAction(ActionService.IndexName, enCardSize.Max, vmModel.IemuTranDetailsPLModel.PageNumber, vmModel.IemuTranDetailsPLModel.PageCount);
+
+                    // Jacky 1120730 List<T> 的 Model
+                    // 注意：這裡另外寫這支程式是為了要搭配 IPagedList 分頁模式，且要顯示額外資料的考量，而不用 GetDapperDataList()
+                    //       若像標準資料檔(大中細標準資料檔)，因為不需要使用 [NotMapped] 顯示額外資料，就只要用 IPagedList 即可。
+                    // 為搭配 IPagedList 分頁模式所做的資料讀取，就不會一次把資料全部讀進來，造成嚴重 Lag
+                    int startIndex = iemuTranDetailsPLModel.FirstItemOnPage - 1;
+                    int endIndex = iemuTranDetailsPLModel.LastItemOnPage - 1;
+                    List<IemuTranDetails> iemuTranDetailsModel = iemuTranDetails.GetDapperDataListRange(vmModel.IemuTransModel.No, page, pageSize, startIndex, endIndex);
+                    vmModel.IemuTranDetailsModel = iemuTranDetailsModel;
 
                     return View(vmModel);
                 }

@@ -21,15 +21,6 @@ namespace jb_tools.Models
         [Display(Name = "中分類名稱")]
         public string SName { get; set; }
         [NotMapped]
-        [Display(Name = "程式名稱")]
-        public string PName { get; set; }
-        [NotMapped]
-        [Display(Name = "英文名稱")]
-        public string PEName { get; set; }
-        [NotMapped]
-        [Display(Name = "程式路徑")]
-        public string ProgramPath { get; set; }
-        [NotMapped]
         [Display(Name = "位置或檔案路徑二")]
         public string PosOrPath2 { get; set; }
     }
@@ -69,6 +60,23 @@ public abstract class z_metaIemuTranDetails
     [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
     [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
     public string Program { get; set; }
+    [Display(Name = "程式名稱")]
+    [Required(ErrorMessage = "不可空白!!")]
+    [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
+    [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
+    public string Name { get; set; }
+    [NotMapped]
+    [Display(Name = "英文名稱")]
+    [Required(ErrorMessage = "不可空白!!")]
+    [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
+    [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
+    public string Ename { get; set; }
+    [NotMapped]
+    [Display(Name = "程式路徑")]
+    [Required(ErrorMessage = "不可空白!!")]
+    [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
+    [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]
+    public string ProgramPath { get; set; }
     [Display(Name = "備註")]
     [Column(CheckBox = false, Hidden = false, DropdownClass = "")]
     [Default(DefaultValueType = enDefaultValueType.String_Space, DefaultValue = "")]

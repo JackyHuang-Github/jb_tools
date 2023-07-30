@@ -1268,6 +1268,9 @@
       <EntityTypeMapping TypeName="jb_toolsModel.IemuTranDetails">
         <MappingFragment StoreEntitySet="IemuTranDetails">
           <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="ProgramPath" ColumnName="ProgramPath" />
+          <ScalarProperty Name="Ename" ColumnName="Ename" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Program" ColumnName="Program" />
           <ScalarProperty Name="DetailOrder" ColumnName="DetailOrder" />
           <ScalarProperty Name="ScId" ColumnName="ScId" />
