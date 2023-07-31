@@ -1,0 +1,28 @@
+﻿@* Jacky 1120731 *@
+<style>
+    .okay {
+        font-size: 30px;
+        font-weight: 600;
+        padding: 18px 50px;
+        color: red;
+        background-color: black;
+        border: 2px solid red;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .okay:hover {
+        color: white;
+        background-color: red;
+        border: 2px solid yellow;
+    }
+</style>
+<div class="">
+    @* 改用 JavaScrip 回上一頁 功能，可大幅降低 ActionLink 要重新讀取資料所花費的時間 *@
+    <input type="button" class="okay" name="okay" id="okay" value="確定" onclick="goback();" />
+</div>
+<script>
+    function goback() {
+        history.back();
+    }
+</script>

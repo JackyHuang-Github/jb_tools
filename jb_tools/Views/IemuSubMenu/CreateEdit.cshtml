@@ -1,8 +1,16 @@
-﻿
+﻿@*@model jb_tools.Models.IemuSubMenus*@
+
 @{
     ViewBag.Title = "CreateEdit";
-    Layout = "~/Views/Shared/_LayoutToBeContinued.cshtml";
+    // Layout = "~/Views/Shared/_LayoutToBeContinued.cshtml";
+
+    // Jacky 1120731
+    Layout = "~/Views/Shared/_LayoutInfo.cshtml";
+    ViewBag.ShowInfo = "[標準資料] 不予開放編輯！";
 }
 
-@Html.Partial("~/Views/PartialViews/_PartialToBeContinued.cshtml")
+@*@Html.Partial("~/Views/PartialViews/_PartialToBeContinued.cshtml")*@
+
+@* Jacky 1120731 *@
+@Html.Partial("~/Views/PartialViews/_PartialInfo.cshtml")
 

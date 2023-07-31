@@ -592,7 +592,15 @@
     <Compile Include="Resources\resProgram.zh-TW.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\WebConfig\connectionStrings.txt" />
+    <Content Include="App_Data\SQLs\create_Industries.sql" />
+    <Content Include="App_Data\SQLs\insert_data_to_Securitys.sql" />
+    <Content Include="App_Data\SQLs\insert_IemuTrans.sql" />
+    <Content Include="App_Data\SQLs\query_duplicated_program_in_IemuDetailMenus.sql" />
+    <Content Include="App_Data\SQLs\query_iecusuh.sql" />
+    <Content Include="App_Data\SQLs\query_IemuTranDetails.sql" />
+    <Content Include="App_Data\SQLs\query_IemuTranDetails_in_duplicated_program_of_IemuDetailMenus.sql" />
+    <Content Include="App_Data\SQLs\query_IemuTrans_iecushh_iepb03h_Industries.sql" />
+    <Content Include="App_Data\SQLs\query_iepb03h.sql" />
     <Content Include="Content\all.css" />
     <Content Include="Content\all.min.css" />
     <Content Include="Content\brands.css" />
@@ -1251,6 +1259,13 @@
     <Content Include="Plugins\FullCalendar\5.11.0\examples\php\get-events.php" />
     <Content Include="Plugins\FullCalendar\5.11.0\examples\php\get-time-zones.php" />
     <Content Include="Plugins\FullCalendar\5.11.0\examples\php\utils.php" />
+    <Content Include="App_Data\WebConfig\Web.config" />
+    <None Include="App_Data\WebConfig\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="App_Data\WebConfig\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\chart.js" />
     <Content Include="Scripts\chart.min.js" />
@@ -1461,6 +1476,8 @@
     <Content Include="Views\IemuTranSub\Index.cshtml" />
     <Content Include="Views\PartialViews\_PartialPagination.cshtml" />
     <Content Include="Views\PartialViews\_PartialFormCreate.cshtml" />
+    <Content Include="Views\PartialViews\_PartialInfo.cshtml" />
+    <Content Include="Views\Shared\_LayoutInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\resColumn.en-US.resx" />

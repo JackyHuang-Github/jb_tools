@@ -1,4 +1,4 @@
-﻿@* Jacky 1120718 *@
+﻿@* Jacky 1120731 *@
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,14 +8,14 @@
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" ) />
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
     @RenderSection("styles", false)
-    <title>未完待續</title>
+    <title>訊息</title>
 </head>
 <body>
     <div class="container-fluid bg-black">
         <div class="row vh-100">
             <div class="col-12"></div>
             <div class="col-12 d-flex justify-content-center align-items-center">
-                <h3 class="h5 text-white display-1"><strong>未完待續</strong></h3>
+                <h3 class="h5 text-white display-1"><strong>@ViewBag.ShowInfo</strong></h3>
             </div>
             <div class="col-12 d-flex justify-content-center">
                 @RenderBody()
