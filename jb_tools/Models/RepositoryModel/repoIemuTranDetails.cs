@@ -123,15 +123,10 @@ SELECT
 	IemuTranDetails.MainCode, ISNULL(IemuMainMenus.McId, '') AS 'McId', ISNULL(IemuMainMenus.Name, '') AS 'MName', 
 	IemuTranDetails.ScId, ISNULL(IemuSubMenus.Name, '') AS 'SName', 
 	IemuTranDetails.DetailOrder, IemuTranDetails.Program, IemuTranDetails.Name, IemuTranDetails.Ename, IemuTranDetails.ProgramPath, 
-	ISNULL(IemuDetailMenus.PosOrPath2, '') AS 'PosOrPath2',
 	IemuTranDetails.Remark
 FROM IemuTranDetails 
 LEFT JOIN IemuMainMenus ON IemuTranDetails.MainCode = IemuMainMenus.MainCode
 LEFT JOIN IemuSubMenus ON IemuTranDetails.MainCode = IemuSubMenus.MainCode AND IemuTranDetails.Scid = IemuSubMenus.ScId 
-LEFT JOIN IemuDetailMenus ON IemuTranDetails.MainCode = IemuDetailMenus.MainCode 
-    AND IemuTranDetails.Scid = IemuDetailMenus.ScId 
-	AND IemuTranDetails.Program = IemuDetailMenus.Program
-    AND IemuTranDetails.ProgramPath = IemuDetailMenus.ProgramPath
 ";
         return str_query;
     }

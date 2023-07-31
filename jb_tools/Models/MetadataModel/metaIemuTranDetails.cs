@@ -20,9 +20,9 @@ namespace jb_tools.Models
         [NotMapped]
         [Display(Name = "中分類名稱")]
         public string SName { get; set; }
-        [NotMapped]
-        [Display(Name = "位置或檔案路徑二")]
-        public string PosOrPath2 { get; set; }
+        //[NotMapped]
+        //[Display(Name = "位置或檔案路徑二")]
+        //public string PosOrPath2 { get; set; }
     }
 }
 
