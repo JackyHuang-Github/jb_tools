@@ -11,8 +11,11 @@ namespace jb_tools.Controllers
     {
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Index(int page = 1, int pageSize = PageListService.CountPerPage, string searchText = "")
+        public ActionResult Index(int page = 1, int pageSize = PaginationService.CountPerPage, string searchText = "")
         {
+            // Jacky 1120731 抓取 Web.config 裡的設定值
+            pageSize = PaginationService.GetCountPerPage();
+
             using (z_repoIemuDetailMenus detailMenus = new z_repoIemuDetailMenus())
             {
                 PrgService.SearchText = "";
