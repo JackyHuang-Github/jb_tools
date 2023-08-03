@@ -506,9 +506,11 @@
     <Compile Include="Models\SelectListModel\listCusale.cs" />
     <Compile Include="Models\SelectListModel\listCustomer.cs" />
     <Compile Include="Models\SelectListModel\listDepartment.cs" />
+    <Compile Include="Models\SelectListModel\listDetailOrder.cs" />
     <Compile Include="Models\SelectListModel\listGender.cs" />
     <Compile Include="Models\SelectListModel\listIndustry.cs" />
     <Compile Include="Models\SelectListModel\listLayout.cs" />
+    <Compile Include="Models\SelectListModel\listMainCode.cs" />
     <Compile Include="Models\SelectListModel\listModule.cs" />
     <Compile Include="Models\SelectListModel\listOrderStatus.cs" />
     <Compile Include="Models\SelectListModel\listProgram.cs" />
@@ -516,6 +518,7 @@
     <Compile Include="Models\SelectListModel\listRole.cs" />
     <Compile Include="Models\SelectListModel\listSortNo.cs" />
     <Compile Include="Models\SelectListModel\listStatus_IemuTrans.cs" />
+    <Compile Include="Models\SelectListModel\listSubCode.cs" />
     <Compile Include="Models\SelectListModel\listTemplate.cs" />
     <Compile Include="Models\SelectListModel\listTitle.cs" />
     <Compile Include="Models\SelectListModel\listUser.cs" />
@@ -542,6 +545,9 @@
     <Compile Include="Models\Vacations.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel\vmDDLDetailOrderModel.cs" />
+    <Compile Include="Models\ViewModel\vmDDLMainCodeModel.cs" />
+    <Compile Include="Models\ViewModel\vmDDLScIdModel.cs" />
     <Compile Include="Models\ViewModel\vmChangePassword.cs" />
     <Compile Include="Models\ViewModel\vmCodeModel.cs" />
     <Compile Include="Models\ViewModel\vmContact.cs" />
@@ -1438,7 +1444,6 @@
     <Content Include="Views\PartialViews\_PartialHomeUserContent.cshtml" />
     <Content Include="Views\PartialViews\_PartialLogoShort.cshtml" />
     <Content Include="Views\PartialViews\_PartialShopPage.cshtml" />
-    <Content Include="Views\IEMenuMaker\IemuMainMenu_Create.cshtml" />
     <Content Include="Views\IemuMainMenu\Index.cshtml" />
     <Content Include="Views\IemuSubMenu\Index.cshtml" />
     <Content Include="Views\IemuDetailMenu\Index.cshtml" />
@@ -1478,6 +1483,9 @@
     <Content Include="Views\PartialViews\_PartialFormCreate.cshtml" />
     <Content Include="Views\PartialViews\_PartialInfo.cshtml" />
     <Content Include="Views\Shared\_LayoutInfo.cshtml" />
+    <Content Include="Views\Shared\_LayoutCardIemuTranSub.cshtml" />
+    <Content Include="Views\IemuTranSub\CreateEdit.cshtml" />
+    <Content Include="Views\IemuTranSub\ShowSecondDropDownList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\resColumn.en-US.resx" />

@@ -9,7 +9,7 @@ using WebGrease.Css.Extensions;
 public partial class ListItemData : BaseClass
 {
     /// <summary>
-    /// 狀態列表
+    /// Status(狀態碼)下拉選單
     /// </summary>
     /// <returns></returns>
     public List<SelectListItem> Status_IemuTransList()

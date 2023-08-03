@@ -8,7 +8,7 @@ using System.Web.Mvc;
 public partial class ListItemData : BaseClass
 {
     /// <summary>
-    /// 客戶列表
+    /// 客戶下拉選單
     /// </summary>
     /// <returns></returns>
     public List<SelectListItem> CustomerList()

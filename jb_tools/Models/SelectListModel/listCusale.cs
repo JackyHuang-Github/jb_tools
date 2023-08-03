@@ -8,14 +8,14 @@ using System.Web.Mvc;
 public partial class ListItemData : BaseClass
 {
     /// <summary>
-    /// 經辦人列表
+    /// 經辦人下拉選單
     /// </summary>
     /// <returns></returns>
     public List<SelectListItem> CusaleList()
     {
-        using (z_repoiepb03h model = new z_repoiepb03h())
+        using (z_repoiepb03h iepb03h = new z_repoiepb03h())
         {
-            var data = model.repo.ReadAll()
+            var data = iepb03h.repo.ReadAll()
                 .OrderBy(m => m.cu_sale)
                 .Select(u => new SelectListItem
                 {

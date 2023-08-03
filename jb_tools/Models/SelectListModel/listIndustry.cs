@@ -8,14 +8,14 @@ using System.Web.Mvc;
 public partial class ListItemData : BaseClass
 {
     /// <summary>
-    /// 產業別列表
+    /// 產業別下拉選單
     /// </summary>
     /// <returns></returns>
     public List<SelectListItem> IndustryList()
     {
-        using (z_repoIndustries model = new z_repoIndustries())
+        using (z_repoIndustries industries = new z_repoIndustries())
         {
-            var data = model.repo.ReadAll()
+            var data = industries.repo.ReadAll()
                 .OrderBy(m => m.IndustryNo)
                 .Select(u => new SelectListItem
                 {

@@ -9,11 +9,269 @@ using System.Web.Mvc;
 using DocumentFormat.OpenXml.EMMA;
 using PagedList;
 using System.Drawing.Printing;
+using DocumentFormat.OpenXml.Bibliography;
 
 namespace jb_tools.Controllers
 {
     public class IemuTranSubController : Controller
     {
+        private const bool V = true;
+
+        // for DropDownList ↓ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        // Jacky 1120731
+
+        /// <summary>
+        /// 準備下拉選單的資料
+        /// </summary>
+        /// <param name="id"></param>
+        //public EmptyResult PrepareDropDownList()
+        private void PrepareDropDownList(int id = 0)
+        {
+            // 第一層下拉選單資料結構
+            List<vmDDLMainCodeModel> firstLevelItems;
+
+            // 第二層下拉選單資料結構
+            List<vmDDLScIdModel> secondLevelItems;
+
+            // 第三層下拉選單資料結構
+            List<vmDDLDetailOrderModel> thirdLevelItems;
+
+            // 第一層被選定的大分類代號
+            string selectedMainCode = string.Empty;
+
+            // 第二層被選定的中分類識別
+            string selectedScId = string.Empty;
+
+            // 第三層被選定的細分類序號
+            string selectedDetailOrder = string.Empty;
+
+            // 建立第一層原始資料來源
+            using (z_repoIemuMainMenus iemuMainMenus = new z_repoIemuMainMenus())
+            {
+                // 第一層下拉選單資料結構
+                firstLevelItems = new List<vmDDLMainCodeModel>();
+
+                // 建立第一層 ViewModel 資料，以 IemuMainMenus 資料表的資料，來建立第一層 ViewModel 資料，作為下拉選單呈現的資料
+                foreach (var row in iemuMainMenus.GetDapperDataList(""))
+                {
+                    firstLevelItems.Add(
+                        new vmDDLMainCodeModel()
+                        {
+                            Id = row.Id,
+                            MainCode = row.MainCode,
+                            McId = row.McId,
+                            Name = row.Name
+                        }
+                    );
+                }
+            }
+
+            // 第二層原始資料來源
+            using (z_repoIemuSubMenus iemuSubMenus = new z_repoIemuSubMenus())
+            {
+                // 第二層下拉選單資料結構
+                secondLevelItems = new List<vmDDLScIdModel>();
+
+                // 建立第二層 ViewModel 資料，以 IemuSubMenus 資料表的資料，來建立第二層 ViewModel 資料，作為下拉選單呈現的資料
+                foreach (var row in iemuSubMenus.GetDapperDataList(""))
+                {
+                    secondLevelItems.Add(
+                        new vmDDLScIdModel()
+                        {
+                            Id = row.Id,
+                            ScId = row.ScId,
+                            SubCode = row.SubCode,
+                            Name = row.Name,
+                            MainCode = row.MainCode
+                        }
+                    );
+                }
+            }
+
+            // 第三層原始資料來源
+            using (z_repoIemuDetailMenus iemuDetailMenus = new z_repoIemuDetailMenus())
+            {
+                // 第三層下拉選單資料結構
+                thirdLevelItems = new List<vmDDLDetailOrderModel>();
+
+                // 建立第三層 ViewModel 資料，以 IemuDetailMenus 資料表的資料，來建立第三層 ViewModel 資料，作為下拉選單呈現的資料
+                foreach (var row in iemuDetailMenus.GetDapperDataList(""))
+                {
+                    thirdLevelItems.Add(
+                        new vmDDLDetailOrderModel()
+                        {
+                            Id = row.Id,
+                            DetailOrder = row.DetailOrder,
+                            Program = row.Program,
+                            Name = row.Name,
+                            ScId = row.ScId,
+                            MainCode = row.MainCode
+                        }
+                    );
+                }
+            }
+
+            if (id == 0)
+            {
+                // 1. 找出第一筆當作預設的 MainCode
+                selectedMainCode = (
+                    from f in firstLevelItems
+                    orderby f.MainCode
+                    select f.MainCode
+                    ).FirstOrDefault();
+            }
+            else
+            {
+                // 1. 找出 Id == id 當作預設的 MainCode
+                selectedMainCode = (
+                    from f in firstLevelItems
+                    where f.Id == id
+                    select f.MainCode
+                    ).FirstOrDefault();
+            }
+
+            // 2. 用 LINQ 撈出第一層資料，用以建立 SelectListItem 實例
+            var items =
+                (
+                    (
+                        from f in firstLevelItems
+                        where f.MainCode == selectedMainCode
+                        select new SelectListItem
+                        {
+                            Text = f.MainCode + SelectListService.Delimiter + f.McId + SelectListService.Delimiter + f.Name,
+                            Value = f.MainCode,
+                            Selected = true
+                        }
+                    )
+                    .Union
+                    (
+                        from f in firstLevelItems
+                        where f.MainCode != selectedMainCode
+                        orderby f.MainCode
+                        select new SelectListItem
+                        {
+                            Text = f.MainCode + SelectListService.Delimiter + f.McId + SelectListService.Delimiter + f.Name,
+                            Value = f.MainCode,
+                            Selected = false
+                        }
+                    )
+                ).ToList();
+
+            // 2. 加入「請選擇」
+            //items.Insert(0, new SelectListItem { Text = "請選擇", Value = "-1" });
+
+            // 2. 第一層資料建立的下拉選單資料，存入 ViewData
+            ViewData["FirstLevelItems"] = items;
+
+            if (id == 0)
+            {
+                // 3. 以 MainCode == selectedMainCode 為條件，找出第一筆的 ScId 
+                selectedScId = (
+                    from f in secondLevelItems
+                    where f.MainCode == selectedMainCode
+                    orderby f.ScId
+                    select f.ScId
+                    ).FirstOrDefault();
+            }
+            else
+            {
+                // 3. 找出 Id == id 當作預設的 MainCode
+                selectedMainCode = (
+                    from f in firstLevelItems
+                    where f.Id == id
+                    select f.MainCode
+                    ).FirstOrDefault();
+            }
+
+            // 4. 用 LINQ 撈出第二層資料，用以建立 SelectListItem 實例
+            items =
+            (
+                (
+                    from s in secondLevelItems
+                    where s.ScId == selectedScId
+                    select new SelectListItem
+                    {
+                        Text = s.ScId + SelectListService.Delimiter + s.SubCode + SelectListService.Delimiter + s.Name,
+                        Value = s.ScId,
+                        Selected = true
+                    }
+                )
+                .Union
+                (
+                    from s in secondLevelItems
+                    where s.ScId != selectedScId
+                    select new SelectListItem
+                    {
+                        Text = s.ScId + SelectListService.Delimiter + s.SubCode + SelectListService.Delimiter + s.Name,
+                        Value = s.ScId,
+                        Selected = false
+                    }
+                )
+            ).ToList();
+
+        (
+                from s in secondLevelItems
+                    select new SelectListItem
+                    {
+                        Text = s.ScId + SelectListService.Delimiter + s.SubCode + SelectListService.Delimiter + s.Name,
+                        Value = s.ScId
+                    }
+                ).ToList();
+
+            // 2. 加入「請選擇」
+            items.Insert(0, new SelectListItem { Text = "請選擇", Value = "-1" });
+
+            // 3. 第二層資料建立的下拉選單資料，存入 ViewData
+            ViewData["SecondLevelItems"] = items;
+
+            // 1. 用 LINQ 撈出第一層資料，用以建立 SelectListItem 實例
+            //var items = (
+            //    from f in firstLevelItems
+            //    select new SelectListItem 
+            //    { 
+            //        Text = f.MainCode + SelectListService.Delimiter + f.McId + SelectListService.Delimiter + f.Name, 
+            //        Value = f.MainCode 
+            //    }
+            //).ToList();
+
+            //// 2. 加入「請選擇」
+            //items.Insert(0, new SelectListItem { Text = "請選擇", Value = "-1" });
+
+            //// 3. 第一層資料建立的下拉選單資料，存入 ViewData
+            //ViewData["FirstLevelItems"] = items;
+
+            //return new EmptyResult();
+        }
+
+        /// <summary>
+        /// 顯示第二層 DrowDownList
+        /// </summary>
+        /// <param name="mainCode"></param>
+        /// mainCode: 所隸屬的大分類代號
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult ShowSecondDropDownList(string mainCode)
+        {
+            // 1. 用 LINQ 撈出第二層資料，用以建立 SelectListItem 實例
+            var items = (
+                from s in secondLevelItems
+                select new SelectListItem
+                {
+                    Text = s.SubCode + SelectListService.Delimiter + s.ScId + SelectListService.Delimiter + s.Name,
+                    Value = s.ScId
+                }
+            ).ToList();
+
+            // 2. 加入「請選擇」
+            items.Insert(0, new SelectListItem { Text = "請選擇", Value = "-1" });
+
+            // 3. 第二層資料建立的下拉選單資料，存入 ViewData
+            ViewData["SecondLevelItems"] = items;
+
+            return View();
+        }
+        // for DropDownList ↑ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Index(int id = 0, int page = 1, int pageSize = PaginationService.CountPerPage, string searchText = "")
@@ -42,7 +300,10 @@ namespace jb_tools.Controllers
 
                     // Jacky 1120726 for 分頁模式
                     // Jacky 1120730 IPagedList<T> 的 Model
-                    IPagedList<IemuTranDetails> iemuTranDetailsPLModel = iemuTranDetails.repo.ReadAll().Where(m => m.No == vmModel.IemuTransModel.No).OrderBy(m => m.Seq).ToPagedList(page, pageSize);
+                    IPagedList<IemuTranDetails> iemuTranDetailsPLModel = iemuTranDetails.repo.ReadAll()
+                        .Where(m => m.No == vmModel.IemuTransModel.No)
+                        .OrderBy(m => m.Seq)
+                        .ToPagedList(page, pageSize);
                     vmModel.IemuTranDetailsPLModel = iemuTranDetailsPLModel;
                     PrgService.SetAction(ActionService.IndexName, enCardSize.Max, vmModel.IemuTranDetailsPLModel.PageNumber, vmModel.IemuTranDetailsPLModel.PageCount);
 
@@ -64,11 +325,48 @@ namespace jb_tools.Controllers
         [AllowAnonymous]
         public ActionResult CreateEdit(int id = 0)
         {
-            return View();
+            using (z_repoIemuTranDetails iemuTranDetails = new z_repoIemuTranDetails())
+            {
+                PrepareDropDownList();
+
+                SessionService.KeyValue = id;
+                enAction action = (id == 0) ? enAction.Create : enAction.Edit;
+                PrgService.SetAction(action, enCardSize.Small);
+                ViewBag.Action = action;
+                ViewBag.CardSize = PrgService.CardSize;
+                var model = iemuTranDetails.repo.ReadSingle(m => m.Id == id);
+                if (model == null)
+                {
+                    model = new IemuTranDetails();
+                    // 設定新增預設值
+                    using (AttributeService attr = new AttributeService())
+                    {
+                        //model.No = iemuTrans.GetNewNo();
+                        //model.Date = DateTime.Today.Date;
+
+                        //// Jacky 1120723
+                        //// for TextBoxFor 使用，不然在新增畫面時，帶不出 [狀態碼]、[狀態名稱]
+                        //model.Status = "E";     // 編輯中
+                        //model.CodeName = iemuTrans.GetCodeName(model.Status);
+
+                        //model.CuNo = (string)attr.GetDefaultValue<z_repoIemuTrans>("CuNo");
+                        //model.CuSale = (string)attr.GetDefaultValue<z_repoIemuTrans>("CuSale");
+                        //model.IndustryNo = (string)attr.GetDefaultValue<z_repoIemuTrans>("IndustryNo");
+                        //model.Remark = (string)attr.GetDefaultValue<z_repoIemuTrans>("Remark");
+                    }
+                }
+                else
+                {
+                    // Jacky 1120723
+                    // for TextBoxFor 使用，不然在修改畫面時，帶不出 [客戶簡稱]
+                    //model.cu_na = iemuTrans.GetCustomerSimpleName(model.CuNo);
+                }
+                return View(model);
+            }
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         /// Jacky 1120727
         /// <summary>
         /// 帶入標準資料
@@ -82,10 +380,10 @@ namespace jb_tools.Controllers
 
                 // Jacky 1120727 帶入標準資料
                 string errorMessage = iemuTranDetails.BringStandardValues(no);
-                dmJsonMessage result = new dmJsonMessage() 
-                { 
+                dmJsonMessage result = new dmJsonMessage()
+                {
                     // errorMessage 若為空則 Mode = true，否則為 false
-                    Mode = string.IsNullOrEmpty(errorMessage), 
+                    Mode = string.IsNullOrEmpty(errorMessage),
                     Message = string.IsNullOrEmpty(errorMessage) ? "已帶入標準資料至表身！" : errorMessage
                 };
                 return Json(result, JsonRequestBehavior.AllowGet);
