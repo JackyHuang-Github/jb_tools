@@ -1,0 +1,195 @@
+﻿@model jb_tools.Models.IemuTranDetails
+
+@{
+    ViewBag.Title = "CreateEdit";
+    Layout = "~/Views/Shared/_LayoutCardIemuTranDetail.cshtml";
+    ActionService.RowId = Model.Id;
+
+    // 取得目前的編輯模式
+    var editMode = ViewBag.Action;
+    var FirstLevelItems = ViewData["FirstLevelItems"];
+
+    //List<SelectListItem> mainCodeList = new List<SelectListItem>();
+    //using (ListItemData listData = new ListItemData())
+    //{
+    //    mainCodeList = listData.MainCodeList();
+    //}
+}
+
+<script type="text/javascript">
+    $(document).ready(init);
+
+    function init() {
+        // 準備 DropDownList 相關資訊
+        //PrepareDropDownList();
+
+        // 當網頁上的 DOM 都載入時，第一層下拉選單也呈現出來了
+        // ↓顯示第二層下拉選單，沒加這兩段↓的話，第一次網頁載入時第二層下拉選單不會出現
+
+        // 取得第一層選擇的值
+        var mainCode = $("select[name = 'MainCode']").val();
+        console.log('1 mainCode: ' + mainCode);
+        // 取得第二層選擇的值
+        var scId = $("select[name = 'ScId']").val();
+        console.log('1 scId: ' + scId);
+        // 取得第三層選擇的值
+        var detailOrder = $("select[name = 'DetailOrder']").val();
+        console.log('1 detailOrder: ' + detailOrder);
+
+        // 為第一層下拉選單註冊 onchange 事件
+        $("select[name = 'MainCode']").change(function () {
+            // 取得第一層選擇的值
+            var mainCode = $(this).val();
+            console.log('2 mainCode: ' + mainCode);
+            // 設定第二層下拉選單
+            var scId = SetSecondDropDownList(mainCode);
+            console.log('2 scId: ' + scId);
+            // 設定第三層下拉選單
+            var detailOrder = SetThirdDropDownList(mainCode, scId);
+            console.log('2 detailOrder: ' + detailOrder);
+        });
+
+        // 為第二層下拉選單註冊 onchange 事件
+        $("select[name = 'ScId']").change(function () {
+            // 取得第二層選擇的值
+            var scId = $(this).val();
+            // 設定第三層下拉選單
+            var detailOrder = SetThirdDropDownList(mainCode, scId);
+        });
+
+        // 為第三層下拉選單註冊 onchange 事件
+        $("select[name = 'DetailOrder']").change(function () {
+            // 取得第三層選擇的值
+            var detailOrder = $(this).val();
+        });
+
+        function PrepareDropDownList() {
+            $.ajax({
+                url: "@Url.Action("PrepareDropDownList","IemuTranDetail")",
+                type: "get",
+                data: {},
+                async: false
+            });
+        }
+
+        function SetSecondDropDownList(mainCode) {
+            $.ajax({
+                url: "@Url.Action("SetSecondDropDownList", "IemuTranDetail")",
+                type: "get",
+                data: { mainCode: mainCode },
+                async: false,
+                success: function (data) {
+                    $("span").empty().html(data);
+                    //$("select['ScId']").val = 
+                }
+            });
+        }
+
+        function SetThirdDropDownList(mainCode, scId) {
+            $.ajax({
+                url: "@Url.Action("SetThirdDropDownList", "IemuTranDetail")",
+                type: "get",
+                data: { mainCode: mainCode, scId: scId },
+                async: false,
+                success: function (data) {
+                    $("span").empty().html(data);
+                }
+            });
+        }
+    }
+</script>
+
+<div class="card mt-5 shadow w-50">
+    <div class="card-header text-white bg-primary">
+        <div class="d-flex justify-content-center">
+            @if (editMode == enAction.Create)
+            {
+                <h3>編輯 IEMenu - 交易表單 - 明細 - @ActionService.CreateName</h3>
+            }
+            else
+            {
+                <h3>編輯 IEMenu - 交易表單 - 明細 - @ActionService.EditName</h3>
+            }
+        </div>
+    </div>
+    <div class="card-body pt-4">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal mt-2">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(m => m.Id)
+
+                @* 單號 *@
+                <!--<div class="row form-group mb-1">
+                @Html.LabelFor(m => m.No, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">-->
+                @* 注意：這裡只能用 readoly 不能用 disabled，因為會被 Form Submit 忽略之，也就是不會傳送至 Server *@
+                @* readonly 用法：@readonly = true，但是元素 <SELECT> <OPTION> <BUTTON> 不支援 readonly *@
+                @* disabled 用法：disabled = "disabled" *@
+                <!--@Html.EditorFor(m => m.No, new { htmlAttributes = new { @class = "form-control readonly_bgc", @readonly = true } })
+                        @Html.ValidationMessageFor(m => m.No, "", new { @class = "text-danger" })
+                    </div>
+                </div>-->
+                @* 項次 *@
+                <div class="row form-group mb-1">
+                    @Html.LabelFor(m => m.Seq, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(m => m.Seq, new { htmlAttributes = new { @class = "form-control readonly_bgc", @readonly = true } })
+                        @Html.ValidationMessageFor(m => m.Seq, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* 大分類代號 *@
+                <div class="row form-group mb-1">
+                    @Html.LabelFor(m => m.MainCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.MainCode, (IEnumerable<SelectListItem>)ViewData["FirstLevelItems"], new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.MainCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* 中分類識別 *@
+                <div class="row form-group mb-1">
+                    @Html.LabelFor(m => m.ScId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.ScId, (IEnumerable<SelectListItem>)Session["SecondLevelItems"], new { @class = "form-control" })
+                        <span></span>
+                        @Html.ValidationMessageFor(m => m.ScId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* 細分類序號 *@
+                <div class="row form-group mb-1">
+                    @Html.LabelFor(m => m.DetailOrder, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.DetailOrder, (IEnumerable<SelectListItem>)Session["ThirdLevelItems"], new { @class = "form-control" })
+                        <span></span>
+                        @Html.ValidationMessageFor(m => m.DetailOrder, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* 備註 *@
+                <div class="row form-group">
+                    @Html.LabelFor(m => m.Remark, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(m => m.Remark, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Remark, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <hr />
+                <div class="row form-group mt-2">
+                    <div class="col-12">
+                        <input type="submit" value="確認編輯" class="btn btn-primary" title="確認編輯" />
+                        @Html.ActionLink(ActionService.Return, ActionService.Index, ActionService.Controller, 
+                            new { area = "", id = ActionService.RowId }, 
+                            new { @class = "btn btn-success" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

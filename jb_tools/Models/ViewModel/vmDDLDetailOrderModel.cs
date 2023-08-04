@@ -8,10 +8,6 @@ namespace jb_tools.Models.ViewModel
     public class vmDDLDetailOrderModel
     {
         /// <summary>
-        /// Id
-        /// </summary>
-        public int Id { get; set; }
-        /// <summary>
         /// 細分類序號
         /// </summary>
         public string DetailOrder { get; set; }
@@ -23,6 +19,10 @@ namespace jb_tools.Models.ViewModel
         /// 程式名稱
         /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// 程式名稱
+        /// </summary>
+        public string ProgramPath { get; set; }
         /// <summary>
         /// 中分類識別
         /// </summary>

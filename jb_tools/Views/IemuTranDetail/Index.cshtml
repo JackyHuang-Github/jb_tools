@@ -1,0 +1,207 @@
+﻿@using jb_tools.Models.ViewModel;
+
+@* Jacky 1120726 分頁模式 *@
+@* Jacky 1120730 List<T> 與 IPagedList<T> 的結合 Model *@
+@model vmIemuTranDetailModel
+
+@{
+    ViewBag.Title = "編輯 IEMenu - 交易表單 - 明細";
+    Layout = "~/Views/Shared/_LayoutIEMenuMaker3.cshtml";
+    ViewBag.FunctionAreaTitle = ViewBag.Title;
+
+    // Jacky 1120727 記錄表頭 IemuTrans 的 No，以帶入表身
+    ViewBag.IemuTranModel_No = Model.IemuTransModel.No;
+
+    // Jacky 1120728 帶入表身是否已經存在資料
+    ViewBag.IsExistedData = (Model.IemuTranDetailsModel.Count() > 0) ? true : false;
+}
+
+@section functionAreaLeft {
+    <div class="float-left d-inline-block">
+        @Html.ActionLink(ActionService.Return, ActionService.Index, "IemuTran", new { area = "" },
+            new
+                {
+                    @class = "btn btn-sm btn-primary border-danger",
+                    style = "font-weight: 600;",
+                    accesskey = "J",
+                    alt = ActionService.Return + " (Alt + J)",
+                    title = ActionService.Return + " (Alt + J)"
+                }
+        )
+    </div>
+
+    @* Jacky 1120727 表身帶入標準資料 *@
+    <div class="float-left d-inline-block">
+        @Html.Partial("~/Views/PartialViews/_PartialIemuTranDetail_BSV.cshtml")
+    </div>
+}
+
+@section styles {
+    @* Jacky 1120726 for 分頁模式專用的 CSS (注意：這裡所使用的是 PagedList_Jacky.css 因為有做微調) *@
+    <link href="~/Content/PagedList_Jacky.css" rel="stylesheet" />
+}
+
+@section functionAreaRight {
+    @* Jacky 1120726 for 分頁模式 *@
+    @if (Model.IemuTranDetailsPLModel != null && Model.IemuTranDetailsPLModel.Count() > 0)
+    {
+        @Html.PagedListPager(Model.IemuTranDetailsPLModel, page => Url.Action("Index", new { page }))
+    }
+}
+
+<div class="container-fluid p-1 contentArea2">
+    @* 表頭 (注意：是單筆，非多筆喔) *@
+    <div class="row">
+        <div class="col">
+            <div class="@ViewBag.MultipleTablesShowStyleNormalHead">
+                <table class="table table-dark table-striped table-hover table-bordered">
+                    <thead class="table-info align-middle">
+                        <tr>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => Model.IemuTransModel.No)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => Model.IemuTransModel.Date)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => Model.IemuTransModel.Status)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => Model.IemuTransModel.CuNo)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => Model.IemuTransModel.CuSale)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => Model.IemuTransModel.IndustryNo)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => Model.IemuTransModel.Remark)
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => Model.IemuTransModel.No)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => Model.IemuTransModel.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => Model.IemuTransModel.Status)&nbsp;&nbsp;@Html.DisplayFor(model => Model.IemuTransModel.CodeName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => Model.IemuTransModel.CuNo)&nbsp;&nbsp;@Html.DisplayFor(model => Model.IemuTransModel.cu_na)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => Model.IemuTransModel.CuSale)&nbsp;&nbsp;@Html.DisplayFor(model => Model.IemuTransModel.cu_snam)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => Model.IemuTransModel.IndustryNo)&nbsp;&nbsp;@Html.DisplayFor(model => Model.IemuTransModel.IndustryName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => Model.IemuTransModel.Remark)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    @* 表身 *@
+    <div class="row">
+        <div class="col">
+            <div class="@ViewBag.MultipleTablesShowStyleFixedHead">
+                <table class="table table-dark table-striped table-hover table-bordered">
+                    <thead class="table-info align-middle">
+                        <tr>
+                            <th>
+                                <div class="mx-1">
+                                    @Html.Partial("~/Views/PartialViews/_PartialFormCreate.cshtml")
+                                </div>
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => Model.IemuTranDetailsModel.FirstOrDefault().Seq)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.IemuTranDetailsModel.FirstOrDefault().MainCode)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.IemuTranDetailsModel.FirstOrDefault().ScId)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.IemuTranDetailsModel.FirstOrDefault().DetailOrder)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.IemuTranDetailsModel.FirstOrDefault().Program)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.IemuTranDetailsModel.FirstOrDefault().Name)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.IemuTranDetailsModel.FirstOrDefault().Ename)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.IemuTranDetailsModel.FirstOrDefault().ProgramPath)
+                            </th>
+                            <th class="tableTitle px-1">
+                                @Html.DisplayNameFor(model => model.IemuTranDetailsModel.FirstOrDefault().Remark)
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="table-group-divider">
+                        @if (Model.IemuTranDetailsModel != null && Model.IemuTranDetailsModel.Count > 0)
+                        {
+                            foreach (var item in Model.IemuTranDetailsModel)
+                            {
+                                ActionService.RowId = item.Id;
+                                ActionService.RowData = $"單號 {item.No} > 項次 {item.Seq}";
+                                <tr>
+                                    <td>
+                                        <div class="m-1 float-start">
+                                            @Html.Partial("~/Views/PartialViews/_PartialFormEdit.cshtml")
+                                        </div>
+                                        <div class="m-1 float-start">
+                                            @Html.Partial("~/Views/PartialViews/_PartialFormDelete.cshtml")
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Seq)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MainCode)&nbsp;&nbsp;@Html.DisplayFor(modeItem => item.McId)&nbsp;&nbsp;@Html.DisplayFor(modeItem => item.MName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ScId)&nbsp;&nbsp;@Html.DisplayFor(modeItem => item.SName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DetailOrder)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Program)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modeItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modeItem => item.Ename)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modeItem => item.ProgramPath)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Remark)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

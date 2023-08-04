@@ -33,8 +33,8 @@ namespace jb_tools.Controllers
 
             var controllerName = Session["CurrentController"].ToString();
 
-            // Jacky 1120725 為 IemuTranSub 的多表格做額外判斷
-            if (controllerName == "IemuTranSub")
+            // Jacky 1120725 為 IemuTranDetail 的多表格做額外判斷
+            if (controllerName == "IemuTranDetail")
             {
                 string multipleTablesNormalHead = "";
                 string multipleTablesFixedHead = "";

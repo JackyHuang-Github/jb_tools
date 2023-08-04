@@ -12,10 +12,6 @@ namespace jb_tools.Models.ViewModel
     public class vmDDLMainCodeModel
     {
         /// <summary>
-        /// Id
-        /// </summary>
-        public int Id { get; set; }
-        /// <summary>
         /// 大分類代號
         /// </summary>
         public string MainCode { get; set; }

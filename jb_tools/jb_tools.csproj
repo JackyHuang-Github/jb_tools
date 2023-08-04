@@ -214,7 +214,7 @@
     <Compile Include="Controllers\IemuMainMenuController.cs" />
     <Compile Include="Controllers\IemuSubMenuController.cs" />
     <Compile Include="Controllers\IemuTranController.cs" />
-    <Compile Include="Controllers\IemuTranSubController.cs" />
+    <Compile Include="Controllers\IemuTranDetailController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -556,7 +556,7 @@
     <Compile Include="Models\ViewModel\vmGeneratorModel.cs" />
     <Compile Include="Models\ViewModel\vmHtmlEditor.cs" />
     <Compile Include="Models\ViewModel\vmIemuTranModel.cs" />
-    <Compile Include="Models\ViewModel\vmIemuTranSubModel.cs" />
+    <Compile Include="Models\ViewModel\vmIemuTranDetailModel.cs" />
     <Compile Include="Models\ViewModel\vmLogin.cs" />
     <Compile Include="Models\ViewModel\vmMetadataModel.cs" />
     <Compile Include="Models\ViewModel\vmOrderModel.cs" />
@@ -1418,7 +1418,7 @@
     <Content Include="Views\PartialViews\_PartialCodePropertyList.cshtml" />
     <Content Include="Views\PartialViews\_PartialErrorMessage.cshtml" />
     <Content Include="Views\PartialViews\_PartialFormCancel.cshtml" />
-    <Content Include="Views\PartialViews\_PartialIemuTranSub_BSV.cshtml" />
+    <Content Include="Views\PartialViews\_PartialIemuTranDetail_BSV.cshtml" />
     <Content Include="Views\PartialViews\_PartialFormDelete.cshtml" />
     <Content Include="Views\PartialViews\_PartialFormDetail.cshtml" />
     <Content Include="Views\PartialViews\_PartialFormDownload.cshtml" />
@@ -1478,14 +1478,16 @@
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="Views\PartialViews\_PartialFormThreeDots.cshtml" />
     <Content Include="Views\Shared\_LayoutIEMenuMaker3.cshtml" />
-    <Content Include="Views\IemuTranSub\Index.cshtml" />
+    <Content Include="Views\IemuTranDetail\Index.cshtml" />
     <Content Include="Views\PartialViews\_PartialPagination.cshtml" />
     <Content Include="Views\PartialViews\_PartialFormCreate.cshtml" />
     <Content Include="Views\PartialViews\_PartialInfo.cshtml" />
     <Content Include="Views\Shared\_LayoutInfo.cshtml" />
-    <Content Include="Views\Shared\_LayoutCardIemuTranSub.cshtml" />
-    <Content Include="Views\IemuTranSub\CreateEdit.cshtml" />
-    <Content Include="Views\IemuTranSub\ShowSecondDropDownList.cshtml" />
+    <Content Include="Views\Shared\_LayoutCardIemuTranDetail.cshtml" />
+    <Content Include="Views\IemuTranDetail\CreateEdit.cshtml" />
+    <Content Include="Views\IemuTranDetail\SetSecondDropDownList.cshtml" />
+    <Content Include="Views\IemuTranDetail\SetThirdDropDownList.cshtml" />
+    <Content Include="Views\IemuTranDetail\Select.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\resColumn.en-US.resx" />

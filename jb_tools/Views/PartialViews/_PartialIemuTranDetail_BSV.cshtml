@@ -1,0 +1,88 @@
+﻿@* Jacky 1120727 表身帶入標準資料 *@
+
+<input type="button" id="BringStandardValues" value="帶入標準資料"
+    class="btn btn-sm btn-success border-danger"
+    style="font-weight: 600;"
+    onclick="return BringStandardValues('@ViewBag.IemuTranModel_No', @ViewBag.IsExistedData);" />
+
+<script>
+    // no: 表頭單號
+    // isExistedData (true / false): 表身是否已存在資料
+    function BringStandardValues(no, isExistedData) {
+        if (no == "") {
+            Swal.fire({
+                title: "<strong>沒有 IEMenu 交易單表頭資料！</strong>",
+                text: '沒有 IEMenu 交易單表頭資料！',
+                icon: 'error',
+                showCancelButton: false,
+                focusConfirm: true,
+                closeOnConfirm: true,
+                confirmButtonText: '<i class="fas fa-check pe-2"></i>確定'
+            });
+
+            // 回傳 false，即可限制本程式後續不予執行
+            return false;
+        }
+
+        if (isExistedData) {
+            Swal.fire({
+                title: "<strong>警告訊息</strong>",
+                text: "表身已存在資料，無法直接帶入！",
+                icon: 'warning',
+                showCancelButton: false,
+                focusConfirm: true,
+                confirmButtonText: '<i class="fas fa-check pe-2"></i>確定',
+            }).then(function(result) {
+                if (result.isConfirmed)
+                {
+                    window.location.href = '@Url.Action(ActionService.Index, ActionService.Controller, new { area = "" })';
+                }
+            });
+
+            // 回傳 false，即可限制本程式後續不予執行
+            return false;
+        }
+
+        Swal.fire({
+            title: "<strong>是否要帶入標準資料？</strong>",
+            text: '是否要帶入標準資料到表身資料表？',
+            icon: 'question',
+            showCancelButton: true,
+            focusConfirm: false,
+            //closeOnConfirm: false,    Jacky 1120729 查的結果沒有這個屬性
+            confirmButtonText: '<i class="fas fa-check pe-2"></i>確定',
+            cancelButtonText: '<i class="fas fa-times pe-2"></i>取消',
+        }).then(function (result) {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '@Url.Action("BringStandardValues", "IemuTranDetail", new { area = "" })',
+                    // 這個 no 必須傳入 SP: sp_IemuTranDetail_BringStandardValues
+                    data: { "no": no },
+                    type: "POST",
+                    dataType: "json",
+                }).done(function (value) {
+                    if (value.Mode == true) {
+                        Swal.fire({
+                            title: "<strong>提示訊息</strong>",
+                            text: value.Message,
+                            icon: 'success',
+                            showCancelButton: false,
+                            focusConfirm: true,
+                            confirmButtonText: '<i class="fas fa-check pe-2"></i>確定',
+                        }).then(function (result) {
+                            if (result.isConfirmed) {
+                                window.location.href = '@Url.Action("Index", ActionService.Controller, new { area = "" })';
+                            }
+                        });
+                    }
+                    else {
+                        Swal.fire('錯誤訊息1', value.Message, 'error');
+                    }
+                    }).fail(function (err) {
+                        Swal.fire('錯誤訊息2', err.Message, 'error');
+                        console.log(err);
+                });
+            }
+        });
+    }
+</script>

@@ -11,17 +11,13 @@ namespace jb_tools.Models.ViewModel
     public class vmDDLScIdModel
     {
         /// <summary>
-        /// Id
+        /// 中分類代號
         /// </summary>
-        public int Id { get; set; }
+        public string SubCode { get; set; }
         /// <summary>
         /// 中分類識別
         /// </summary>
         public string ScId { get; set; }
-        /// <summary>
-        /// 中分類代號
-        /// </summary>
-        public string SubCode { get; set; }
         /// <summary>
         /// 中分類名稱
         /// </summary>

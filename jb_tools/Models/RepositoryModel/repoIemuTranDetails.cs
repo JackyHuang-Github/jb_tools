@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using DocumentFormat.OpenXml.Bibliography;
 using DocumentFormat.OpenXml.Drawing.ChartDrawing;
 using DocumentFormat.OpenXml.Drawing.Charts;
 using DocumentFormat.OpenXml.Math;
@@ -79,6 +80,29 @@ public class z_repoIemuTranDetails : BaseClass
             parm.Add("No", iemuTranNo);
             var model = dp.ReadAll<IemuTranDetails>(str_query);
             return model;
+        }
+    }
+
+    /// <summary>
+    /// 取得 IemuTranDetails 資料筆數
+    /// </summary>
+    /// <param name="iemuTranNo"></param>
+    /// <returns></returns>
+    /// Jacky 1120804
+    public int GetDataCount(string iemuTranNo) 
+    {
+        using (DapperRepository dp = new DapperRepository())
+        {
+            string sql =
+                @"SELECT COUNT(*) FROM IemuTranDetails" +
+                " WHERE No = @no";
+
+            dp.CommandText = sql;
+            // true 為加入參數前，是否將參數全數清空
+            dp.ParametersAdd("no", iemuTranNo, true);
+            dp.CommandType = CommandType.Text;
+
+            return dp.QueryScalar();
         }
     }
 
@@ -220,13 +244,15 @@ LEFT JOIN IemuSubMenus ON IemuTranDetails.MainCode = IemuSubMenus.MainCode AND I
     {
         using (DapperRepository dp = new DapperRepository())
         {
-            dp.CommandType = CommandType.StoredProcedure;
-            dp.CommandText = "dbo.sp_IemuTranSub_BringStandardValues";
+            dp.CommandType = System.Data.CommandType.StoredProcedure;
+            dp.CommandText = "dbo.sp_IemuTranDetail_BringStandardValues";
             dp.ParametersAdd("no", no, true);
             dp.Execute();
             string errorMessage = "";
             if (!string.IsNullOrEmpty(dp.ErrorMessage))
+            {
                 errorMessage = dp.ErrorMessage.Trim();
+            }
             return errorMessage;
         }
     }
