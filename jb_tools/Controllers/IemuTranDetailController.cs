@@ -20,20 +20,22 @@ namespace jb_tools.Controllers
         // for DropDownList ↓ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         // Jacky 1120731
 
-        // 第一層下拉選單資料結構
-        List<vmDDLMainCodeModel> firstLevelItems;
+        // 第一層下拉選單原始資料結構
+        List<vmDDLMainCodeModel> firstLevelRawItems = new List<vmDDLMainCodeModel>();
+        public List<vmDDLMainCodeModel> FirstLevelRawItems { get => firstLevelRawItems; set => firstLevelRawItems = value; }
+        
+        // 第二層下拉選單原始資料結構
+        List<vmDDLScIdModel> secondLevelRawItems = new List<vmDDLScIdModel>();
+        public List<vmDDLScIdModel> SecondLevelRawItems { get => secondLevelRawItems; set => secondLevelRawItems = value; }
 
-        // 第二層下拉選單資料結構
-        List<vmDDLScIdModel> secondLevelItems;
-
-        // 第三層下拉選單資料結構
-        List<vmDDLDetailOrderModel> thirdLevelItems;
+        // 第三層下拉選單原始資料結構
+        List<vmDDLDetailOrderModel> thirdLevelRawItems = new List<vmDDLDetailOrderModel>();
+        public List<vmDDLDetailOrderModel> ThirdLevelRawItems { get => thirdLevelRawItems; set => thirdLevelRawItems = value; }
 
         /// <summary>
         /// 準備下拉選單的資料
         /// </summary>
         /// <param name="id"></param>
-        //public EmptyResult PrepareDropDownList()
         private void PrepareDropDownList(int id = 0)
         {
             // 第一層被選定的大分類代號
@@ -45,57 +47,57 @@ namespace jb_tools.Controllers
             // 第三層被選定的細分類序號
             string selectedDetailOrder = string.Empty;
 
+            // -------------------------------------------------- ↓ 建立原始資料來源 ↓ --------------------------------------------------
             // 建立第一層原始資料來源
             using (z_repoIemuMainMenus iemuMainMenus = new z_repoIemuMainMenus())
             {
-                // 第一層下拉選單資料結構
-                firstLevelItems = new List<vmDDLMainCodeModel>();
-
                 // 建立第一層 ViewModel 資料，以 IemuMainMenus 資料表的資料，來建立第一層 ViewModel 資料，作為下拉選單呈現的資料
                 foreach (var row in iemuMainMenus.GetDapperDataList(""))
                 {
-                    firstLevelItems.Add(
+                    FirstLevelRawItems.Add(
                         new vmDDLMainCodeModel()
                         {
                             MainCode = row.MainCode,
                             McId = row.McId,
-                            Name = row.Name
+                            Name = row.Name,
+                            SortNum = row.SortNum
                         }
                     );
                 }
+
+                // Jacky 1120806 儲存第一層原始資料來源
+                Session["FirstLevelRawItems"] = FirstLevelRawItems;
             }
 
             // 第二層原始資料來源
             using (z_repoIemuSubMenus iemuSubMenus = new z_repoIemuSubMenus())
             {
-                // 第二層下拉選單資料結構
-                secondLevelItems = new List<vmDDLScIdModel>();
-
                 // 建立第二層 ViewModel 資料，以 IemuSubMenus 資料表的資料，來建立第二層 ViewModel 資料，作為下拉選單呈現的資料
                 foreach (var row in iemuSubMenus.GetDapperDataList(""))
                 {
-                    secondLevelItems.Add(
+                    SecondLevelRawItems.Add(
                         new vmDDLScIdModel()
                         {
                             SubCode = row.SubCode,
                             ScId = row.ScId,
                             Name = row.Name,
-                            MainCode = row.MainCode
+                            MainCode = row.MainCode,
+                            SortNum = row.SortNum
                         }
                     );
                 }
+
+                // Jacky 1120806 儲存第二層原始資料來源
+                Session["SecondLevelRawItems"] = SecondLevelRawItems;
             }
 
             // 第三層原始資料來源
             using (z_repoIemuDetailMenus iemuDetailMenus = new z_repoIemuDetailMenus())
             {
-                // 第三層下拉選單資料結構
-                thirdLevelItems = new List<vmDDLDetailOrderModel>();
-
                 // 建立第三層 ViewModel 資料，以 IemuDetailMenus 資料表的資料，來建立第三層 ViewModel 資料，作為下拉選單呈現的資料
                 foreach (var row in iemuDetailMenus.GetDapperDataList(""))
                 {
-                    thirdLevelItems.Add(
+                    ThirdLevelRawItems.Add(
                         new vmDDLDetailOrderModel()
                         {
                             DetailOrder = row.DetailOrder,
@@ -103,19 +105,24 @@ namespace jb_tools.Controllers
                             Name = row.Name,
                             ProgramPath = row.ProgramPath,
                             ScId = row.ScId,
-                            MainCode = row.MainCode
+                            MainCode = row.MainCode,
+                            SortNum = row.SortNum
                         }
                     );
                 }
+
+                // Jacky 1120806 儲存第三層原始資料來源
+                Session["ThirdLevelRawItems"] = ThirdLevelRawItems;
             }
+            // -------------------------------------------------- ↑ 建立原始資料來源 ↑ --------------------------------------------------
 
             // -------------------------------------------------- ↓ 大分類 ↓ --------------------------------------------------
             if (id == 0)
             {
                 // 1. 找出第一筆當作預設的 MainCode
                 selectedMainCode = (
-                    from f in firstLevelItems
-                    orderby f.MainCode
+                    from f in FirstLevelRawItems
+                    orderby f.SortNum
                     select f.MainCode
                     ).FirstOrDefault();
             }
@@ -124,24 +131,19 @@ namespace jb_tools.Controllers
                 // 1. 找出表身 IemuTranDetails 該筆資料的 Id 之 MainCode、ScId、DetailOrder
                 using (z_repoIemuTranDetails iemuTranDetails = new z_repoIemuTranDetails())
                 {
-                    var data = (
-                    from i in iemuTranDetails.repo.ReadAll()
-                    where i.Id == id
-                    select i
-                    ).FirstOrDefault();
-
+                    var data = iemuTranDetails.GetDapperData(id);
                     selectedMainCode = data.MainCode;
                     selectedScId = data.ScId;
                     selectedDetailOrder = data.DetailOrder;
                 }
             }
 
-            // 2. 用 LINQ 撈出第一層資料，用以建立 SelectListItem 實例
+            // 2. 用 LINQ 撈出第一層原始資料來源，用以建立 SelectListItem 實例
             var items =
                 (
                     (
                         // 設定 [預設選取] 的下拉選單內容 
-                        from f in firstLevelItems
+                        from f in FirstLevelRawItems
                         where f.MainCode == selectedMainCode
                         select new SelectListItem
                         {
@@ -153,9 +155,9 @@ namespace jb_tools.Controllers
                     .Union
                     (
                         // 設定 [非預設選取] 的下拉選單內容 
-                        from f in firstLevelItems
+                        from f in FirstLevelRawItems
                         where f.MainCode != selectedMainCode
-                        orderby f.MainCode
+                        orderby f.SortNum
                         select new SelectListItem
                         {
                             Text = f.MainCode + SelectListService.Delimiter + f.McId + SelectListService.Delimiter + f.Name,
@@ -165,8 +167,8 @@ namespace jb_tools.Controllers
                     )
                 ).ToList();
 
-            // 3. 第一層資料建立的下拉選單資料，存入 ViewData
-            ViewData["FirstLevelItems"] = items;
+            // 3. 第一層原始資料來源建立的下拉選單資料，存入 ViewData
+            Session["FirstLevelItems"] = items;
             // -------------------------------------------------- ↑ 大分類 ↑ --------------------------------------------------
 
             // -------------------------------------------------- ↓ 中分類 ↓ --------------------------------------------------
@@ -174,9 +176,9 @@ namespace jb_tools.Controllers
             {
                 // 1. 以 MainCode == selectedMainCode 為條件，找出第一筆的 ScId 
                 selectedScId = (
-                    from s in secondLevelItems
+                    from s in SecondLevelRawItems
                     where s.MainCode == selectedMainCode
-                    orderby s.SubCode
+                    orderby s.SortNum
                     select s.ScId
                     ).FirstOrDefault();
             }
@@ -185,12 +187,12 @@ namespace jb_tools.Controllers
                 // 1. 已於第一層取得 selectedScid
             }
 
-            // 2. 用 LINQ 撈出第二層資料，用以建立 SelectListItem 實例
+            // 2. 用 LINQ 撈出第二層原始資料來源，用以建立 SelectListItem 實例
             items =
             (
                 (
                     // 設定 [預設選取] 的下拉選單內容 
-                    from s in secondLevelItems
+                    from s in SecondLevelRawItems
                     where s.ScId == selectedScId && s.MainCode == selectedMainCode
                     select new SelectListItem
                     {
@@ -202,9 +204,9 @@ namespace jb_tools.Controllers
                 .Union
                 (
                     // 設定 [非預設選取] 的下拉選單內容 
-                    from s in secondLevelItems
+                    from s in SecondLevelRawItems
                     where s.ScId != selectedScId && s.MainCode == selectedMainCode
-                    orderby s.SubCode
+                    orderby s.SortNum
                     select new SelectListItem
                     {
                         Text = s.ScId + SelectListService.Delimiter + s.SubCode + SelectListService.Delimiter + s.Name,
@@ -214,8 +216,10 @@ namespace jb_tools.Controllers
                 )
             ).ToList();
 
-            // 3. 第二層資料建立的下拉選單資料，存入 ViewData
-            Session["SecondLevelItems"] = items;
+            // 3.a. 第二層原始資料來源建立的下拉選單資料，存入 ViewData
+            ViewData["SecondLevelItems"] = items;
+            // 3.b. 記錄預設的 ScId
+            ViewBag.SelectedScId = selectedScId;
             // -------------------------------------------------- ↑ 中分類 ↑ --------------------------------------------------
 
             // -------------------------------------------------- ↓ 細分類 ↓ --------------------------------------------------
@@ -223,9 +227,9 @@ namespace jb_tools.Controllers
             {
                 // 1. 以 MainCode == selectedMainCode + ScId == selectedScId 為條件，找出第一筆的 DetailOrder
                 selectedDetailOrder = (
-                    from t in thirdLevelItems
+                    from t in ThirdLevelRawItems
                     where t.ScId == selectedScId && t.MainCode == selectedMainCode
-                    orderby t.DetailOrder
+                    orderby t.SortNum
                     select t.DetailOrder
                     ).FirstOrDefault();
             }
@@ -234,12 +238,12 @@ namespace jb_tools.Controllers
                 // 1. 已於第一層取得 selectedDetailOrder
             }
 
-            // 2. 用 LINQ 撈出第三層資料，用以建立 SelectListItem 實例
+            // 2. 用 LINQ 撈出第三層原始資料來源，用以建立 SelectListItem 實例
             items =
             (
                 (
                     // 設定 [預設選取] 的下拉選單內容 
-                    from t in thirdLevelItems
+                    from t in ThirdLevelRawItems
                     where t.DetailOrder == selectedDetailOrder && t.ScId == selectedScId && t.MainCode == selectedMainCode
                     select new SelectListItem
                     {
@@ -251,9 +255,9 @@ namespace jb_tools.Controllers
                 .Union
                 (
                     // 設定 [非預設選取] 的下拉選單內容 
-                    from t in thirdLevelItems
+                    from t in ThirdLevelRawItems
                     where t.DetailOrder != selectedDetailOrder && t.ScId == selectedScId && t.MainCode == selectedMainCode
-                    orderby t.DetailOrder
+                    orderby t.SortNum
                     select new SelectListItem
                     {
                         Text = t.DetailOrder + SelectListService.Delimiter + t.Program + SelectListService.Delimiter + t.Name + SelectListService.Delimiter + t.ProgramPath,
@@ -263,36 +267,36 @@ namespace jb_tools.Controllers
                 )
             ).ToList();
 
-            // 3. 第三層資料建立的下拉選單資料，存入 ViewData
-            Session["ThirdLevelItems"] = items;
+            // 3.a. 第三層原始資料來源建立的下拉選單資料，存入 ViewData
+            ViewData["ThirdLevelItems"] = items;
+            // 3.b. 記錄預設的 DetailOrder
+            ViewBag.SelectedDetailOrder = selectedDetailOrder;
             // -------------------------------------------------- ↑ 細分類 ↑ --------------------------------------------------
-
-            //return new EmptyResult();
         }
 
         /// <summary>
         /// 設定第二層 DrowDownList
         /// </summary>
-        /// <param name = "mainCode" ></ param >
+        /// <param name ="mainCode"></ param >
+        /// <param name="scId"></param>
         /// mainCode: 所隸屬的大分類代號
+        /// scId: 所隸屬的中分類識別
         /// <returns></returns>
         [HttpGet]
-        public ActionResult SetSecondDropDownList(string mainCode)
+        public ActionResult SetSecondDropDownList(string mainCode, string scId)
         {
-            // 1. 以 MainCode == mainCode 為條件，找出第一筆的 ScId 
-            string selectedScId = (
-                from s in secondLevelItems
-                where s.MainCode == mainCode
-                orderby s.SubCode
-                select s.ScId
-                ).FirstOrDefault();
+            // Jacky 1120806 取得第二層原始資料來源
+            List<vmDDLScIdModel> SecondLevelRawItems = (List<vmDDLScIdModel>)Session["SecondLevelRawItems"];
 
-            // 2. 用 LINQ 撈出第二層資料，用以建立 SelectListItem 實例
-            List<SelectListItem> items =
+            // 1. 指定被選擇的中分類識別，即為所傳進來的 scId
+            string selectedScId = scId;
+
+            // 2. 用 LINQ 撈出第二層原始資料來源，用以建立 SelectListItem 實例
+            List<SelectListItem> items = 
             (
                 (
                     // 設定 [預設選取] 的下拉選單內容 
-                    from s in secondLevelItems
+                    from s in SecondLevelRawItems
                     where s.ScId == selectedScId && s.MainCode == mainCode
                     select new SelectListItem
                     {
@@ -304,9 +308,9 @@ namespace jb_tools.Controllers
                 .Union
                 (
                     // 設定 [非預設選取] 的下拉選單內容 
-                    from s in secondLevelItems
+                    from s in SecondLevelRawItems
                     where s.ScId != selectedScId && s.MainCode == mainCode
-                    orderby s.SubCode
+                    orderby s.SortNum
                     select new SelectListItem
                     {
                         Text = s.ScId + SelectListService.Delimiter + s.SubCode + SelectListService.Delimiter + s.Name,
@@ -316,36 +320,39 @@ namespace jb_tools.Controllers
                 )
             ).ToList();
 
-            // 3. 第二層資料建立的下拉選單資料，存入 ViewData
-            Session["SecondLevelItems"] = items;
+            // 3.a. 第二層原始資料來源建立的下拉選單資料，存入 ViewData
+            ViewData["SecondLevelItems"] = items;
+            // 3.b. 記錄被選擇的 ScId
+            ViewBag.SelectedScId = selectedScId;
 
-            return View();
+            // Jacky 1120807 以 PartialView 的形式傳回資料
+            return PartialView("~/Views/PartialViews/_PartialSetSecondDropDownList.cshtml");
         }
         /// <summary>
         /// 設定第三層 DrowDownList
         /// </summary>
         /// <param name="mainCode"></param>
         /// <param name="scId"></param>
+        /// <param name="detailOrder"></param>
         /// mainCode: 所隸屬的大分類代號
         /// scId: 所隸屬的中分類識別
+        /// detailOrder: 所隸屬的細分類序號
         /// <returns></returns>
         [HttpGet]
-        public ActionResult SetThirdDropDownList(string mainCode, string scId)
+        public ActionResult SetThirdDropDownList(string mainCode, string scId, string detailOrder)
         {
-            // 1. 以 MainCode == mainCode + ScId == scId 為條件，找出第一筆的 DetailOrder
-            string selectedDetailOrder = (
-                from t in thirdLevelItems
-                where t.ScId == scId && t.MainCode == mainCode
-                orderby t.DetailOrder
-                select t.DetailOrder
-                ).FirstOrDefault();
+            // Jacky 1120806 取得第三層原始資料來源
+            List<vmDDLDetailOrderModel> ThirdLevelRawItems = (List<vmDDLDetailOrderModel>)Session["ThirdLevelRawItems"];
 
-            // 2. 用 LINQ 撈出第三層資料，用以建立 SelectListItem 實例
+            // 1. 指定被選擇的細分類序號，即為所傳進來的 detailOrder
+            string selectedDetailOrder = detailOrder;
+
+            // 2. 用 LINQ 撈出第三層原始資料來源，用以建立 SelectListItem 實例
             List<SelectListItem> items =
             (
                 (
                     // 設定 [預設選取] 的下拉選單內容 
-                    from t in thirdLevelItems
+                    from t in ThirdLevelRawItems
                     where t.DetailOrder == selectedDetailOrder && t.ScId == scId && t.MainCode == mainCode
                     select new SelectListItem
                     {
@@ -357,9 +364,9 @@ namespace jb_tools.Controllers
                 .Union
                 (
                     // 設定 [非預設選取] 的下拉選單內容 
-                    from t in thirdLevelItems
+                    from t in ThirdLevelRawItems
                     where t.DetailOrder != selectedDetailOrder && t.ScId == scId && t.MainCode == mainCode
-                    orderby t.DetailOrder
+                    orderby t.SortNum
                     select new SelectListItem
                     {
                         Text = t.DetailOrder + SelectListService.Delimiter + t.Program + SelectListService.Delimiter + t.Name + SelectListService.Delimiter + t.ProgramPath,
@@ -369,13 +376,25 @@ namespace jb_tools.Controllers
                 )
             ).ToList();
 
-            // 3. 第三層資料建立的下拉選單資料，存入 ViewData
-            Session["ThirdLevelItems"] = items;
+            // 3.a. 第三層原始資料來源建立的下拉選單資料，存入 ViewData
+            ViewData["ThirdLevelItems"] = items;
+            // 3.b. 記錄預設的 DetailOrder
+            ViewBag.SelectedDetailOrder = selectedDetailOrder;
 
-            return View();
+            // Jacky 1120807 以 PartialView 的形式傳回資料
+            return PartialView("~/Views/PartialViews/_PartialSetThirdDropDownList.cshtml");
         }
         // for DropDownList ↑ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// 以 Select Action 呈現交易單表頭及表身資料
+        /// 注意：這裡的 id 是交易單表頭(IemuTrans)的 Id，因為要配合 Select/id，避免與 CreateEdit/id 和 Index/id 衝突，特別設計 Select Action 以資區別
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="page"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="searchText"></param>
+        /// <returns></returns>
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Select(int id = 0, int page = 1, int pageSize = PaginationService.CountPerPage, string searchText = "")
@@ -401,8 +420,8 @@ namespace jb_tools.Controllers
                     // Jacky 1120730 表頭 IemuTrans 的 Model
                     // 注意：這個 Model 一定要先做，因為需要這個表頭的單號來取表身資料
                     vmModel.IemuTransModel = iemuTrans.GetDapperData(id);
-                    // Jacky 1120805
-                    Session["IemuTrans_No"] = vmModel.IemuTransModel.No;
+                    // Jacky 1120805 預先記錄表頭的單號
+                    Session["IemuTranDetail_IemuTrans_No"] = vmModel.IemuTransModel.No;
 
                     // Jacky 1120726 for 分頁模式
                     // Jacky 1120730 IPagedList<T> 的 Model
@@ -423,12 +442,19 @@ namespace jb_tools.Controllers
                     vmModel.IemuTranDetailsModel = iemuTranDetailsModel;
 
                     return View(vmModel);
-
-                    //return RedirectToAction("Index");
                 }
             }
         }
 
+        /// <summary>
+        /// 以 Index Action 呈現呈現交易單表頭及表身資料
+        /// 注意：這裡的 id 是交易單表身(IemuTranDetails)的 Id，因為要配合 CreateEdit/id 與 Index/id，這裡的 id 是以 IemuTranDetails 為主角做 CRUD
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="page"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="searchText"></param>
+        /// <returns></returns>
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Index(int id = 0, int page = 1, int pageSize = PaginationService.CountPerPage, string searchText = "")
@@ -453,8 +479,8 @@ namespace jb_tools.Controllers
 
                     // Jacky 1120730 表頭 IemuTrans 的 Model
                     // 注意：這個 Model 一定要先做，因為需要這個表頭的單號來取表身資料
-                    // Jacky 1120805
-                    string no = Session["IemuTrans_No"].ToString();
+                    // Jacky 1120805 必須以原先表頭的單號為單號
+                    string no = Session["IemuTranDetail_IemuTrans_No"].ToString();
                     vmModel.IemuTransModel = iemuTrans.GetDapperDataByNo(no);
 
                     // Jacky 1120726 for 分頁模式
@@ -494,10 +520,11 @@ namespace jb_tools.Controllers
                 PrgService.SetAction(action, enCardSize.Small);
                 ViewBag.Action = action;
                 ViewBag.CardSize = PrgService.CardSize;
-                var model = iemuTranDetails.repo.ReadSingle(m => m.Id == id);
-                if (model == null)
+                vmIemuTranDetailCreateEdit vmModel = new vmIemuTranDetailCreateEdit();
+                vmModel.IemuTranDetailsModel = iemuTranDetails.repo.ReadSingle(m => m.Id == id);
+                if (vmModel.IemuTranDetailsModel == null)
                 {
-                    model = new IemuTranDetails();
+                    vmModel.IemuTranDetailsModel = new IemuTranDetails();
                     //// 設定新增預設值
                     //using (AttributeService attr = new AttributeService())
                     //{
@@ -521,14 +548,14 @@ namespace jb_tools.Controllers
                     // for TextBoxFor 使用，不然在修改畫面時，帶不出 [客戶簡稱]
                     //model.cu_na = iemuTrans.GetCustomerSimpleName(model.CuNo);
                 }
-                return View(model);
+                return View(vmModel);
             }
         }
 
         [HttpPost]
         /// Jacky 1120727
         /// <summary>
-        /// 帶入標準資料
+        /// 帶入標準資料(IemuMainMenus、IemuSubMenus、IemuDetailMenus)到表身資料表 IemuTranDetails
         /// no (單號)
         /// </summary>
         public ActionResult BringStandardValues(string no)

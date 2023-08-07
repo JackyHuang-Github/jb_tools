@@ -555,6 +555,7 @@
     <Compile Include="Models\ViewModel\vmFileManager.cs" />
     <Compile Include="Models\ViewModel\vmGeneratorModel.cs" />
     <Compile Include="Models\ViewModel\vmHtmlEditor.cs" />
+    <Compile Include="Models\ViewModel\vmIemuTranDetailCreateEdit.cs" />
     <Compile Include="Models\ViewModel\vmIemuTranModel.cs" />
     <Compile Include="Models\ViewModel\vmIemuTranDetailModel.cs" />
     <Compile Include="Models\ViewModel\vmLogin.cs" />
@@ -1485,9 +1486,9 @@
     <Content Include="Views\Shared\_LayoutInfo.cshtml" />
     <Content Include="Views\Shared\_LayoutCardIemuTranDetail.cshtml" />
     <Content Include="Views\IemuTranDetail\CreateEdit.cshtml" />
-    <Content Include="Views\IemuTranDetail\SetSecondDropDownList.cshtml" />
-    <Content Include="Views\IemuTranDetail\SetThirdDropDownList.cshtml" />
     <Content Include="Views\IemuTranDetail\Select.cshtml" />
+    <Content Include="Views\PartialViews\_PartialSetSecondDropDownList.cshtml" />
+    <Content Include="Views\PartialViews\_PartialSetThirdDropDownList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\resColumn.en-US.resx" />

@@ -1,0 +1,6 @@
+﻿@* Jacky 1120807 第二層下拉選單 *@
+
+@model jb_tools.Models.ViewModel.vmIemuTranDetailCreateEdit
+
+@Html.DropDownListFor(s => s.vmDDLScIdModel.ScId, (IEnumerable<SelectListItem>)ViewData["SecondLevelItems"], new { @class = "form-control" })
+

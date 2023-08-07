@@ -23,5 +23,9 @@ namespace jb_tools.Models.ViewModel
         /// 大分類名稱
         /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// 排序號碼
+        /// </summary>
+        public int SortNum { get; set; }
     }
 }

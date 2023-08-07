@@ -1,0 +1,6 @@
+﻿@* Jacky 1120807 第三層下拉選單 *@
+
+@model jb_tools.Models.ViewModel.vmIemuTranDetailCreateEdit
+
+@Html.DropDownListFor(t => t.vmDDLDetailOrderModel.DetailOrder, (IEnumerable<SelectListItem>)ViewData["ThirdLevelItems"], new { @class = "form-control" })
+
