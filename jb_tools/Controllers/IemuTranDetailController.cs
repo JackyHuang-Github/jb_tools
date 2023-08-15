@@ -520,6 +520,7 @@ namespace jb_tools.Controllers
                 PrgService.SetAction(action, enCardSize.Small);
                 ViewBag.Action = action;
                 ViewBag.CardSize = PrgService.CardSize;
+
                 vmIemuTranDetailCreateEdit vmModel = new vmIemuTranDetailCreateEdit();
                 vmModel.IemuTranDetailsModel = iemuTranDetails.repo.ReadSingle(m => m.Id == id);
                 if (vmModel.IemuTranDetailsModel == null)
@@ -549,6 +550,25 @@ namespace jb_tools.Controllers
                     //model.cu_na = iemuTrans.GetCustomerSimpleName(model.CuNo);
                 }
                 return View(vmModel);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateEdit(vmIemuTranDetailCreateEdit vmModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData["ErrorMessage"] = ActionService.SetErrorMessage<z_metaIemuTranDetails>(ModelState);
+                return View(vmModel);
+            }
+
+            using (z_repoIemuTranDetails iemuTranDetails = new z_repoIemuTranDetails())
+            {
+                enAction action = (vmModel.IemuTranDetailsModel.Id == 0) ? enAction.Create : enAction.Edit;
+                ViewBag.Action = action;
+                iemuTranDetails.CreateEdit(vmModel.IemuTranDetailsModel);
+                return RedirectToAction(ActionService.Index, ActionService.Controller, new { area = "" });
             }
         }
 

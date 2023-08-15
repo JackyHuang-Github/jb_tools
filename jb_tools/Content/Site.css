@@ -144,7 +144,10 @@ textarea {
 .tableMultipleFixedHead {
     overflow: auto;
     /* 限制最大高度，Table 才不會出現超出上端的不預期捲動 */
-    height: 80.5vh;
+
+    /* Jacky 1120807 */
+    height: calc(80.5vh + 1px);
+
     border: 2px solid orange;
 }
 
@@ -191,7 +194,10 @@ textarea {
 .tableMultipleFixedHeadBorderShadow {
     overflow: auto;
     /* 限制最大高度，Table 才不會出現超出上端的不預期捲動 */
-    height: 80.5vh;
+
+    /* Jacky 1120807 */
+    height: calc(80.5vh + 1px);
+
     border: 2px solid orange;
 }
 
