@@ -23,9 +23,8 @@
                 {
                     @class = "btn btn-sm btn-primary border-danger",
                     style = "font-weight: 600;",
-                    accesskey = "J",
-                    alt = ActionService.Return + " (Alt + J)",
-                    title = ActionService.Return + " (Alt + J)"
+                    alt = ActionService.Return,
+                    title = ActionService.Return
                 }
         )
     </div>
@@ -34,6 +33,19 @@
     <div class="float-left d-inline-block">
         @Html.Partial("~/Views/PartialViews/_PartialIemuTranDetail_BSV.cshtml")
     </div>
+
+    @* Jacky 1120818 動態編輯 *@
+<div class="float-left d-inline-block">
+    @Html.ActionLink("動態編輯", "DynamicEdit", "IemuTranDetail", new { area = "" },
+        new
+        {
+            @class = "btn btn-sm btn-info border-danger",
+            style = "font-weight: 600;",
+            alt = "動態編輯",
+            title = "動態編輯"
+        }
+    )
+</div>
 }
 
 @section styles {

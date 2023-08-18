@@ -1,0 +1,14 @@
+﻿@* Jacky 1120818 動態編輯 *@
+@model jb_tools.Models.IemuTranDetails
+
+@{
+    ViewBag.Title = "動態編輯";
+    Layout = "~/Views/Shared/_LayoutIEMenuMaker4.cshtml";
+    ViewBag.FunctionAreaTitle = ViewBag.Title;
+
+    // Jacky 1120727 記錄表頭 IemuTrans 的 No，以帶入表身
+    ViewBag.IemuTranModel_No = Model.IemuTransModel.No;
+}
+
+
+

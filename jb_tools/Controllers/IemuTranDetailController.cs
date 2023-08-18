@@ -631,5 +631,23 @@ namespace jb_tools.Controllers
             ViewBag.MultipleTablesShowStyleNormalHead = multipleTablesNormalHead;
             ViewBag.MultipleTablesShowStyleFixedHead = multipleTablesFixedHead;
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        /// Jacky 1120818
+        /// <summary>
+        /// 動態編輯
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult DynamicEdit()
+        {
+            using (z_repoIemuTranDetails iemuTranDetails = new z_repoIemuTranDetails())
+            {
+                Session["CurrentController"] = "IemuTranDetail";
+
+                var model = iemuTranDetails.repo.ReadAll();
+                return View(model);
+            }
+        }
     }
 }

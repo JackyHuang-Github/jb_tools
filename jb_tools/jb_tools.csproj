@@ -1489,6 +1489,8 @@
     <Content Include="Views\IemuTranDetail\Select.cshtml" />
     <Content Include="Views\PartialViews\_PartialSetSecondDropDownList.cshtml" />
     <Content Include="Views\PartialViews\_PartialSetThirdDropDownList.cshtml" />
+    <Content Include="Views\Shared\_LayoutIEMenuMaker4.cshtml" />
+    <Content Include="Views\IemuTranDetail\DynamicEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\resColumn.en-US.resx" />
